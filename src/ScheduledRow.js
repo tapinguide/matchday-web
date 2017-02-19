@@ -5,8 +5,6 @@ class ScheduledRow extends React.Component {
   
   render() {
     var match = this.props.match;
-    var homeClub = match.homeClub;
-    var visitorClub = match.visitorClub;
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubCrestStyle = {
             backgroundImage: 'url(' + homeClubCrestUrl + ')'

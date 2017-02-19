@@ -1,22 +1,30 @@
-.match {
-  max-width: 400px;
-  min-width: 300px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #dbe7f0;
-  text-align: left;
+
+
+  .expandHidden {
+    display: none;
+  }
+
+  .expandShow {
+    display: inherit;
+  }
+
+  .match.show {
+    max-height: 10000px;
 }
 
-
   .match {
-    height: auto;
+    
     max-width: 479px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
     border-right: 0px none #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
     border-left: 0px none #e7e7e7;
+    margin-right: auto;
+    margin-left: auto;
     background-color: #fff;
+    transition: max-height 3.5s ease-in-out;
   }
+
   .match.matchcomplete {
     background-color: #f5f5f5;
   }
@@ -92,8 +100,9 @@
   }
   .datetime {
     font-family: Poppins, sans-serif;
-    color: #757575;
+    color: #000;
     font-size: 10px;
+    font-weight: 500;
     letter-spacing: 2px;
   }
   .narrative {
@@ -111,6 +120,7 @@
   }
   .expander {
     position: relative;
+    margin-bottom: 5px;
     left: 0px;
     top: -8px;
     right: 0px;
@@ -124,6 +134,21 @@
     background-position: 50% 50%;
     background-size: auto;
     background-repeat: no-repeat;
+  }
+  
+  .expander.expanderopen {
+    left: 0px;
+    width: 100%;
+    height: 47px;
+    margin-top: 5px;
+    padding-top: 0px;
+    border: 1px solid #b4b4b4;
+    background-color: #f3f3f3;
+    background-size: auto;
+  }
+
+  .expander{
+     cursor: pointer;
   }
   .teamnametext {
     font-weight: 600;
@@ -175,8 +200,8 @@
   }
   .card {
     height: auto;
-    margin-top: 22px;
-    margin-bottom: -1px;
+    /*margin-top: 22px;*/
+    margin-bottom: 22px;
     padding-bottom: 0px;
     border: 1px solid #e1e1e1;
     box-shadow: 0 7px 22px 0 #d3d3d3;
@@ -272,7 +297,7 @@
 
 @media (max-width: 479px) {
   .w-container {
-    margin-top: 0vh;
-  }  
+  margin-top: 0px;
+}  
 }
 

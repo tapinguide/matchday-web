@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './images/logo.svg';
 import './css/match-day.webflow.css';
 import MatchTable from './MatchTable';
 

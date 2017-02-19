@@ -1,16 +1,9 @@
 import React from 'react';
-import moment from 'moment'
-import shapegreen from './images/shapegreen.svg'
-import subon from './images/subon.svg';
-import suboff from './images/suboff.svg';
-import Event from './Event';
+import MoreInfo from './MoreInfo';
 
 class InProgressRow extends React.Component {
   render(){
-
     var match = this.props.match;
-    var homeClub = match.homeClub;
-    var visitorClub = match.visitorClub;
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubCrestStyle = {
             backgroundImage: 'url(' + homeClubCrestUrl + ')'
@@ -19,10 +12,7 @@ class InProgressRow extends React.Component {
     var visitorClubCrestStyle = {
             backgroundImage: 'url(' + visitorClubCrestUrl + ')'
         }
-    var expanderStyle = {
-      backgroundImage: "url(" + shapegreen + ")"
-    }
-    var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
+
     var postMatchDetails = match.preMatchDetails;
 
     if(match.inMatchDetails){
@@ -38,23 +28,22 @@ class InProgressRow extends React.Component {
     }
 
     return (
-              <div className="match w-clearfix">
-                <div className="numberbg">
-                  <div className="numberplace">{match.sortOrder}</div>
-                </div>
-                <div className="contentcontainer">
-                  <div className="livescore">
-                    <div className="homescore">{match.homeClubScore}</div>
-                    <div className="homecrest homescore" style={homeClubCrestStyle}></div>
-                    <div className="homescore scoretime">{matchStatus}</div>
-                    <div className="awaycrest homescore"  style={visitorClubCrestStyle}></div>
-                    <div className="awayscore">{match.visitorClubScore}</div>
-                  </div>
-                  <div className="livenarrative livenarrativecomplete narrative">{postMatchDetails}</div>
-                  <Event />
-                </div>
-                <div className="expander" style={expanderStyle} ></div>
-              </div>
+      <div className="match w-clearfix show">
+        <div className="numberbg">
+          <div className="numberplace">{match.sortOrder}</div>
+        </div>
+        <div className="contentcontainer w-clearfix">
+          <div className="livescore">
+            <div className="homescore">{match.homeClubScore}</div>
+            <div className="homecrest homescore" style={homeClubCrestStyle}></div>
+            <div className="homescore scoretime">{matchStatus}</div>
+            <div className="awaycrest homescore"  style={visitorClubCrestStyle}></div>
+            <div className="awayscore">{match.visitorClubScore}</div>
+          </div>
+          <div className="livenarrative narrative">{postMatchDetails}</div>
+          <MoreInfo events={match.events} />
+         </div>
+      </div>
     );
   }
 }
