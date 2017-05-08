@@ -1,10 +1,13 @@
 import React from 'react';
 import moment from 'moment';
+import rectangle from './images/rectangle.png'
+import renderHTML from 'react-render-html';
 
 class ScheduledRow extends React.Component {
   
   render() {
     var match = this.props.match;
+    var matchIndex = this.props.matchIndex;
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubCrestStyle = {
             backgroundImage: 'url(' + homeClubCrestUrl + ')'
@@ -13,11 +16,14 @@ class ScheduledRow extends React.Component {
     var visitorClubCrestStyle = {
             backgroundImage: 'url(' + visitorClubCrestUrl + ')'
         }
+            var numberStyle = {
+                backgroundImage: "url(" + rectangle + ")"
+            }
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
 return (
       <div className="match w-clearfix">
-      <div className="numberbg">
-        <div className="numberplace">{match.sortOrder}</div>
+      <div className="numberbg" style={numberStyle}>
+        <div className="numberplace">{matchIndex}</div>
       </div>
       <div className="contentcontainer w-clearfix">
         <div className="crestcontainer">
@@ -28,7 +34,7 @@ return (
         </div>
         <div className="infocontainer">
           <div className="datetime">{matchDate}</div>
-          <div className="narrative">{match.preMatchDetails}</div>
+          <div className="narrative">{renderHTML(match.preMatchDetails)}</div>
         </div>
       </div>
      </div>

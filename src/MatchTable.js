@@ -1,18 +1,21 @@
 import React from 'react';
 import MatchRow from './MatchRow';
 
-var axios = require('axios');
+var axios = require("axios");
+var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
 
 class MatchTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {matches: []};
+    this.state = {
+      matches: []
+    };
   }
  
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      1000
+      5000
     );
     this.tick();
   }
@@ -24,19 +27,42 @@ class MatchTable extends React.Component {
   tick() {
    var _this = this;
     axios
-        .get("http://localhost:8000/api/activematches/?format=json")
-        .then(function(result) {    
+        .get(matchesUrl,
+          {
+            validateStatus: function (status) {
+              return status < 500; // Reject only if the status code is greater than or equal to 500 
+            }
+          }
+        )
+        .then(function(result) {   
+          var results = result.data.results;
+          var notCompleted = [];
+          var completed = [];
+          for(var i = 0, numResults = results.length; i < numResults; i++){
+              if(results[i].status.description.toLowerCase() === "ft" || results[i].status.description.toLowerCase() === "aet"){
+                completed.push(results[i]);
+              }
+              else{
+                notCompleted.push(results[i]);
+              }
+          }
+
+          completed.sort(function(a,b){
+            return new Date(b.matchTime) - new Date(a.matchTime);
+          });
+         
           _this.setState({
-            matches: result.data.results
+            matches: notCompleted.concat(completed)
            });
         });
   }
 
   render() {
     var rows = [];
-    this.state.matches.forEach(function(match) {
-      rows.push(<MatchRow match={match} key={match.id} />);
+    this.state.matches.forEach(function(match, i) {
+      rows.push(<MatchRow match={match} key={match.id} matchIndex={i} />);
     });
+
     return (
       <div>{rows}</div>
     );

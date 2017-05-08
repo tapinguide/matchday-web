@@ -3,6 +3,7 @@ import {ExpanderContent} from 'pui-react-expander';
 import shapegreen from './images/shapegreen.svg'
 import shapegreenup from './images/shapegreenup.svg'
 import Card from './Card';
+import './css/event.css';
 
 class MoreInfo extends React.Component {
     constructor(props) {
@@ -24,12 +25,16 @@ class MoreInfo extends React.Component {
         
         return expanderStyle;
     }
+    expandCollapse(value){
+        this.setState({expanded: !value});
+       
+    }
     getClass(value){
         if(value){
             return "expander expanderopen";
         }
         else{
-            return "expander";
+            return "expander expanderclosed";
         }
     }
     render() {
@@ -39,14 +44,19 @@ class MoreInfo extends React.Component {
             cards.push(<Card event={event} key={event.id} />);
         });
 
-        return (
-        <main>
-            <ExpanderContent expanded={this.state.expanded}>
-                {cards}
-            </ExpanderContent>
-            <div className={this.getClass(this.state.expanded)} style={this.getBackgroundImage(this.state.expanded)} onClick={() => this.setState({expanded: !this.state.expanded})}></div>
-        </main>
-        )
+        var content = <main></main>;
+        if(cards.length > 0){
+            content = (
+                <main>
+                     <div className={this.getClass(this.state.expanded)} style={this.getBackgroundImage(this.state.expanded)} onClick={() => this.expandCollapse(this.state.expanded)}></div>
+                    <ExpanderContent expanded={this.state.expanded}>
+                        {cards}
+                    </ExpanderContent>
+                </main>
+            );
+        }
+
+        return content;
     }
 }
 

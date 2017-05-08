@@ -1,11 +1,18 @@
 import React from 'react';
 import moment from 'moment';
 import MoreInfo from './MoreInfo';
+import rectangle from './images/rectangle.png'
+import renderHTML from 'react-render-html';
 
 class CompleteRow extends React.Component {
   render(){
 
     var match = this.props.match;
+    var matchIndex = this.props.matchIndex;
+    var sortedEvents = match.events.sort((a,b) => {
+      return a.id - b.id
+    }).reverse();
+    
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubCrestStyle = {
             backgroundImage: 'url(' + homeClubCrestUrl + ')'
@@ -14,6 +21,9 @@ class CompleteRow extends React.Component {
     var visitorClubCrestStyle = {
             backgroundImage: 'url(' + visitorClubCrestUrl + ')'
         }
+    var numberStyle = {
+                backgroundImage: "url(" + rectangle + ")"
+            }
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
     var postMatchDetails = match.preMatchDetails;
 
@@ -25,20 +35,20 @@ class CompleteRow extends React.Component {
     }
     return (
               <div className="match matchcomplete w-clearfix">
-                <div className="numberbg">
-                  <div className="numberplace">{match.sortOrder}</div>
+                <div className="numberbg" style={numberStyle}>
+                  <div className="numberplace">{matchIndex}</div>
                 </div>
                 <div className="contentcontainer">
                   <div className="livescore">
-                    <div className="homescore">{match.homeClubScore}</div>
-                    <div className="homecrest homescore" style={homeClubCrestStyle}></div>
-                    <div className="homescore scoretime">FT</div>
-                    <div className="awaycrest homescore"  style={visitorClubCrestStyle}></div>
-                    <div className="awayscore">{match.visitorClubScore}</div>
+                    <div className="scoreformatting">{match.homeClubScore}</div>
+                    <div className="homecrest scoreformatting" style={homeClubCrestStyle}></div>
+                    <div className="scoreformatting scoretime">FT</div>
+                    <div className="awaycrest scoreformatting" style={visitorClubCrestStyle}></div>
+                    <div className="scoreformatting">{match.visitorClubScore}</div>
                   </div>
                   <div className="datetime">{matchDate}</div>
-                  <div className="livenarrative livenarrativecomplete narrative">{postMatchDetails}</div>
-                    <MoreInfo events={match.events} />
+                  <div className="livenarrative livenarrativecomplete narrative">{renderHTML(postMatchDetails)}</div>
+                  <MoreInfo events={sortedEvents} />
                 </div>
               </div>
     );

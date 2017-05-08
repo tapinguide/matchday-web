@@ -7,24 +7,24 @@ import Substitute from './Substitute';
 class Card extends React.Component {
  
     getEventType(event){
-        if(event.eventType == "yellowcard"){
+        if(event.eventType === "yellowcard"){
             return <YellowCard event={event} />;
         }
-        else if(event.eventType == "redcard"){
+        else if(event.eventType === "redcard"){
              return <RedCard event={event} />;
         }
-        else if(event.eventType == "goal"){
+        else if(event.eventType === "goal"){
              return <Goal event={event} />;
         }
-        else if(event.eventType == "subst"){
+        else if(event.eventType === "subst"){
              return <Substitute event={event} />;
         }
     }
     render() {
         var eventType = this.getEventType(this.props.event);
-   
         return (
             <event>
+                <div className="timeline"></div>
                 {eventType}
             </event>
         )
