@@ -1695,12 +1695,6 @@ textarea.w-select {
   display: none !important;
 }
 
-@media (max-width: 479px) {
-  .w-container {
-  margin-top: 0px;
-}  
-}
-
 .headcolor {
     top: 10px;
     position: absolute;
