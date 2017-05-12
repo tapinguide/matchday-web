@@ -6,7 +6,7 @@ import Substitute from './Substitute';
 
 class Event extends React.Component {
  
-    getEventType(event){
+    getEventType(event, index){
         if(event.eventType === "yellowcard"){
             return <YellowCard event={event} />;
         }
@@ -21,10 +21,9 @@ class Event extends React.Component {
         }
     }
     render() {
-        var eventType = this.getEventType(this.props.event);
+        var eventType = this.getEventType(this.props.event, this.props.index);
         return (
             <div>
-                <div className="timeline"></div>
                 {eventType}
             </div>
         )

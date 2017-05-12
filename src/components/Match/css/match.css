@@ -205,14 +205,3 @@
     font-size: 14px;
     font-weight: 600;
   }
-
-  .timeline {
-    position: relative;
-    left: 0px;
-    width: 3px;
-    height: 22px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #bdbdbd;
-  }
-

@@ -39,8 +39,15 @@ class MoreInfo extends React.Component {
     render() {
 
         var events = [];
-        this.props.events.forEach(function(event) {
-            events.push(<Event event={event} key={event.id} />);
+        this.props.events.forEach(function(event, index) {
+            if(index > 0){
+                events.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
+            }
+            else
+            {
+                events.push(<Event event={event} key={event.id} />);
+            }
+            
         });
 
         var content = <main></main>;
