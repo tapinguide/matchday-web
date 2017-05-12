@@ -1697,7 +1697,6 @@ textarea.w-select {
 
 .headcolor {
     top: 10px;
-    position: absolute;
     color: #5d5d5d;
     line-height: 50px;
     font-weight: 400;
@@ -1711,4 +1710,5 @@ textarea.w-select {
 .logoname {
     display: inline-block;
     height: 65px;
+    padding:10px;
 }
