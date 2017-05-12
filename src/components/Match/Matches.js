@@ -33,7 +33,7 @@ class Matches extends React.Component {
         .get(matchesUrl,
           {
             validateStatus: function (status) {
-              return status < 500; // Reject only if the status code is greater than or equal to 500 
+              return status < 500;
             }
           }
         )
@@ -58,7 +58,13 @@ class Matches extends React.Component {
             matches: notCompleted.concat(completed),
             loaded: true
            });
-        });
+        })
+        .catch(function (error) {
+          if (error.response) {
+            // Response has been received from the server
+            console.log(error.response.data); // => the response payload 
+          }
+      });
   }
 
   render() {
