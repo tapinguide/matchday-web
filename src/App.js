@@ -9,7 +9,7 @@ class App extends Component {
           <img alt="Tapin Guide Logo" src={logo} /> <span className="headcolor">The Vital Matches</span>
         </div>
         <div className="w-container">
-          <Matches />
+          <Matches></Matches>
         </div>
       </div>
     );

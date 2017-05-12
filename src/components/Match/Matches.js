@@ -1,14 +1,17 @@
 import React from 'react';
 import MatchRow from './MatchRow';
 
+var Loader = require('react-loader');
 var axios = require("axios");
 var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
 //var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
+
 class Matches extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      matches: []
+      matches: [],
+      loaded: false
     };
   }
  
@@ -52,7 +55,8 @@ class Matches extends React.Component {
           });
          
           _this.setState({
-            matches: notCompleted.concat(completed)
+            matches: notCompleted.concat(completed),
+            loaded: true
            });
         });
   }
@@ -62,9 +66,10 @@ class Matches extends React.Component {
     this.state.matches.forEach(function(match, i) {
       rows.push(<MatchRow match={match} key={match.id} matchIndex={i} />);
     });
-
     return (
-      <div>{rows}</div>
+    <Loader loaded={this.state.loaded} color="#5d5d5d">
+        {rows}
+      </Loader>
     );
   }
 }
