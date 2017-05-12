@@ -1,6 +1,6 @@
 import React from 'react';
 import {ExpanderContent} from 'pui-react-expander';
-import shapegreen from './images/shapegreenup.svg'
+import shapegreendown from './images/shapegreendown.svg'
 import shapegreenup from './images/shapegreenup.svg'
 import Event from './Event/Event';
 import './Event/css/event.css';
@@ -14,7 +14,7 @@ class MoreInfo extends React.Component {
         var expanderStyle = '';
         if(!value){
             expanderStyle = {
-                backgroundImage: "url(" + shapegreen + ")"
+                backgroundImage: "url(" + shapegreendown + ")"
             }
         }
         else{
@@ -26,9 +26,7 @@ class MoreInfo extends React.Component {
         return expanderStyle;
     }
     expandCollapse(value){
-        console.log('expand');
         this.setState({expanded: !value});
-       
     }
     getClass(value){
         if(value){
