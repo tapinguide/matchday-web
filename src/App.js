@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import Matches from './components/Match/Matches';
-import logo from './images/tapin-logo.png';
+import Main from './components/Main'
+import Header from './components/Header'
+
 class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="logoname">
-          <img alt="Tapin Guide Logo" src={logo} /> <span className="headcolor">The Vital Matches</span>
-        </div>
-        <div className="w-container">
-          <Matches></Matches>
-        </div>
+        <Header />
+        <Main />
       </div>
     );
   }

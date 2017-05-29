@@ -38,7 +38,7 @@ class Matches extends React.Component {
           }
         )
         .then(function(result) {   
-          var results = result.data.results;
+          var results = result.data;
           var notCompleted = [];
           var completed = [];
           for(var i = 0, numResults = results.length; i < numResults; i++){
