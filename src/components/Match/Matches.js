@@ -1,5 +1,8 @@
 import React from 'react';
+import Header from '../Header'
 import MatchRow from './MatchRow';
+import './css/normalize.css';
+import './css/match-webflow.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
@@ -73,9 +76,14 @@ class Matches extends React.Component {
       rows.push(<MatchRow match={match} key={match.id} matchIndex={i} />);
     });
     return (
-    <Loader loaded={this.state.loaded} color="#5d5d5d">
-        {rows}
-      </Loader>
+          <div className="container-fluid">
+            <Header />
+            <div className="w-container">
+              <Loader loaded={this.state.loaded} color="#5d5d5d">
+                {rows}
+              </Loader>
+          </div>
+        </div>
     );
   }
 }

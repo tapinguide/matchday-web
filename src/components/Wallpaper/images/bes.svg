@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="278px" height="278px" viewBox="0 0 278 278" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>bes/bes</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bes/bes">
+            <g transform="translate(30.000000, 0.000000)">
+                <polygon id="Fill-1" fill="#FFFFFF" points="12.1987587 181.113043 109.474026 262.593754 206.749293 181.113043 206.749293 12.3452776 12.1987587 12.3452776"></polygon>
+                <polygon id="Fill-2" fill="#000000" points="76.957721 6.53883701 76.957721 242.931833 109.473828 270.168908 141.989935 242.931833 141.989935 6.53883701"></polygon>
+                <polygon id="Fill-3" fill="#000000" points="6.39241708 6.53883701 6.39241708 183.823691 32.3859117 205.59673 32.3859117 6.53883701"></polygon>
+                <polygon id="Fill-4" fill="#000000" points="186.564019 6.53883701 186.564019 205.595741 212.556525 183.823691 212.556525 6.53883701"></polygon>
+                <polygon id="Fill-5" fill="#FA2F38" points="67.4125267 72.7782235 67.4125267 139.66443 109.474619 174.89722 151.535722 139.66443 151.535722 72.7782235"></polygon>
+                <polygon id="Fill-6" fill="#FFFFFF" points="82.4443132 131.350548 136.503936 131.350548 136.503936 111.679822 82.4443132 111.679822"></polygon>
+                <path d="M109.474223,277.743073 L0.58627331,186.53434 L0.58627331,0.732396441 L218.362174,0.732396441 L218.362174,186.53434 L109.474223,277.743073 Z M12.1989566,181.112845 L109.474223,262.593557 L206.74949,181.112845 L206.74949,12.3450797 L12.1989566,12.3450797 L12.1989566,181.112845 Z" id="Fill-7" fill="#000000"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Matches from './Match/Matches';
-import Backgrounds from './BackgroundGenerator/Backgrounds';
+import Wallpaper from './Wallpaper/Wallpaper';
 import About from './About';
+import Contact from './Contact';
 
 class Main extends Component {
   render() {
     return (
-        <div className="w-container">
+       <div>
             <Switch>
                 <Route exact path='/' component={Matches}/>
-                <Route path='/backgrounds' component={Backgrounds}/>
+                <Route path='/wallpaper' component={Wallpaper}/>
                 <Route path='/about' component={About}/>
+                <Route path='/contact' component={Contact}/>
             </Switch>
         </div>
     );
