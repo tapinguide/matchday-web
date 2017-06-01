@@ -9,15 +9,28 @@
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
+  cursor: pointer;
 }
 
 .selected-crest{
   background-color: transparent;
   border: none;
-  margin-right: -75px !important;
   cursor: default;
+  margin-right:-80px;
 }
 
 .selected-crest:hover{
   background-color: transparent;
 }
+
+.div-block-6{
+  background-color: none;
+  cursor: pointer;
+}
+.div-block-11{
+  width: 73%;
+  height: 69%;
+  margin-top: -9px;
+  margin-right: 2px;
+}
+
