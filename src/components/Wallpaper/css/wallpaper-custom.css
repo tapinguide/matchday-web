@@ -1,22 +1,53 @@
 .body{
   background-color:#fff;
 }
-.crest:not(.selected-crest):hover {
-  background-color: #ebebeb;
-  box-shadow: 1px 23px 38px -16px rgba(0, 0, 0, .41);
-  -webkit-transform: perspective(740px) rotateX(0deg) rotateY(-23deg) rotateZ(0deg) translate(-9px, 0px);
-  transform: perspective(740px) rotateX(0deg) rotateY(-23deg) rotateZ(0deg) translate(-9px, 0px);
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
+
+.crest{
   cursor: pointer;
 }
 
 .selected-crest{
   background-color: transparent;
+  background-repeat: no-repeat;
   border: none;
   cursor: default;
   margin-right:-80px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin-top: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: perspective(1413px) rotate(0deg);
+  transform: perspective(1413px) rotate(0deg);
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  font-size: 11px;
+  line-height: 19px;
 }
 
 .selected-crest:hover{
@@ -27,10 +58,14 @@
   background-color: none;
   cursor: pointer;
 }
-.div-block-11{
-  width: 73%;
-  height: 69%;
-  margin-top: -9px;
-  margin-right: 2px;
-}
 
+@media (max-width: 479px) {
+  .selected-crest {
+    width: 100px;
+    height: 100px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+
+    margin-right:-65px;
+  }
+}
