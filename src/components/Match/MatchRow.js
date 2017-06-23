@@ -14,14 +14,14 @@ class MatchRow extends React.Component {
     var sortedEvents = match.events.sort((a,b) => {
       return a.id - b.id
     }).reverse();
-    
+
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubCrestStyle = {backgroundImage: 'url(' + homeClubCrestUrl + ')'};
     var visitorClubCrestUrl = match.visitorClub.crest;
     var visitorClubCrestStyle = {backgroundImage: 'url(' + visitorClubCrestUrl + ')'};
     var numberStyle = {backgroundImage: "url(" + rectangle + ")"};
     var secondsStyle = {height: "12px", backgroundPosition: "center top", backgroundRepeat: "no-repeat", backgroundImage: "url(" + seconds + ")"};
-   
+
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
     var matchStatus = match.status.description;
     if(match.status.description === "In Progress"){
@@ -71,7 +71,7 @@ class MatchRow extends React.Component {
                     <div className="awaycrest scoreformatting" style={visitorClubCrestStyle}></div>
                     <div className="scoreformatting">{match.visitorClubScore}</div>
                   </div>
-                  <div className="datetime">{matchDate}</div>
+                  {/*<div className="datetime">{matchDate}</div>*/}
                   <div className="livenarrative livenarrativecomplete narrative">{renderHTML(postMatchDetails)}</div>
                   <MoreInfo events={sortedEvents} />
                 </div>
@@ -88,7 +88,7 @@ class MatchRow extends React.Component {
                 <div className="livescore">
                   <div className="scoreformatting">{match.homeClubScore}</div>
                   <div className="homecrest scoreformatting" style={homeClubCrestStyle}></div>
-                  <div className="scoreformatting scoretime">
+                  <div className="scoreformatting scoretime in-progress">
                     <div>{matchStatus}</div>
                     <div style={secondsStyle}></div>
                   </div>
@@ -102,7 +102,7 @@ class MatchRow extends React.Component {
        )
     }
     return (
-     <div>{matchRow}</div>
+     <div className="match-container">{matchRow}</div>
     );
   }
 }

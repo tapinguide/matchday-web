@@ -14,7 +14,7 @@ class Matches extends React.Component {
       loaded: false
     };
   }
- 
+
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
@@ -37,8 +37,8 @@ class Matches extends React.Component {
             }
           }
         )
-        .then(function(result) {   
-          var results = result.data.results;
+        .then(function(result) {
+          var results = result.data;
           var notCompleted = [];
           var completed = [];
           for(var i = 0, numResults = results.length; i < numResults; i++){
@@ -53,7 +53,7 @@ class Matches extends React.Component {
           completed.sort(function(a,b){
             return new Date(b.matchTime) - new Date(a.matchTime);
           });
-         
+
           _this.setState({
             matches: notCompleted.concat(completed),
             loaded: true
@@ -62,7 +62,7 @@ class Matches extends React.Component {
         .catch(function (error) {
           if (error.response) {
             // Response has been received from the server
-            console.log(error.response.data); // => the response payload 
+            console.log(error.response.data); // => the response payload
           }
       });
   }
@@ -74,7 +74,7 @@ class Matches extends React.Component {
     });
     return (
     <Loader loaded={this.state.loaded} color="#5d5d5d">
-        {rows}
+        <div className="rows">{rows}</div>
       </Loader>
     );
   }

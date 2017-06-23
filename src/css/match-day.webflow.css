@@ -82,9 +82,10 @@ body {
   color: #333;
 }
 img {
-  max-width: 100%;
   vertical-align: middle;
   display: inline-block;
+  height: 27px;
+  width: 86px;
 }
 html.w-mod-touch * {
   background-attachment: scroll !important;
@@ -439,7 +440,9 @@ textarea.w-select {
 .w-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 940px;
+  max-width: 1140px;
+  display: flex;
+
 }
 .w-container:before,
 .w-container:after {
@@ -1708,7 +1711,30 @@ textarea.w-select {
     text-transform: uppercase;
 }
 .logoname {
-    display: inline-block;
-    height: 65px;
-    padding:10px;
+  display: inline-block;
+  height: 65px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.info {
+  flex: 0 1 214px;
+}
+.matches {
+  flex: 0 1 920px;
+}
+.rows {
+  display: flex;
+  flex-wrap: wrap;
+}
+.match-container {
+  width: 50%;
+  padding: 10px;
+}
+.bigtext {
+  color: #28323F;
+  font-family: Poppins;
+  font-size: 44px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 44px;
 }
