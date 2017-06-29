@@ -80,9 +80,19 @@ class Matches extends React.Component {
           <div className="container-fluid">
             <Header />
             <div className="w-container">
+              <div className="info">
+                <div className="bigtext">
+                  <span>Vital</span><br/>
+                  <span>Matches</span><br/>
+                  <span>of the</span><br/>
+                  <span>Week</span><br/>
+                </div>          
+              </div>
+            <div className="matches">
               <Loader loaded={this.state.loaded} color="#5d5d5d">
-                {rows}
-              </Loader>
+                  {rows}
+                </Loader>
+  +         </div>
           </div>
         </div>
     );
