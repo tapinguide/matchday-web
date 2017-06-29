@@ -1,14 +1,17 @@
 {
-  "main.css": "static/css/main.620deecf.css",
-  "main.css.map": "static/css/main.620deecf.css.map",
-  "main.js": "static/js/main.d6e4d5b6.js",
-  "main.js.map": "static/js/main.d6e4d5b6.js.map",
+  "main.css": "static/css/main.9a6632d6.css",
+  "main.css.map": "static/css/main.9a6632d6.css.map",
+  "main.js": "static/js/main.0b8d9050.js",
+  "main.js.map": "static/js/main.0b8d9050.js.map",
+  "static/media/Soccer_Field_Transparant-01.svg": "static/media/Soccer_Field_Transparant-01.a3ffcb10.svg",
   "static/media/card.svg": "static/media/card.c9cf64ff.svg",
+  "static/media/genericphone.png": "static/media/genericphone.9d099c9f.png",
   "static/media/goal.svg": "static/media/goal.faf9fa35.svg",
   "static/media/seconds.svg": "static/media/seconds.bf48417c.svg",
   "static/media/shapegreendown.svg": "static/media/shapegreendown.6138ec0a.svg",
   "static/media/shapegreenup.svg": "static/media/shapegreenup.1b413c65.svg",
   "static/media/sub.svg": "static/media/sub.09ee591c.svg",
   "static/media/suboff.svg": "static/media/suboff.bfbac5c9.svg",
-  "static/media/subon.svg": "static/media/subon.2a724f57.svg"
+  "static/media/subon.svg": "static/media/subon.2a724f57.svg",
+  "static/media/tapin-logoV2B-11.svg": "static/media/tapin-logoV2B-11.92edf04a.svg"
 }

@@ -6,8 +6,8 @@ import './css/match-webflow.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
-var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
-//var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
+//var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
+var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
 
 class Matches extends React.Component {
   constructor(props) {
