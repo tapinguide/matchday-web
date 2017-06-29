@@ -6,8 +6,8 @@ import './css/match-webflow.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
-//var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
-var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
+var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
+//var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
 
 class Matches extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Matches extends React.Component {
       loaded: false
     };
   }
- 
+
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
@@ -41,6 +41,7 @@ class Matches extends React.Component {
           }
         )
         .then(function(result) {   
+
           var results = result.data;
           var notCompleted = [];
           var completed = [];
@@ -56,7 +57,7 @@ class Matches extends React.Component {
           completed.sort(function(a,b){
             return new Date(b.matchTime) - new Date(a.matchTime);
           });
-         
+
           _this.setState({
             matches: notCompleted.concat(completed),
             loaded: true
@@ -65,7 +66,7 @@ class Matches extends React.Component {
         .catch(function (error) {
           if (error.response) {
             // Response has been received from the server
-            console.log(error.response.data); // => the response payload 
+            console.log(error.response.data); // => the response payload
           }
       });
   }
