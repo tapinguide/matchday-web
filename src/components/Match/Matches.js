@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from '../Header'
 import MatchRow from './MatchRow';
+import logo from '../../images/tapin-logo.png';
+
 import './css/normalize.css';
-import './css/match-webflow.css';
+import './css/matches.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
@@ -78,9 +80,11 @@ class Matches extends React.Component {
     });
     return (
           <div className="container-fluid">
-            <Header />
             <div className="w-container">
               <div className="info">
+                <div className="logoname">
+                  <img alt="Tapin Guide Logo" src={logo} /> <span className="smalltext headcolor">The Vital Matches</span>
+                </div>
                 <div className="bigtext">
                   <span>Vital</span><br/>
                   <span>Matches</span><br/>
@@ -90,11 +94,13 @@ class Matches extends React.Component {
               </div>
             <div className="matches">
               <Loader loaded={this.state.loaded} color="#5d5d5d">
+                <div className="rows">
                   {rows}
+                </div>
                 </Loader>
-  +         </div>
+              </div>
+            </div>
           </div>
-        </div>
     );
   }
 }

@@ -1,0 +1,28 @@
+.logoname img {
+  vertical-align: middle;
+  display: inline-block;
+  height: 27px;
+  width: 86px;
+}
+
+.smalltext{
+    display:none;
+}
+
+@media screen and (max-width: 767px) {
+    .bigtext{
+        display:none;
+    }
+    
+    .smalltext{
+        display:inline-block;
+    }
+
+    .w-container{
+        display:block;
+    }
+
+    .match-container{
+        width:100%;
+    }
+}
