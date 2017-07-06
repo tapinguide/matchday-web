@@ -11,7 +11,6 @@ class MoreInfo extends React.Component {
     }
     getBackgroundImage(value){
         var expanderStyle = '';
-        console.log('passed expander status: ' + value);
         if(!value){
             expanderStyle = {
                 backgroundImage: "url(" + shapegreendown + ")"

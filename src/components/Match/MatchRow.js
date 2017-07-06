@@ -13,7 +13,6 @@ class MatchRow extends React.Component {
   }
   expandCollapse(value) {
     this.setState({expanded: !value});
-    console.log('value updated: ', value);
   }
   getClass(value, optionalClass){
       if(value){
