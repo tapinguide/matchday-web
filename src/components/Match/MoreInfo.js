@@ -8,7 +8,6 @@ import './Event/css/event.css';
 class MoreInfo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {expanded: false};
     }
     getBackgroundImage(value){
         var expanderStyle = '';
@@ -30,33 +29,34 @@ class MoreInfo extends React.Component {
     }
     getClass(value){
         if(value){
-            return "expander expanderopen";
+            return "expanderopen";
         }
         else{
-            return "expander expanderclosed";
+            return "expanderclosed";
         }
     }
     render() {
+        const { events, expandedState } = this.props;
 
-        var events = [];
-        this.props.events.forEach(function(event, index) {
+        var timelineEvents = [];
+        events.forEach(function(event, index) {
             if(index > 0){
-                events.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
+                timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
             }
             else
             {
-                events.push(<Event event={event} key={event.id} />);
+                timelineEvents.push(<Event event={event} key={event.id} />);
             }
             
         });
 
         var content = <main></main>;
-        if(events.length > 0){
+        if(timelineEvents.length > 0){
             content = (
                 <main>
-                    <div className={this.getClass(this.state.expanded)} style={this.getBackgroundImage(this.state.expanded)} onClick={() => this.expandCollapse(this.state.expanded)}></div>
-                    <ExpanderContent expanded={this.state.expanded} >
-                        {events}
+                    <div className={this.getClass(expandedState)} style={this.getBackgroundImage(expandedState)} ></div>
+                    <ExpanderContent expanded={expandedState} >
+                        {timelineEvents}
                     </ExpanderContent>
                 </main>
             );
