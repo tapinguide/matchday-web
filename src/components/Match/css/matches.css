@@ -1712,6 +1712,7 @@ textarea.w-select {
 }
 .matches {
   display: flex;
+  flex-wrap: wrap;
   max-width: 920px;
 }
 .column {
@@ -1720,6 +1721,17 @@ textarea.w-select {
 
 .column.column-left .match-container:nth-child(even) {
   display: none;
+}
+@media screen and (max-width: 767px) {
+  .column {
+    width: 100%;
+  }
+  .column.column-left .match-container:nth-child(even) {
+    display: block;
+  }
+  .column.column-right{
+    display: none;
+  }
 }
 .match-container {
   width: 100%;
