@@ -11,9 +11,6 @@ class MatchRow extends React.Component {
     super(props);
     this.state = {expanded: false};
   }
-  componentDidMount() {
-    this.props.setMinHeight(this.refs.match.clientHeight)
-  }
   expandCollapse(value) {
     this.setState({expanded: !value});
   }
@@ -46,10 +43,6 @@ class MatchRow extends React.Component {
     if(match.status.description === "In Progress"){
       matchStatus = match.timer + "'";
     }
-
-    const matchRowStyle = {
-      'minHeight': this.props.minHeight
-    };
 
     var postMatchDetails = match.preMatchDetails;
     if(match.inMatchDetails){
@@ -128,7 +121,7 @@ class MatchRow extends React.Component {
     }
 
     return (
-     <div className="match-container" style={matchRowStyle}>{matchRow}</div>
+     <div className="match-container">{matchRow}</div>
     );
   }
 }

@@ -16,8 +16,7 @@ class Matches extends React.Component {
     super(props);
     this.state = {
       matches: [],
-      loaded: false,
-      minHeight: 180
+      loaded: false
     };
   }
 
@@ -72,14 +71,6 @@ class Matches extends React.Component {
             console.log(error.response.data); // => the response payload
           }
       });
-  }
-
-  setCardHeights = (cardHeight) => {
-    console.log('Previous height: ' + this.state.minHeight);
-    this.setState({ minHeight: cardHeight }, () => {
-      console.log(this.state.minHeight)
-      console.log('New height: ' + cardHeight);
-    });
   }
 
   render() {
