@@ -1,5 +1,4 @@
 import React from 'react';
-import Equalizer from 'react-equalizer';
 import Header from '../Header'
 import MatchRow from './MatchRow';
 import logo from '../../images/tapin-logo.png';
@@ -9,7 +8,7 @@ import './css/matches.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
-var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
+var matchesUrl = "https://www.tapinguide.com/api/activematches/?format=json";
 //var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
 
 class Matches extends React.Component {
@@ -17,7 +16,8 @@ class Matches extends React.Component {
     super(props);
     this.state = {
       matches: [],
-      loaded: false
+      loaded: false,
+      minHeight: 180
     };
   }
 
@@ -73,18 +73,28 @@ class Matches extends React.Component {
           }
       });
   }
+
+  setCardHeights = (cardHeight) => {
+    console.log('Previous height: ' + this.state.minHeight);
+    this.setState({ minHeight: cardHeight }, () => {
+      console.log(this.state.minHeight)
+      console.log('New height: ' + cardHeight);
+    });
+  }
+
   render() {
     var columnLeft = [];
     var columnRight = [];
-    this.state.matches.forEach(function(match, i) {
+    this.state.matches.forEach((match, i) => {
       // Add all matches to left column
-      columnLeft.push(<MatchRow match={match} key={match.id} matchIndex={i} />);
+      columnLeft.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
 
       // Add only even numbered matches to right column
       if ( (i % 2) == 1) {
-        columnRight.push(<MatchRow match={match} key={match.id} matchIndex={i} />);
+        columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
       }
     });
+
     return (
           <div className="container-fluid">
             <div className="w-container">
@@ -100,14 +110,13 @@ class Matches extends React.Component {
                 </div>
               </div>
             <Loader loadedClassName="matches" loaded={this.state.loaded} color="#5d5d5d">
-                <div className="column column-left">
-                  <Equalizer>
-                    {columnLeft}
-                  </Equalizer>
-                </div>
-                <div className="column column-right">
-                  {columnRight}
-                </div>
+                  <div className="column column-left">
+                     {columnLeft}
+                  </div>
+                  <div className="column column-right">
+                    {columnRight}
+                  </div>
+
               </Loader>
             </div>
           </div>

@@ -11,6 +11,9 @@ class MatchRow extends React.Component {
     super(props);
     this.state = {expanded: false};
   }
+  componentDidMount() {
+    this.props.setMinHeight(this.refs.match.clientHeight)
+  }
   expandCollapse(value) {
     this.setState({expanded: !value});
   }
@@ -25,6 +28,7 @@ class MatchRow extends React.Component {
   render() {
     var match = this.props.match;
     var matchIndex = this.props.matchIndex + 1;
+    var ref = 'match';
     let matchRow = null;
     var sortedEvents = match.events.sort((a,b) => {
       return a.id - b.id
@@ -43,6 +47,10 @@ class MatchRow extends React.Component {
       matchStatus = match.timer + "'";
     }
 
+    const matchRowStyle = {
+      'minHeight': this.props.minHeight
+    };
+
     var postMatchDetails = match.preMatchDetails;
     if(match.inMatchDetails){
       postMatchDetails = match.inMatchDetails;
@@ -52,7 +60,7 @@ class MatchRow extends React.Component {
     }
     if(match.status.description === "Scheduled"){
       matchRow = (
-        <div className="match matchscheduled w-clearfix">
+        <div ref={ref} className="match matchscheduled w-clearfix">
           <div className="numberbg" style={numberStyle}>
             <div className="numberplace">{matchIndex}</div>
           </div>
@@ -72,7 +80,7 @@ class MatchRow extends React.Component {
     }
     else if (match.status.description === "FT" || match.status.description === "AET"){
       matchRow = (
-          <div className={this.getClass(this.state.expanded, 'matchcomplete')}
+          <div ref={ref} className={this.getClass(this.state.expanded, 'matchcomplete')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
                 <div className="numberbg" style={numberStyle}>
                   <div className="numberplace">{matchIndex}</div>
@@ -96,7 +104,7 @@ class MatchRow extends React.Component {
     }
     else{
        matchRow = (
-            <div className={this.getClass(this.state.expanded, '')}
+            <div ref={ref} className={this.getClass(this.state.expanded, '')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
               <div className="numberbg" style={numberStyle}>
                 <div className="numberplace">{matchIndex}</div>
@@ -118,8 +126,9 @@ class MatchRow extends React.Component {
             </div>
        )
     }
+
     return (
-     <div className="match-container">{matchRow}</div>
+     <div className="match-container" style={matchRowStyle}>{matchRow}</div>
     );
   }
 }

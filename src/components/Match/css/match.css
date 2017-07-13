@@ -112,6 +112,16 @@
   .match.matchscheduled .narrative {
     /* height: 10px; */
   }
+
+  .node {
+    /* height: 200px; */
+    width: 100%;
+    background: red;
+  }
+  .node.firstNode {
+    background: blue;
+    /* height: 250px; */
+  }
     .narrative:after {
       background: blue;
       bottom: 0;
