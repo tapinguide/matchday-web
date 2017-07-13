@@ -1,4 +1,5 @@
 import React from 'react';
+import Equalizer from 'react-equalizer';
 import Header from '../Header'
 import MatchRow from './MatchRow';
 import logo from '../../images/tapin-logo.png';
@@ -72,7 +73,6 @@ class Matches extends React.Component {
           }
       });
   }
-
   render() {
     var columnLeft = [];
     var columnRight = [];
@@ -101,7 +101,9 @@ class Matches extends React.Component {
               </div>
             <Loader loadedClassName="matches" loaded={this.state.loaded} color="#5d5d5d">
                 <div className="column column-left">
-                  {columnLeft}
+                  <Equalizer>
+                    {columnLeft}
+                  </Equalizer>
                 </div>
                 <div className="column column-right">
                   {columnRight}

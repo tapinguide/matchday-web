@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment'; 
+import moment from 'moment';
 import MoreInfo from './MoreInfo';
 import rectangle from './images/rectangle.png';
 import seconds from './images/seconds.svg';
@@ -72,7 +72,7 @@ class MatchRow extends React.Component {
     }
     else if (match.status.description === "FT" || match.status.description === "AET"){
       matchRow = (
-          <div className={this.getClass(this.state.expanded, 'matchcomplete')} 
+          <div className={this.getClass(this.state.expanded, 'matchcomplete')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
                 <div className="numberbg" style={numberStyle}>
                   <div className="numberplace">{matchIndex}</div>
@@ -96,7 +96,7 @@ class MatchRow extends React.Component {
     }
     else{
        matchRow = (
-            <div className={this.getClass(this.state.expanded, '')} 
+            <div className={this.getClass(this.state.expanded, '')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
               <div className="numberbg" style={numberStyle}>
                 <div className="numberplace">{matchIndex}</div>
