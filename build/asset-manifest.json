@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.9a6632d6.css",
-  "main.css.map": "static/css/main.9a6632d6.css.map",
-  "main.js": "static/js/main.0b8d9050.js",
-  "main.js.map": "static/js/main.0b8d9050.js.map",
+  "main.css": "static/css/main.d3e7ae55.css",
+  "main.css.map": "static/css/main.d3e7ae55.css.map",
+  "main.js": "static/js/main.defa5142.js",
+  "main.js.map": "static/js/main.defa5142.js.map",
   "static/media/Soccer_Field_Transparant-01.svg": "static/media/Soccer_Field_Transparant-01.a3ffcb10.svg",
   "static/media/card.svg": "static/media/card.c9cf64ff.svg",
   "static/media/genericphone.png": "static/media/genericphone.9d099c9f.png",
@@ -13,5 +13,6 @@
   "static/media/sub.svg": "static/media/sub.09ee591c.svg",
   "static/media/suboff.svg": "static/media/suboff.bfbac5c9.svg",
   "static/media/subon.svg": "static/media/subon.2a724f57.svg",
+  "static/media/tapin-logo-white.png": "static/media/tapin-logo-white.69aee42d.png",
   "static/media/tapin-logoV2B-11.svg": "static/media/tapin-logoV2B-11.92edf04a.svg"
 }

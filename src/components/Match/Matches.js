@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Header'
 import MatchRow from './MatchRow';
 import logo from '../../images/tapin-logo.png';
 
@@ -8,7 +7,7 @@ import './css/matches.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
-var matchesUrl = "http://matchday.tapinguide.com/api/activematches/?format=json";
+var matchesUrl = "https://www.tapinguide.com/api/activematches/?format=json";
 //var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
 
 class Matches extends React.Component {
