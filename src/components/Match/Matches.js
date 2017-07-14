@@ -41,7 +41,7 @@ class Matches extends React.Component {
             }
           }
         )
-        .then(function(result) {   
+        .then(function(result) {
 
           var results = result.data;
           var notCompleted = [];
@@ -73,10 +73,18 @@ class Matches extends React.Component {
   }
 
   render() {
-    var rows = [];
-    this.state.matches.forEach(function(match, i) {
-      rows.push(<MatchRow match={match} key={match.id} matchIndex={i} />);
+    var columnLeft = [];
+    var columnRight = [];
+    this.state.matches.forEach((match, i) => {
+      // Add all matches to left column
+      columnLeft.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
+
+      // Add only even numbered matches to right column
+      if ( (i % 2) == 1) {
+        columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
+      }
     });
+
     return (
           <div className="container-fluid">
             <div className="w-container">
@@ -89,15 +97,17 @@ class Matches extends React.Component {
                   <span>Matches</span><br/>
                   <span>of the</span><br/>
                   <span>Week</span><br/>
-                </div>          
-              </div>
-            <div className="matches">
-              <Loader loaded={this.state.loaded} color="#5d5d5d">
-                <div className="rows">
-                  {rows}
                 </div>
-                </Loader>
               </div>
+            <Loader loadedClassName="matches" loaded={this.state.loaded} color="#5d5d5d">
+                  <div className="column column-left">
+                     {columnLeft}
+                  </div>
+                  <div className="column column-right">
+                    {columnRight}
+                  </div>
+
+              </Loader>
             </div>
           </div>
     );

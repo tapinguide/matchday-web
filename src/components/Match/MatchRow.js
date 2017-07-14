@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment'; 
+import moment from 'moment';
 import MoreInfo from './MoreInfo';
 import rectangle from './images/rectangle.png';
 import seconds from './images/seconds.svg';
@@ -25,6 +25,7 @@ class MatchRow extends React.Component {
   render() {
     var match = this.props.match;
     var matchIndex = this.props.matchIndex + 1;
+    var ref = 'match';
     let matchRow = null;
     var sortedEvents = match.events.sort((a,b) => {
       return a.id - b.id
@@ -52,7 +53,7 @@ class MatchRow extends React.Component {
     }
     if(match.status.description === "Scheduled"){
       matchRow = (
-        <div className="match matchscheduled w-clearfix">
+        <div ref={ref} className="match matchscheduled w-clearfix">
           <div className="numberbg" style={numberStyle}>
             <div className="numberplace">{matchIndex}</div>
           </div>
@@ -72,7 +73,7 @@ class MatchRow extends React.Component {
     }
     else if (match.status.description === "FT" || match.status.description === "AET"){
       matchRow = (
-          <div className={this.getClass(this.state.expanded, 'matchcomplete')} 
+          <div ref={ref} className={this.getClass(this.state.expanded, 'matchcomplete')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
                 <div className="numberbg" style={numberStyle}>
                   <div className="numberplace">{matchIndex}</div>
@@ -96,7 +97,7 @@ class MatchRow extends React.Component {
     }
     else{
        matchRow = (
-            <div className={this.getClass(this.state.expanded, '')} 
+            <div ref={ref} className={this.getClass(this.state.expanded, '')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
               <div className="numberbg" style={numberStyle}>
                 <div className="numberplace">{matchIndex}</div>
@@ -118,6 +119,7 @@ class MatchRow extends React.Component {
             </div>
        )
     }
+
     return (
      <div className="match-container">{matchRow}</div>
     );
