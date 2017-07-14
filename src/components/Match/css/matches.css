@@ -1711,14 +1711,30 @@ textarea.w-select {
   flex: 0 1 214px;
 }
 .matches {
-  flex: 0 1 920px;
-}
-.rows {
   display: flex;
   flex-wrap: wrap;
+  max-width: 920px;
+}
+.column {
+  width: 50%;
+}
+
+.column.column-left .match-container:nth-child(even) {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .column {
+    width: 100%;
+  }
+  .column.column-left .match-container:nth-child(even) {
+    display: block;
+  }
+  .column.column-right{
+    display: none;
+  }
 }
 .match-container {
-  width: 50%;
+  width: 100%;
   padding: 10px;
 }
 .bigtext {

@@ -13,16 +13,12 @@
     .bigtext{
         display:none;
     }
-    
+
     .smalltext{
         display:inline-block;
     }
 
     .w-container{
         display:block;
-    }
-
-    .match-container{
-        width:100%;
     }
 }

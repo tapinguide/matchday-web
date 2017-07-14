@@ -57,7 +57,7 @@ class Backgrounds extends Component {
             .catch(function (error) {
                 if (error.response) {
                     // Response has been received from the server
-                    console.log(error.response.data); // => the response payload 
+                    console.log(error.response.data); // => the response payload
                 }
             });
     }
@@ -105,7 +105,7 @@ class Backgrounds extends Component {
             .catch(function (error) {
                 if (error.response) {
                     // Response has been received from the server
-                    console.log(error.response.data); // => the response payload 
+                    console.log(error.response.data); // => the response payload
                 }
             });
     }
