@@ -9,7 +9,6 @@ import Home from './Home';
 class Main extends Component {
   render() {
     return (
-       <div>
             <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/matchday' component={Matches}/>
@@ -17,7 +16,6 @@ class Main extends Component {
                 <Route path='/about' component={About}/>
                 <Route path='/contact' component={Contact}/>
             </Switch>
-        </div>
     );
   }
 }

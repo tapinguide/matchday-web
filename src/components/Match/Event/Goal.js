@@ -1,7 +1,7 @@
 import React from 'react';
 import goal from './images/goal.svg'
 
-class Goal extends React.Component {
+export default class Goal extends React.Component {
 
     render() {
         var event = this.props.event;
@@ -75,5 +75,3 @@ class Goal extends React.Component {
         )
     }
 }
-
-export default Goal;

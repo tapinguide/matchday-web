@@ -5,10 +5,7 @@ import shapegreenup from './images/shapegreenup.svg'
 import Event from './Event/Event';
 import './Event/css/event.css';
 
-class MoreInfo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+export default class MoreInfo extends React.Component {
     getBackgroundImage(value){
         var expanderStyle = '';
         if(!value){
@@ -35,8 +32,33 @@ class MoreInfo extends React.Component {
             return "expanderclosed";
         }
     }
+    getTVVenueDetails(tvDetails, venue){
+        
+        if(tvDetails.length > 0 && venue.length > 0)
+        {
+            return (
+                <tv-venue>
+                    <div className='tv-venue'>
+                        <div className='tv'>TV:</div> {tvDetails}
+                    </div>
+                    <div className ='tv-venue'>
+                        <div className='tv'>Venue:</div> {venue}
+                    </div>
+                </tv-venue>
+            )
+        }
+        else if(tvDetails.length > 0 && venue.length === 0){
+            return <div className='tv-venue'><div className='tv'>TV:</div>  {tvDetails}</div> 
+        }
+        else if(tvDetails.length === 0 && venue.length > 0){
+            return <div className='tv-venue'><div className='tv'>Venue:</div> {venue}</div>
+        }
+        else{
+            return <div></div>
+        }
+    }
     render() {
-        const { events, expandedState } = this.props;
+        const { events, expandedState, tvDetails, venue } = this.props;
 
         var timelineEvents = [];
         events.forEach(function(event, index) {
@@ -51,11 +73,12 @@ class MoreInfo extends React.Component {
         });
 
         var content = <main></main>;
-        if(timelineEvents.length > 0){
+        if(timelineEvents.length > 0 || tvDetails.length > 0 || venue.length > 0){
             content = (
                 <main>
                     <div className={this.getClass(expandedState)} style={this.getBackgroundImage(expandedState)} ></div>
                     <ExpanderContent expanded={expandedState} >
+                        {this.getTVVenueDetails(tvDetails, venue)}
                         {timelineEvents}
                     </ExpanderContent>
                 </main>
@@ -65,6 +88,4 @@ class MoreInfo extends React.Component {
         return content;
     }
 }
-
-export default MoreInfo;
 

@@ -7,7 +7,7 @@ export default class Home extends Component {
     return (
         <div className="div-block" id="gradient">
             <div className="container">
-                <img className="tapinlogo" src={logo}  />
+                <img className="tapinlogo" src={logo} alt="Tap In Guide"  />
                 <div className="text-block">We're skipping the holiday in Mallorca and are headed straight into pre-season training. We'll be back for the beginning of the season in August with a totally brand new product. <span className="text-span">Sign up for updates below.</span>
             </div>
             <div className="form-wrapper w-form">

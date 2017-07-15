@@ -6,7 +6,7 @@ import seconds from './images/seconds.svg';
 import renderHTML from 'react-render-html';
 import './css/match.css';
 
-class MatchRow extends React.Component {
+export default class MatchRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {expanded: false};
@@ -16,10 +16,10 @@ class MatchRow extends React.Component {
   }
   getClass(value, optionalClass){
       if(value){
-          return "match w-clearfix has-expander expander-open" + ' ' + optionalClass;
+          return "match w-clearfix has-expander expander-openv " + optionalClass;
       }
       else{
-          return "match w-clearfix has-expander expander-closed" + ' ' + optionalClass;
+          return "match w-clearfix has-expander expander-closed " + optionalClass;
       }
   }
   render() {
@@ -44,16 +44,24 @@ class MatchRow extends React.Component {
       matchStatus = match.timer + "'";
     }
 
-    var postMatchDetails = match.preMatchDetails;
+    var narrative = match.preMatchDetails;
     if(match.inMatchDetails){
-      postMatchDetails = match.inMatchDetails;
+      narrative = match.inMatchDetails;
     }
     else if(match.postMatchDetails){
-      postMatchDetails = match.postMatchDetails
+      narrative = match.postMatchDetails
     }
+
+    if(narrative.length > 330){
+      narrative = narrative.substring(0, 330) + '...';
+    }
+    var tvDetails = match.tvDetails;
+    var venue = match.venue;
+
     if(match.status.description === "Scheduled"){
       matchRow = (
-        <div ref={ref} className="match matchscheduled w-clearfix">
+       <div ref={ref} className={this.getClass(this.state.expanded, 'matchscheduled')}
+            onClick={() => this.expandCollapse(this.state.expanded)}>
           <div className="numberbg" style={numberStyle}>
             <div className="numberplace">{matchIndex}</div>
           </div>
@@ -65,8 +73,9 @@ class MatchRow extends React.Component {
             </div>
             <div className="infocontainer">
               <div className="datetime">{matchDate}</div>
-              <div className="narrative">{renderHTML(match.preMatchDetails)}</div>
+              <div className="narrative">{renderHTML(narrative)}</div>
             </div>
+             <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
           </div>
         </div>
       )
@@ -88,9 +97,8 @@ class MatchRow extends React.Component {
                     <div className="awaycrest scoreformatting" style={visitorClubCrestStyle}></div>
                     <div className="scoreformatting">{match.visitorClubScore}</div>
                   </div>
-                  {/*<div className="datetime">{matchDate}</div>*/}
-                  <div className="livenarrative livenarrativecomplete narrative">{renderHTML(postMatchDetails)}</div>
-                  <MoreInfo events={sortedEvents} expandedState={this.state.expanded}/>
+                  <div className="livenarrative livenarrativecomplete narrative">{renderHTML(narrative)}</div>
+                  <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
                 </div>
               </div>
       )
@@ -113,8 +121,8 @@ class MatchRow extends React.Component {
                   <div className="awaycrest scoreformatting"  style={visitorClubCrestStyle}></div>
                   <div className="scoreformatting">{match.visitorClubScore}</div>
                 </div>
-                <div className="livenarrative narrative">{renderHTML(postMatchDetails)}</div>
-                <MoreInfo events={sortedEvents} expandedState={this.state.expanded}/>
+                <div className="livenarrative narrative">{renderHTML(narrative)}</div>
+                <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
               </div>
             </div>
        )
@@ -125,5 +133,3 @@ class MatchRow extends React.Component {
     );
   }
 }
-
-export default MatchRow;

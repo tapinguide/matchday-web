@@ -1,0 +1,34 @@
+.must-read .header {
+    color: #18EFC6;	
+    font-family: Poppins;	
+    font-size: 14px;	
+    font-weight: bold;	
+    letter-spacing: 2px;	
+    line-height: 23px;
+    text-transform: uppercase;
+    padding-top:14px;
+    padding-bottom:11px;
+}
+
+.must-read .must-read-body{
+     display: flex;
+     padding-bottom:18px;
+}
+
+.must-read .must-read-body .icon{
+    width:50px;
+}
+.must-read .must-read-body .icon img{
+    height: 30px;	
+    width: 40px;	
+    /*border: 2px solid #5B5B5B;*/
+    border-radius: 1px;
+}
+
+.must-read .must-read-body .text {	
+    width: 188px;	
+    color: #000000;	
+    font-family: Poppins;	
+    font-size: 13px;	
+    line-height: 19px;
+}

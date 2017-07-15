@@ -215,3 +215,13 @@
   .collapse-shield{
     padding-bottom:20px;
   }
+  .tv-venue{
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+  }
+  .tv{
+    font-weight: bold;
+    display:inline-block
+  }

@@ -2,7 +2,6 @@
     max-width: 479px;
     padding-bottom: 0;
     border-right: 0 none #e7e7e7;
-    /*border-bottom: 1px solid #e7e7e7;*/
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
     border-left: 0 none #e7e7e7;
     margin-right: auto;
@@ -103,14 +102,15 @@
     font-family: Poppins, sans-serif;
     font-size: 12px;
     font-weight: 300;
-    /* height: 80px; */
+    height: 80px;
     line-height: 18px;
     overflow: hidden;
     padding-top: 7px;
     position: relative;
   }
-  .match.matchscheduled .narrative {
-    /* height: 10px; */
+
+  .matchscheduled .narrative{
+    height: 115px
   }
 
   .node {
@@ -254,9 +254,12 @@
 
     @media screen and (max-width: 767px) {
       .match{
-    padding-bottom: 0;
-    border-right: 0 none #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-    border-left: 0 none #e7e7e7;
+        padding-bottom: 0;
+        border-right: 0 none #e7e7e7;
+        border-bottom: 1px solid #e7e7e7;
+        border-left: 0 none #e7e7e7;
+      }
+      .narrative{
+        height: 100% !important;
       }
     }
