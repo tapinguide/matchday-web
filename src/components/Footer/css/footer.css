@@ -1,6 +1,86 @@
-footer {
+footer.footer {
   border-top: 1px solid #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 3em;
   padding: 2em 0em;
+  width: calc(100% - 20px);
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav .footer-nav-primary {
+
+}
+
+.footer-nav .footer-nav-social {
+  margin-left: auto;
+}
+
+.footer-nav .footer-nav-social .footer-nav-social-icon {
+  transition: all 0.2s;
+}
+
+.footer-nav .footer-nav-social .footer-nav-social-icon img{
+  max-width: 40px;
+}
+
+.footer-nav .footer-nav-social .footer-nav-social-icon:hover{
+  opacity: 0.8;
+}
+
+.footer-app-store-links {
+  text-align: center;
+}
+
+.footer-app-store-links .footer-app-store-logo img {
+  max-width: 180px;
+  margin: 0 20px;
   width: 100%;
+}
+
+.footer-text-link {
+  color: #28323F;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.footer-text-link:hover {
+  color: #28323F;
+}
+
+@media screen and (max-width: 767px) {
+  footer.footer {
+    border-top: 0px;
+    flex-direction: column-reverse;
+    max-width: 479px;
+    padding: 1em 10px;
+    margin: 0 auto;
+  }
+
+  .footer-app-store-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-app-store-links .footer-app-store-logo {
+    width: 46%;
+    padding: 2%;
+    min-width: 200px;
+  }
+
+  .footer-app-store-links .footer-app-store-logo img {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
 }

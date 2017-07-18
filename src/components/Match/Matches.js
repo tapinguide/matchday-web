@@ -106,7 +106,7 @@ export default class Matches extends React.Component {
     columnRight.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} />);
     return (
           <div className="container-fluid">
-            <div className="w-container">
+            <div className="w-container w-container-matches">
               <div className="info desktop-header">
                 <div className="logoname">
                   <img alt="Tapin Guide Logo" src={logo} />
