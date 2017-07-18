@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header';
+import Footer from '../Footer/Footer';
 import MatchRow from './MatchRow';
 import Link from '../Link/Link';
 import logo from '../../images/tapin-logo.png';
@@ -123,6 +124,7 @@ export default class Matches extends React.Component {
                     {columnRight}
                   </div>
               </Loader>
+              <Footer />
             </div>
           </div>
     );
