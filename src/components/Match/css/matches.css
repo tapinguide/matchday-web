@@ -1,5 +1,7 @@
 .matches-container {
-  width: calc(100% - 214px);
+  width: -webkit-calc(100% - 220px);
+  width: -moz-calc(100% - 220px);
+  width: calc(100% - 220px);
 }
 .matches {
   display: flex;
