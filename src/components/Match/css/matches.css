@@ -1,7 +1,11 @@
+.matches-container {
+  width: calc(100% - 214px);
+}
 .matches {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100% - 214px);
+  overflow-x: hidden;
+  width: 100%;
 }
 .column {
   width: 50%;
@@ -42,8 +46,8 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .matches{
-    width:100%;
+  .matches-container{
+    width: 100%;
   }
   .mobile-header{
     display:flex;

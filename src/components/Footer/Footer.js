@@ -4,8 +4,8 @@ import './css/footer.css';
 
 import appStoreLogo from './images/app-store.png';
 import googlePlayLogo from './images/google-play.png';
-import facebookLogo from './images/facebook-logo.png';
-import twitterLogo from './images/twitter-logo.png';
+import facebookLogo from './images/facebook-logo.svg';
+import twitterLogo from './images/twitter-logo.svg';
 
 class Footer extends Component {
   render() {

@@ -116,15 +116,18 @@ export default class Matches extends React.Component {
                 </div>
               </div>
               <Header />
-              <Loader loadedClassName="matches" loaded={this.state.loaded} color="#5d5d5d">
+              <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
+                <div className="matches">
                   <div className="column column-left">
                      {columnLeft}
                   </div>
                   <div className="column column-right">
                     {columnRight}
                   </div>
+                  <Footer />
+                </div>
               </Loader>
-              <Footer />
+
             </div>
           </div>
     );
