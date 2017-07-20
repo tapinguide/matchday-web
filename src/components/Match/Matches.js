@@ -10,10 +10,11 @@ import './css/matches.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
-//var matchesUrl = "https://www.tapinguide.com/api/activematches/?format=json";
+var matchesUrl = "https://www.tapinguide.com/api/activematches/?format=json";
+var linksUrl = "https://www.tapinguide.com/api/links/?format=json";
+
+//var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
 //var linksUrl = "http://localhost:8000/api/links/?format=json";
-var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
-var linksUrl = "http://localhost:8000/api/links/?format=json";
 
 export default class Matches extends React.Component {
   constructor(props) {
