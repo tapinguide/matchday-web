@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header';
+import Footer from '../Footer/Footer';
 import MatchRow from './MatchRow';
 import Link from '../Link/Link';
 import logo from '../../images/tapin-logo.png';
@@ -105,7 +106,7 @@ export default class Matches extends React.Component {
     columnRight.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} />);
     return (
           <div className="container-fluid">
-            <div className="w-container">
+            <div className="w-container w-container-matches">
               <div className="info desktop-header">
                 <div className="logoname">
                   <img alt="Tapin Guide Logo" src={logo} />
@@ -115,14 +116,18 @@ export default class Matches extends React.Component {
                 </div>
               </div>
               <Header />
-              <Loader loadedClassName="matches" loaded={this.state.loaded} color="#5d5d5d">
+              <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
+                <div className="matches">
                   <div className="column column-left">
                      {columnLeft}
                   </div>
                   <div className="column column-right">
                     {columnRight}
                   </div>
+                  <Footer />
+                </div>
               </Loader>
+
             </div>
           </div>
     );
