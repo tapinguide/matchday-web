@@ -249,14 +249,28 @@
     padding-top: 15px;
   }
 
-    @media screen and (max-width: 767px) {
-      .match{
-        padding-bottom: 0;
-        border-right: 0 none #e7e7e7;
-        border-bottom: 1px solid #e7e7e7;
-        border-left: 0 none #e7e7e7;
-      }
-      .narrative{
-        height: 100% !important;
-      }
+  @media screen and (max-width: 767px) {
+    .match{
+      padding-bottom: 0;
+      border-right: 0 none #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
+      border-left: 0 none #e7e7e7;
     }
+    .narrative{
+      height: 100% !important;
+    }
+
+  }
+  @media screen and (max-width: 479px) {
+    .match {
+
+    }
+    .match.has-expander:hover, .match.expander-open {
+      background-color: #fff;
+      box-shadow: none;
+      transform: none;
+    }
+    .match-container:last-of-type .match:hover {
+      box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
+    }
+  }

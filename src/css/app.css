@@ -39,6 +39,7 @@ body {
   max-width: 1140px;
   display: flex;
   padding-top: 20px;
+  flex-wrap: wrap;
 }
 .w-container:before,
 .w-container:after {
