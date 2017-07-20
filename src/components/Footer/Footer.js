@@ -29,14 +29,14 @@ class Footer extends Component {
           <nav className="footer-nav-social">
             <Link
               className="footer-nav-social-icon"
-              to="https://www.facebook.com"
+              to="https://www.facebook.com/tapindesign"
               target="_blank"
             >
               <img alt="Facebook" src={facebookLogo} />
             </Link>
             <Link
               className="footer-nav-social-icon"
-              to="https://www.twitter.com"
+              to="https://www.twitter.com/tapinguide"
               target="_blank"
             >
               <img alt="Twitter" src={twitterLogo} />
