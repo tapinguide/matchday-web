@@ -31,6 +31,16 @@
   line-height: 44px;
 }
 
+.dateRangeText{
+  height: 18px;	
+  color: #363636;
+  font-family: Poppins;	
+  font-size: 11px;	
+  letter-spacing: 1px;	
+  line-height: 18px;
+  font-weight: normal;
+}
+
 .desktop-header{
   display:block;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import Header from '../Header';
 import Footer from '../Footer/Footer';
 import MatchRow from './MatchRow';
@@ -23,23 +24,25 @@ export default class Matches extends React.Component {
     this.state = {
       matches: [],
       links: [],
-      loaded: false
+      loaded: false,
+      matchDateRange: ''
     };
   }
 
   componentDidMount() {
     this.timerID = setInterval(
-      () => this.tick(),
+      () => this.updateMatches(),
       5000
     );
-    this.tick();
+    this.updateMatches();
   }
 
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
 
-  tick() {
+  updateMatches() {
+
     var _this = this;
     axios.all([
       this.getMatches(),
@@ -56,17 +59,19 @@ export default class Matches extends React.Component {
                 notCompleted.push(matches[i]);
               }
           }
-
           completed.sort(function(a,b){
             return new Date(b.matchTime) - new Date(a.matchTime);
           });
 
-          _this.setState({
+           _this.setState({
             matches: notCompleted.concat(completed),
             links: linksResult.data,
             loaded: true
           });
+
+          _this.setMatchDateRange();
         }));
+
   }
 
   getMatches(){
@@ -77,34 +82,55 @@ export default class Matches extends React.Component {
     return axios.get(linksUrl)
   }
 
-  render() {
-    var columnLeft = [];
-    var columnRight = [];
-    this.state.matches.forEach((match, i) => {
-      // Add all matches to left column
-      columnLeft.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
-
-      // Add only even numbered matches to right column
-      if ( (i % 2) === 1) {
-        columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
-      }
-    });
-    var links = this.state.links;
-    var mustRead;
-    var mustWatch;
-    for(var i = 0, numResults = links.length; i < numResults; i++){
-        if(links[i].shortCode === 'READ'){
-          mustRead = links[i];
-        }
-        else if(links[i].shortCode === 'WATCH')
-        {
-          mustWatch = links[i];
-        }
+  setMatchDateRange(){
+    var matchDateRange = ''
+    var firstMatchDate = moment.utc(this.state.matches[0].matchTime).local();
+    var lastMatchDate = moment.utc(this.state.matches[this.state.matches.length - 1].matchTime).local();
+    //check if the matches are in the same month; else display different months
+    if(firstMatchDate.month === lastMatchDate.month){
+      matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('D, YYYY').toUpperCase();
+    }
+    else{
+      matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('MMMM D, YYYY').toUpperCase();
     }
 
-    columnLeft.push(<Link link={mustRead} header="Must Read" icon={mustReadIcon} />);
-    columnLeft.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} />);
-    columnRight.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} />);
+    this.setState({
+      matchDateRange: matchDateRange
+    });
+  }
+
+  render() {
+    if(this.state.loaded){
+      var columnLeft = [];
+      var columnRight = [];
+      this.state.matches.forEach((match, i) => {
+        // Add all matches to left column
+        columnLeft.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
+
+        // Add only even numbered matches to right column
+        if ( (i % 2) === 1) {
+          columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
+        }
+      });
+      
+      var links = this.state.links;
+      var mustRead;
+      var mustWatch;
+
+      for(var i = 0, numResults = links.length; i < numResults; i++){
+          if(links[i].shortCode === 'READ'){
+            mustRead = links[i];
+          }
+          else if(links[i].shortCode === 'WATCH')
+          {
+            mustWatch = links[i];
+          }
+      }
+
+      columnLeft.push(<Link link={mustRead} header="Must Read" icon={mustReadIcon} key="mustRead" />);
+      columnLeft.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatch"/>);
+      columnRight.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatchRight"/>);
+    }
     return (
           <div className="container-fluid">
             <div className="w-container w-container-matches">
@@ -115,8 +141,11 @@ export default class Matches extends React.Component {
                 <div className="bigtext">
                   <span>Essential Matches</span>
                 </div>
+                <div className="dateRangeText">
+                  <span>{this.state.matchDateRange}</span>
+                </div>
               </div>
-              <Header />
+              <Header matchDateRange={this.state.matchDateRange} />
               <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
                 <div className="matches">
                   <div className="column column-left">

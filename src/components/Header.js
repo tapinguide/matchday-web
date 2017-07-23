@@ -7,6 +7,9 @@ export default class Header extends Component {
       <div className="mobile-header">
         <div className="bigtext">
           <span>Essential Matches</span>
+          <div className="dateRangeText">
+          <span>{this.props.matchDateRange}</span>
+        </div>
         </div>
         <div className="logoname">
           <img alt="Tapin Guide Logo" src={logo} />
