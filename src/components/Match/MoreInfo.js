@@ -58,7 +58,7 @@ export default class MoreInfo extends React.Component {
         }
     }
     render() {
-        const { events, expandedState, tvDetails, venue } = this.props;
+        const { events, expandedState, tvDetails, venue, venuCity } = this.props;
 
         var timelineEvents = [];
         events.forEach(function(event, index) {

@@ -12,7 +12,7 @@ export default class Link extends React.Component {
         var icon = this.props.icon;
         var content = (
             <div className="match-container">
-                <div className="match w-clearfix has-expander" onClick={() => this.openWindow(link.url)}>
+                <div className="match w-clearfix has-expander link" onClick={() => this.openWindow(link.url)}>
                     <div className="contentcontainer w-clearfix must-read">
                         <div className="header">
                             {header}

@@ -1,0 +1,10 @@
+.privacy{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    width: 100%;
+    padding-left:20px;
+    padding-right:20px;
+}

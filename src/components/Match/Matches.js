@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import Header from '../Header';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import MatchRow from './MatchRow';
 import Link from '../Link/Link';
@@ -86,6 +86,7 @@ export default class Matches extends React.Component {
     var matchDateRange = ''
     var firstMatchDate = moment.utc(this.state.matches[0].matchTime).local();
     var lastMatchDate = moment.utc(this.state.matches[this.state.matches.length - 1].matchTime).local();
+    
     //check if the matches are in the same month; else display different months
     if(firstMatchDate.month === lastMatchDate.month){
       matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('D, YYYY').toUpperCase();
@@ -116,7 +117,7 @@ export default class Matches extends React.Component {
       var links = this.state.links;
       var mustRead;
       var mustWatch;
-
+      
       for(var i = 0, numResults = links.length; i < numResults; i++){
           if(links[i].shortCode === 'READ'){
             mustRead = links[i];
@@ -131,6 +132,7 @@ export default class Matches extends React.Component {
       columnLeft.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatch"/>);
       columnRight.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatchRight"/>);
     }
+    var bigtext = "Essential Matches";
     return (
           <div className="container-fluid">
             <div className="w-container w-container-matches">
@@ -145,7 +147,7 @@ export default class Matches extends React.Component {
                   <span>{this.state.matchDateRange}</span>
                 </div>
               </div>
-              <Header matchDateRange={this.state.matchDateRange} />
+              <Header bigtext={bigtext} smalltext={this.state.matchDateRange} />
               <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
                 <div className="matches">
                   <div className="column column-left">

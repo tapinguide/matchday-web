@@ -1,6 +1,6 @@
 {
-  "name": "MatchDay",
-  "version": "0.1.0",
+  "name": "TapInGuide",
+  "version": "3.0.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "1.0.0"

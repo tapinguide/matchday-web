@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Matches from './Match/Matches';
 import Wallpaper from './Wallpaper/Wallpaper';
-import About from './About';
+import About from './About/About';
 import Contact from './Contact';
 import Home from './Home';
+import Privacy from './Privacy/Privacy';
 
 class Main extends Component {
   render() {
@@ -15,6 +16,7 @@ class Main extends Component {
                 <Route path='/wallpaper' component={Wallpaper}/>
                 <Route path='/about' component={About}/>
                 <Route path='/contact' component={Contact}/>
+                <Route path='/privacy' component={Privacy}/>
             </Switch>
     );
   }

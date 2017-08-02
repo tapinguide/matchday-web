@@ -15,15 +15,15 @@ class Footer extends Component {
           <nav className="footer-nav-primary">
             <Link
               className="footer-text-link"
-              to="/about"
+              to="/matchday"
             >
-              About
+              Matches
             </Link>
             <Link
               className="footer-text-link"
-              to="/contact"
+              to="/about"
             >
-              Contact
+              About
             </Link>
           </nav>
           <nav className="footer-nav-social">

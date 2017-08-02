@@ -23,7 +23,7 @@
 }
 
 .bigtext {
-  color: #28323F;
+  color: #000000;
   font-family: Poppins;
   font-size: 40px;
   font-weight: bold;
@@ -90,7 +90,7 @@
     display:none;
   }
   .bigtext{
-    padding-top:5px;
+    padding-top:0px;
   }
   .logoname{
     margin-left: auto;

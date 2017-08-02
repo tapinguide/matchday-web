@@ -32,9 +32,9 @@ export default class MatchRow extends React.Component {
     }).reverse();
 
     var homeClubCrestUrl = match.homeClub.crest;
-    var homeClubCrestStyle = {backgroundImage: 'url(' + homeClubCrestUrl + ')'};
+    var homeClubShortName = match.homeClub.shortName;
     var visitorClubCrestUrl = match.visitorClub.crest;
-    var visitorClubCrestStyle = {backgroundImage: 'url(' + visitorClubCrestUrl + ')'};
+    var visitorClubShortName = match.visitorClub.shortName;
     var numberStyle = {backgroundImage: "url(" + rectangle + ")"};
     var secondsStyle = {height: "12px", backgroundPosition: "center top", backgroundRepeat: "no-repeat", backgroundImage: "url(" + seconds + ")"};
 
@@ -57,7 +57,8 @@ export default class MatchRow extends React.Component {
     }
     var tvDetails = match.tvDetails;
     var venue = match.venue;
-
+    var venueCity = match.venueCity;
+    
     if(match.status.description === "Scheduled"){
       matchRow = (
        <div ref={ref} className={this.getClass(this.state.expanded, 'matchscheduled')}
@@ -68,9 +69,15 @@ export default class MatchRow extends React.Component {
           <div className="contentcontainer w-clearfix">
             <div className="innercontainer">
               <div className="crestcontainer">
-                <div className="homecrest" style={homeClubCrestStyle}></div>
-                <div className="vs">VS</div>
-                <div className="awaycrest" style={visitorClubCrestStyle}></div>
+                <div className="homecrest">
+                  <img src={homeClubCrestUrl} alt={homeClubShortName} />
+                </div>
+                <div className="shortname">{homeClubShortName}</div>
+                <div className="vs"></div>
+                <div className="awaycrest">
+                  <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+                </div>
+                <div className="shortname">{visitorClubShortName}</div>
               </div>
               <div className="infocontainer">
                 <div className="datetime">{matchDate}</div>
@@ -93,11 +100,21 @@ export default class MatchRow extends React.Component {
                    <div className="innercontainer">
                   <div className="livescore">
                     <div className="scoreformatting">{match.homeClubScore}</div>
-                    <div className="homecrest scoreformatting" style={homeClubCrestStyle}></div>
+                    <div className="homecrest scoreformatting">
+                      <img src={homeClubCrestUrl} alt={homeClubShortName} />
+                      <div className="shortname">
+                        {homeClubShortName}
+                      </div>
+                    </div>
                     <div className="scoreformatting scoretime">
                         <div>FT</div>
                     </div>
-                    <div className="awaycrest scoreformatting" style={visitorClubCrestStyle}></div>
+                    <div className="awaycrest scoreformatting">
+                      <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+                      <div className="shortname">
+                        {visitorClubShortName}
+                      </div>
+                    </div>
                     <div className="scoreformatting">{match.visitorClubScore}</div>
                   </div>
                   <div className="livenarrative livenarrativecomplete narrative">{renderHTML(narrative)}</div>
@@ -118,17 +135,27 @@ export default class MatchRow extends React.Component {
                  <div className="innercontainer">
                 <div className="livescore">
                   <div className="scoreformatting">{match.homeClubScore}</div>
-                  <div className="homecrest scoreformatting" style={homeClubCrestStyle}></div>
+                  <div className="homecrest scoreformatting">
+                    <img src={homeClubCrestUrl} alt={homeClubShortName} />
+                    <div className="shortname">
+                      {homeClubShortName}
+                    </div>
+                  </div>
                   <div className="scoreformatting scoretime in-progress">
                     <div>{matchStatus}</div>
                     <div style={secondsStyle}></div>
                   </div>
-                  <div className="awaycrest scoreformatting"  style={visitorClubCrestStyle}></div>
+                  <div className="awaycrest scoreformatting">
+                    <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+                    <div className="shortname">
+                      {homeClubShortName}
+                    </div>
+                  </div>
                   <div className="scoreformatting">{match.visitorClubScore}</div>
                 </div>
                 <div className="livenarrative narrative">{renderHTML(narrative)}</div>
                 </div>
-                <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
+                <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} venueCity={venueCity} />
               </div>
             </div>
        )

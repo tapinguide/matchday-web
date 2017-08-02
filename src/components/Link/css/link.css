@@ -1,3 +1,6 @@
+.link{
+    height: 99px;
+}
 .must-read .header {
     color: #18EFC6;	
     font-family: Poppins;	
@@ -26,7 +29,7 @@
 }
 
 .must-read .must-read-body .text {	
-    width: 188px;	
+    width: 300px;	
     color: #000000;	
     font-family: Poppins;	
     font-size: 13px;	

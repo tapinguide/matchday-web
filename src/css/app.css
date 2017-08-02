@@ -78,3 +78,9 @@ body {
 .info {
   flex: 0 1 214px;
 }
+
+@media screen and (max-width: 479px) {
+  .w-container{
+    padding-top: 0px;
+  }
+}
