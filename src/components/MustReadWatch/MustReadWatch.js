@@ -1,8 +1,8 @@
 import React from 'react';
 import renderHTML from 'react-render-html';
-import './css/link.css';
+import './css/mustreadwatch.css';
 
-export default class Link extends React.Component {
+export default class MustReadWatch extends React.Component {
     openWindow(url){
         window.open(url,'_blank');
     }

@@ -18,7 +18,9 @@ class Privacy extends Component {
             <div className="w-container w-container-matches">
               <div className="info desktop-header">
                 <div className="logoname">
-                  <img alt="Tapin Guide Logo" src={logo} />
+                  <Link to="/">
+                      <img alt="Tapin Guide Logo" src={logo} />
+                    </Link>
                 </div>
                 <div className="bigtext">
                   <span>{bigtext}</span>
@@ -57,7 +59,7 @@ class Privacy extends Component {
                         <img alt="Tapin Guide" src={curt} />
                       </div>
                       <div className="text">
-                        <strong>Curt Baker</strong> Strategy Lead. Defensive Midfielder. Strategist. Hoping for another Friendly Fires album.
+                        <strong><Link to="https://twitter.com/curtyb" target="_blank" className="contact-link">Curt Baker</Link></strong> Defensive Midfielder. Strategist. Hoping for another Friendly Fires album.
                       </div>
                     </div>
                     <div className="person">
@@ -65,7 +67,7 @@ class Privacy extends Component {
                         <img alt="Tapin Guide" src={mike} />
                       </div>
                       <div className="text">
-                        <strong>Mike Arney</strong> Design, UX and a bit of Front-end development. Nerd.. which is fine. Dad of Jámes.
+                        <strong><Link to="https://twitter.com/mike_arney" target="_blank" className="contact-link">Mike Arney</Link></strong> Design, UX and a bit of Front-end development. Nerd.. which is fine. Dad of Jámes.
                       </div>
                     </div>
                     <div className="person">
@@ -73,12 +75,12 @@ class Privacy extends Component {
                         <img alt="Tapin Guide" src={clint} />
                       </div>
                       <div className="text">
-                        <strong>Clint McMahon</strong>Yadda yadda yadda
+                        <strong><Link to="https://twitter.com/minnepixel" target="_blank" className="contact-link">Clint McMahon</Link></strong> Code, soccer, Seinfeld quotes, yadda yadda yadda.
                       </div>
                     </div>
                   </div>
                    <div className="person-extra">
-                      <strong>Alex Martinez</strong> and <strong>Jared Handra</strong> are the newest members of the Tap In squad, both taking on front end development and design duties.
+                      <strong><Link to="https://twitter.com/alx_mrtnz" target="_blank" className="contact-link">Alex Martinez</Link></strong> and <strong><Link to="https://twitter.com/handrajs" target="_blank" className="contact-link">Jared Handra</Link></strong> are the newest members of the Tap In squad, both taking on front end development and design duties.
                     </div>
                   <div className="line"></div>
                   <div className="medium">

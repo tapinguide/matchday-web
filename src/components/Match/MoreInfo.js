@@ -58,7 +58,7 @@ export default class MoreInfo extends React.Component {
         }
     }
     render() {
-        const { events, expandedState, tvDetails, venue, venuCity } = this.props;
+        const { events, expandedState, tvDetails, venue } = this.props;
 
         var timelineEvents = [];
         events.forEach(function(event, index) {
@@ -72,7 +72,7 @@ export default class MoreInfo extends React.Component {
             
         });
 
-        var content = <main></main>;
+        var content = <main className="noexpander"></main>;
         if(timelineEvents.length > 0 || tvDetails.length > 0 || venue.length > 0){
             content = (
                 <main>

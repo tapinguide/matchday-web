@@ -1,6 +1,5 @@
 .match {
     max-width: 479px;
-    height: 220px;
     padding-bottom: 0;
     border-right: 0 none #e7e7e7;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
@@ -128,9 +127,14 @@
     padding-top: 7px;
     position: relative;
   }
-.innercontainer{
-      height: 143px;
-}
+
+  .innercontainer{
+     height:150px;
+  }
+
+  .scheduled .innercontainer{
+    height: 150px;
+  }
   .node {
     /* height: 200px; */
     width: 100%;
@@ -161,11 +165,13 @@
   .narrative.livenarrative.livenarrativecomplete {
     color: #999;
   }
+  .noexpander{
+    margin-top:25px;
+  }
   .expanderclosed {
     position: relative;
     margin-bottom: 5px;
     left: 0px;
-    top: -8px;
     right: 0px;
     bottom: 0px;
     width: 100%;
@@ -183,7 +189,6 @@
     position: relative;
     margin-bottom: 5px;
     left: 0px;
-    top: -8px;
     right: 0px;
     bottom: 0px;
     width: 100%;
@@ -196,22 +201,7 @@
     background-repeat: no-repeat;
     cursor: pointer;
   }
-  /*
-  .expanderopen {
-    left: 0px;
-    width: 100%;
-    height: 47px;
-    margin-top: 29px;
-    padding-top: 0px;
-    border: 1px solid #b4b4b4;
-    background-color: #f3f3f3;
-    background-size: auto;
-    background-position: 50% 50%;
-    background-size: auto;
-    background-repeat: no-repeat;
-    cursor: pointer;
-  }
-*/
+
   .clear{
     position: relative;
     margin-bottom: 5px;

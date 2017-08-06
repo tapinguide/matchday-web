@@ -1,22 +1,26 @@
 import React from 'react';
 import moment from 'moment';
+import renderHTML from 'react-render-html';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import MatchRow from './MatchRow';
-import Link from '../Link/Link';
+import MustReadWatch from '../MustReadWatch/MustReadWatch';
 import logo from '../../images/tapin-logo.png';
-import mustReadIcon from '../Link/images/mustread.png'
-import mustWatchIcon from '../Link/images/mustwatch.png'
+import mustReadIcon from '../MustReadWatch/images/mustread.png'
+import mustWatchIcon from '../MustReadWatch/images/mustwatch.png'
 import './css/normalize.css';
 import './css/matches.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");
-var matchesUrl = "https://www.tapinguide.com/api/activematches/?format=json";
-var linksUrl = "https://www.tapinguide.com/api/links/?format=json";
 
-//var matchesUrl = "http://localhost:8000/api/activematches/?format=json";
-//var linksUrl = "http://localhost:8000/api/links/?format=json";
+//var domain = "http://localhost:8000";
+var domain = "https://www.tapinguide.com";
+
+var matchesUrl = domain + "/api/activematches/?format=json";
+var linksUrl = domain + "/api/links/?format=json";
+var contextBlurbUrl = domain + "/api/contextblurb/?format=json";
 
 export default class Matches extends React.Component {
   constructor(props) {
@@ -24,6 +28,7 @@ export default class Matches extends React.Component {
     this.state = {
       matches: [],
       links: [],
+      contextBlurb: '',
       loaded: false,
       matchDateRange: ''
     };
@@ -46,9 +51,12 @@ export default class Matches extends React.Component {
     var _this = this;
     axios.all([
       this.getMatches(),
-      this.getLinks()
-      ]).then(axios.spread(function (matchesResult, linksResult) {
+      this.getLinks(),
+      this.getContextBlurb()
+      ]).then(axios.spread(function (matchesResult, linksResult, contextBlurbResult) {
           var matches = matchesResult.data;
+          var links = linksResult.data;
+          var contextBlurb = contextBlurbResult.data[0].text;
           var notCompleted = [];
           var completed = [];
           for(var i = 0, numResults = matches.length; i < numResults; i++){
@@ -59,13 +67,19 @@ export default class Matches extends React.Component {
                 notCompleted.push(matches[i]);
               }
           }
+
+          notCompleted.sort(function(a,b){
+             return new Date(b.matchTime) - new Date(a.matchTime) || a.id - b.id;
+          }).reverse();
+
           completed.sort(function(a,b){
-            return new Date(b.matchTime) - new Date(a.matchTime);
+            return new Date(b.matchTime) - new Date(a.matchTime) || a.id - b.id;
           });
 
            _this.setState({
             matches: notCompleted.concat(completed),
-            links: linksResult.data,
+            links: links,
+            contextBlurb: contextBlurb,
             loaded: true
           });
 
@@ -82,7 +96,17 @@ export default class Matches extends React.Component {
     return axios.get(linksUrl)
   }
 
+  getContextBlurb(){
+    return axios.get(contextBlurbUrl);
+  }
+
   setMatchDateRange(){
+    /*
+    var sortedMatches = this.state.matches;
+    sortedMatches.sort(function(a,b){
+      return new Date(a.matchTime) - new Date(b.matchTime);
+    });
+*/
     var matchDateRange = ''
     var firstMatchDate = moment.utc(this.state.matches[0].matchTime).local();
     var lastMatchDate = moment.utc(this.state.matches[this.state.matches.length - 1].matchTime).local();
@@ -128,9 +152,9 @@ export default class Matches extends React.Component {
           }
       }
 
-      columnLeft.push(<Link link={mustRead} header="Must Read" icon={mustReadIcon} key="mustRead" />);
-      columnLeft.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatch"/>);
-      columnRight.push(<Link link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatchRight"/>);
+      columnLeft.push(<MustReadWatch link={mustRead} header="Must Read" icon={mustReadIcon} key="mustRead" />);
+      columnLeft.push(<MustReadWatch link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatch"/>);
+      columnRight.push(<MustReadWatch link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatchRight"/>);
     }
     var bigtext = "Essential Matches";
     return (
@@ -146,8 +170,11 @@ export default class Matches extends React.Component {
                 <div className="dateRangeText">
                   <span>{this.state.matchDateRange}</span>
                 </div>
+                <div className="contextblurb">
+                  <span>{renderHTML(this.state.contextBlurb)}</span>
+                </div>
               </div>
-              <Header bigtext={bigtext} smalltext={this.state.matchDateRange} />
+              <Header bigtext={bigtext} smalltext={this.state.matchDateRange} contextblurb={this.state.contextBlurb} />
               <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
                 <div className="matches">
                   <div className="column column-left">

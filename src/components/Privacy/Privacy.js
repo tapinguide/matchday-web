@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from '../../images/tapin-logo.png';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-
+import { Link } from 'react-router-dom';
 import './css/privacy.css';
 
 class Privacy extends Component {
@@ -14,7 +14,9 @@ class Privacy extends Component {
             <div className="w-container w-container-matches">
               <div className="info desktop-header">
                 <div className="logoname">
-                  <img alt="Tapin Guide Logo" src={logo} />
+                 <Link to="/">
+                      <img alt="Tapin Guide Logo" src={logo} />
+                    </Link>
                 </div>
                 <div className="bigtext">
                   <span>{bigtext}</span>

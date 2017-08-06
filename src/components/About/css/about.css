@@ -66,6 +66,7 @@
 
 .person{
     display: table-cell;
+    padding:5px;
 }
 
 .person .text{	

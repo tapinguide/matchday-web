@@ -26,7 +26,9 @@ export default class MatchRow extends React.Component {
     var match = this.props.match;
     var matchIndex = this.props.matchIndex + 1;
     var ref = 'match';
+    
     let matchRow = null;
+
     var sortedEvents = match.events.sort((a,b) => {
       return a.id - b.id
     }).reverse();
@@ -52,12 +54,16 @@ export default class MatchRow extends React.Component {
       narrative = match.postMatchDetails
     }
 
-    if(narrative.length > 330){
-      narrative = narrative.substring(0, 330) + '...';
+    if(narrative.length > 320){
+      narrative = narrative.substring(0, 320) + '...';
     }
     var tvDetails = match.tvDetails;
     var venue = match.venue;
     var venueCity = match.venueCity;
+
+    if(venue === '' && venueCity != '' ){
+      venue = venueCity;
+    }
     
     if(match.status.description === "Scheduled"){
       matchRow = (
@@ -66,7 +72,7 @@ export default class MatchRow extends React.Component {
           <div className="numberbg" style={numberStyle}>
             <div className="numberplace">{matchIndex}</div>
           </div>
-          <div className="contentcontainer w-clearfix">
+          <div className="contentcontainer w-clearfix scheduled">
             <div className="innercontainer">
               <div className="crestcontainer">
                 <div className="homecrest">
@@ -84,7 +90,7 @@ export default class MatchRow extends React.Component {
                 <div className="narrative">{renderHTML(narrative)}</div>
               </div>
             </div>
-             <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
+             <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue}  />
           </div>
         </div>
       )
@@ -96,7 +102,7 @@ export default class MatchRow extends React.Component {
                 <div className="numberbg" style={numberStyle}>
                   <div className="numberplace">{matchIndex}</div>
                 </div>
-                <div className="contentcontainer">
+                <div className="contentcontainer completed">
                    <div className="innercontainer">
                   <div className="livescore">
                     <div className="scoreformatting">{match.homeClubScore}</div>
@@ -131,7 +137,7 @@ export default class MatchRow extends React.Component {
               <div className="numberbg" style={numberStyle}>
                 <div className="numberplace">{matchIndex}</div>
               </div>
-              <div className="contentcontainer w-clearfix">
+              <div className="contentcontainer w-clearfix inprogress">
                  <div className="innercontainer">
                 <div className="livescore">
                   <div className="scoreformatting">{match.homeClubScore}</div>
@@ -155,7 +161,7 @@ export default class MatchRow extends React.Component {
                 </div>
                 <div className="livenarrative narrative">{renderHTML(narrative)}</div>
                 </div>
-                <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} venueCity={venueCity} />
+                <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
               </div>
             </div>
        )
