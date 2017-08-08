@@ -154,7 +154,7 @@ export default class MatchRow extends React.Component {
                   <div className="awaycrest scoreformatting">
                     <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
                     <div className="shortname">
-                      {homeClubShortName}
+                      {visitorClubShortName}
                     </div>
                   </div>
                   <div className="scoreformatting">{match.visitorClubScore}</div>

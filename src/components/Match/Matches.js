@@ -101,15 +101,15 @@ export default class Matches extends React.Component {
   }
 
   setMatchDateRange(){
-    /*
-    var sortedMatches = this.state.matches;
+
+    var sortedMatches = JSON.parse(JSON.stringify(this.state.matches));
     sortedMatches.sort(function(a,b){
       return new Date(a.matchTime) - new Date(b.matchTime);
     });
-*/
+
     var matchDateRange = ''
-    var firstMatchDate = moment.utc(this.state.matches[0].matchTime).local();
-    var lastMatchDate = moment.utc(this.state.matches[this.state.matches.length - 1].matchTime).local();
+    var firstMatchDate = moment.utc(sortedMatches[0].matchTime).local();
+    var lastMatchDate = moment.utc(sortedMatches[sortedMatches.length - 1].matchTime).local();
     
     //check if the matches are in the same month; else display different months
     if(firstMatchDate.month === lastMatchDate.month){

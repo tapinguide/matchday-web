@@ -15,8 +15,8 @@ export default class Goal extends React.Component {
            backgroundImage: "url(" + goal + ")"
         }
 
-        var homeTeam = event.match.homeClub.name;
-        var awayTeam = event.match.visitorClub.name;
+        var homeTeam = event.match.homeClub.shortName;
+        var awayTeam = event.match.visitorClub.shortName;
         var homeTeamSubScore = 0;
         var awayTeamSubScore = 0;
         var result;

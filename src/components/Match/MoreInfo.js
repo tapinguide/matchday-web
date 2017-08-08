@@ -57,34 +57,41 @@ export default class MoreInfo extends React.Component {
             return <div></div>
         }
     }
+
+    getTimelineEvents(events){
+        if(events.length === 0)
+        {
+            return <div className="livematchdata">Live match data to come </div>;
+        }
+        else
+        {
+            var timelineEvents = [];
+            events.forEach(function(event, index) {
+                if(index > 0){
+                    timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
+                }
+                else
+                {
+                    timelineEvents.push(<Event event={event} key={event.id} />);
+                }
+                
+            });
+
+            return timelineEvents;
+        }
+    }
     render() {
         const { events, expandedState, tvDetails, venue } = this.props;
 
-        var timelineEvents = [];
-        events.forEach(function(event, index) {
-            if(index > 0){
-                timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
-            }
-            else
-            {
-                timelineEvents.push(<Event event={event} key={event.id} />);
-            }
-            
-        });
-
-        var content = <main className="noexpander"></main>;
-        if(timelineEvents.length > 0 || tvDetails.length > 0 || venue.length > 0){
-            content = (
-                <main>
-                    <div className={this.getClass(expandedState)} style={this.getBackgroundImage(expandedState)} ></div>
-                    <ExpanderContent expanded={expandedState} >
-                        {this.getTVVenueDetails(tvDetails, venue)}
-                        {timelineEvents}
-                    </ExpanderContent>
-                </main>
-            );
-        }
-
+        var content = (
+            <timeline-events>
+                <div className={this.getClass(expandedState)} style={this.getBackgroundImage(expandedState)} ></div>
+                <ExpanderContent expanded={expandedState} >
+                    {this.getTVVenueDetails(tvDetails, venue)}
+                    {this.getTimelineEvents(events)}
+                </ExpanderContent>
+            </timeline-events>
+        );
         return content;
     }
 }

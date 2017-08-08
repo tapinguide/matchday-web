@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom';
 import './css/about.css';
 
 class Privacy extends Component {
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
   render() {
       var bigtext = "About";
       var smalltext = "";

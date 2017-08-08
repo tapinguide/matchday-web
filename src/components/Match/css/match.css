@@ -166,10 +166,11 @@
     color: #999;
   }
   .noexpander{
-    margin-top:25px;
+    margin-top:28px;
   }
   .expanderclosed {
     position: relative;
+    margin-top: 5px;
     margin-bottom: 5px;
     left: 0px;
     right: 0px;
@@ -187,6 +188,7 @@
 
   .expanderopen {
     position: relative;
+    margin-top: 5px;
     margin-bottom: 5px;
     left: 0px;
     right: 0px;
@@ -274,8 +276,8 @@
 
   }
   @media screen and (max-width: 479px) {
-    .match {
-
+    .innercontainer{
+      height: 100%;
     }
     .match.has-expander:hover, .match.expander-open {
       background-color: #fff;
