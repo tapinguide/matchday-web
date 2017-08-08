@@ -16,7 +16,7 @@ export default class MatchRow extends React.Component {
   }
   getClass(value, optionalClass){
       if(value){
-          return "match w-clearfix has-expander expander-openv " + optionalClass;
+          return "match w-clearfix has-expander expander-open " + optionalClass;
       }
       else{
           return "match w-clearfix has-expander expander-closed " + optionalClass;
@@ -26,7 +26,7 @@ export default class MatchRow extends React.Component {
     var match = this.props.match;
     var matchIndex = this.props.matchIndex + 1;
     var ref = 'match';
-    
+
     let matchRow = null;
 
     var sortedEvents = match.events.sort((a,b) => {
@@ -64,7 +64,7 @@ export default class MatchRow extends React.Component {
     if(venue === '' && venueCity != '' ){
       venue = venueCity;
     }
-    
+
     if(match.status.description === "Scheduled"){
       matchRow = (
        <div ref={ref} className={this.getClass(this.state.expanded, 'matchscheduled')}
