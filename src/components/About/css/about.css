@@ -11,7 +11,10 @@
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
 }
 
-.as-football-fanatics 
+.about-us-header{
+    display:none;
+}
+.about-us
 {	
     color: #000000;	
     font-family: Poppins;	
@@ -95,8 +98,43 @@
     display:none;
 }
 
+
 @media screen and (max-width: 767px) {
     .about{
         padding: 20px;
     }
+}
+
+@media screen and (max-width: 479px) {
+  .about-us {
+    font-size:26px;
+    line-height: 32px;
+  }
+  .about-us-header{
+    display: block;
+    color: #000000;
+    font-family: Poppins;
+    font-size: 40pt;
+    font-weight: bold;
+    letter-spacing: -1pt;
+    line-height: 42pt;
+    padding-bottom: 6pt;
+  }
+  
+  .person{
+      display:block;
+      width:100%;
+      padding-bottom: 28pt;
+  }
+
+  .person .text{
+      max-width: 100%;
+  }
+  .person .image img{
+      width:100%;
+  }
+
+  .person-extra{
+      padding-top: 0px;
+  }
 }

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 import './css/about.css';
 
-class Privacy extends Component {
+class About extends Component {
   componentDidMount(){
     window.scrollTo(0, 0);
   }
@@ -32,11 +32,12 @@ class Privacy extends Component {
             <Header bigtext={bigtext} smalltext={smalltext} />
               <div className="matches-container">
                 <div className="about">
-                  <div className="as-football-fanatics">
+                  <div className="about-us">
+                    <div className="about-us-header">About</div>
                     As football fanatics, we felt overwhelmed trying to keep up with the beautiful game. So, we created the latest version of Tap In, a soccer calendar with context to help fans easily get the scoop on what happened in the world’s biggest matches, what’s coming up, and why it all matters.
                   </div>
                   <div className="contact">
-                    We’d love to hear what you think and what would make Tap In better. <br />Drop us a line: 
+                    We’d love to hear what you think and what would make Tap In better. Drop us a line:&nbsp; 
                     <Link
                       className="contact-link"
                       to="mailto:curt@tapinguide.com"
@@ -102,4 +103,4 @@ class Privacy extends Component {
   }
 }
 
-export default Privacy;
+export default About;
