@@ -78,11 +78,23 @@
     padding-right: 15px;
     padding-bottom: 15px;
   }
+
   .bigtext{
     padding-top:5px;
   }
+
   .logoname{
     margin-left: auto;
+  }
+
+  .contextblurb{
+    font-size: 18pt;
+    line-height: 24pt;
+  }
+
+  .logoname img{
+    height: auto;
+    width: auto;
   }
   .desktop-header{display:none;}
 }
@@ -93,8 +105,8 @@
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
-    max-width: 920px;
   }
+
   .matches{max-width:100%;}
   .mobile-header{
     display:none;

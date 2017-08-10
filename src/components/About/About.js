@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import logo from '../../images/tapin-logo.png';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import curt from './images/curt.png';
-import mike from './images/mike.png';
-import clint from './images/clint.png';
+import curt from './images/curt.jpg';
+import mike from './images/mike.jpg';
+import clint from './images/clint.jpg';
 import { Link } from 'react-router-dom';
 
 import './css/about.css';

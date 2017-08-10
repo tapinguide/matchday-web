@@ -9,11 +9,15 @@ import './css/match.css';
 export default class MatchRow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {expanded: false};
+    this.state = {
+      expanded: false
+    };
   }
+
   expandCollapse(value) {
     this.setState({expanded: !value});
   }
+
   getClass(value, optionalClass){
       if(value){
           return "match w-clearfix has-expander expander-open " + optionalClass;
@@ -23,30 +27,27 @@ export default class MatchRow extends React.Component {
       }
   }
   render() {
-    var match = this.props.match;
-    var matchIndex = this.props.matchIndex + 1;
-    var ref = 'match';
-
-    let matchRow = null;
-
-    var sortedEvents = match.events.sort((a,b) => {
-      return a.id - b.id
-    }).reverse();
-
-    var homeClubCrestUrl = match.homeClub.crest;
-    var homeClubShortName = match.homeClub.shortName;
-    var visitorClubCrestUrl = match.visitorClub.crest;
-    var visitorClubShortName = match.visitorClub.shortName;
     var numberStyle = {backgroundImage: "url(" + rectangle + ")"};
     var secondsStyle = {height: "12px", backgroundPosition: "center top", backgroundRepeat: "no-repeat", backgroundImage: "url(" + seconds + ")"};
+  
+    var ref = 'match';
+    let matchRow = null;
+    var match = this.props.match;
+    var matchIndex = this.props.matchIndex + 1;
+
+    var homeClubScore = match.homeClubScore;
+    var homeClubPenalties = match.homeClubPenalties;
+    var homeClubCrestUrl = match.homeClub.crest;
+    var homeClubShortName = match.homeClub.shortName;
+    
+    var visitorClubScore = match.visitorClubScore;
+    var visitorClubPenalties = match.visitorClubPenalties;
+    var visitorClubCrestUrl = match.visitorClub.crest;
+    var visitorClubShortName = match.visitorClub.shortName;
 
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
-    var matchStatus = match.status.description;
-    if(match.status.description === "In Progress"){
-      matchStatus = match.timer + "'";
-    }
-
     var narrative = match.preMatchDetails;
+    
     if(match.inMatchDetails){
       narrative = match.inMatchDetails;
     }
@@ -57,15 +58,37 @@ export default class MatchRow extends React.Component {
     if(narrative.length > 320){
       narrative = narrative.substring(0, 320) + '...';
     }
+
+    var matchStatusDescription = match.status.description;
+
+    if(matchStatusDescription === "Pen.")
+    {
+      homeClubScore = homeClubScore + ' (' + homeClubPenalties + ')';
+      visitorClubScore = visitorClubScore + ' (' + visitorClubPenalties + ')';
+      matchStatusDescription = "FT (P)";
+    }
+    else if(matchStatusDescription === "In Progress"){
+      matchStatusDescription = match.timer + "'";
+    }
+    else if(matchStatusDescription === "Cancl."){
+      matchStatusDescription = "Canceled"
+    }
+    else if(matchStatusDescription === "Post."){
+      matchStatusDescription = "Postponed"
+    }
+
     var tvDetails = match.tvDetails;
     var venue = match.venue;
     var venueCity = match.venueCity;
 
-    if(venue === '' && venueCity != '' ){
+    if(venue === '' && venueCity !=='' ){
       venue = venueCity;
     }
+    var sortedEvents = match.events.sort((a,b) => {
+      return a.id - b.id
+    }).reverse();
 
-    if(match.status.description === "Scheduled"){
+    if(match.status.description === "Scheduled" || match.status.description === "Post."){
       matchRow = (
        <div ref={ref} className={this.getClass(this.state.expanded, 'matchscheduled')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
@@ -95,7 +118,11 @@ export default class MatchRow extends React.Component {
         </div>
       )
     }
-    else if (match.status.description === "FT" || match.status.description === "AET"){
+    else if (match.status.description === "FT" 
+      || match.status.description === "AET" 
+      || match.status.description === "Pen."
+      || match.status.description === "Awarded"
+      || match.status.description === "Cancl."){
       matchRow = (
           <div ref={ref} className={this.getClass(this.state.expanded, 'matchcomplete')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
@@ -105,7 +132,7 @@ export default class MatchRow extends React.Component {
                 <div className="contentcontainer completed">
                    <div className="innercontainer">
                   <div className="livescore">
-                    <div className="scoreformatting">{match.homeClubScore}</div>
+                    <div className="scoreformatting">{homeClubScore}</div>
                     <div className="homecrest scoreformatting">
                       <img src={homeClubCrestUrl} alt={homeClubShortName} />
                       <div className="shortname">
@@ -113,7 +140,7 @@ export default class MatchRow extends React.Component {
                       </div>
                     </div>
                     <div className="scoreformatting scoretime">
-                        <div>FT</div>
+                        <div>{matchStatusDescription}</div>
                     </div>
                     <div className="awaycrest scoreformatting">
                       <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
@@ -121,7 +148,7 @@ export default class MatchRow extends React.Component {
                         {visitorClubShortName}
                       </div>
                     </div>
-                    <div className="scoreformatting">{match.visitorClubScore}</div>
+                    <div className="scoreformatting">{visitorClubScore}</div>
                   </div>
                   <div className="livenarrative livenarrativecomplete narrative">{renderHTML(narrative)}</div>
                   </div>
@@ -130,7 +157,7 @@ export default class MatchRow extends React.Component {
               </div>
       )
     }
-    else{
+    else if (match.status.description === "In Progress"|| match.status.description === "HT" ) {
        matchRow = (
             <div ref={ref} className={this.getClass(this.state.expanded, '')}
             onClick={() => this.expandCollapse(this.state.expanded)}>
@@ -140,7 +167,7 @@ export default class MatchRow extends React.Component {
               <div className="contentcontainer w-clearfix inprogress">
                  <div className="innercontainer">
                 <div className="livescore">
-                  <div className="scoreformatting">{match.homeClubScore}</div>
+                  <div className="scoreformatting">{homeClubScore}</div>
                   <div className="homecrest scoreformatting">
                     <img src={homeClubCrestUrl} alt={homeClubShortName} />
                     <div className="shortname">
@@ -148,7 +175,7 @@ export default class MatchRow extends React.Component {
                     </div>
                   </div>
                   <div className="scoreformatting scoretime in-progress">
-                    <div>{matchStatus}</div>
+                    <div>{matchStatusDescription}</div>
                     <div style={secondsStyle}></div>
                   </div>
                   <div className="awaycrest scoreformatting">
@@ -157,7 +184,7 @@ export default class MatchRow extends React.Component {
                       {visitorClubShortName}
                     </div>
                   </div>
-                  <div className="scoreformatting">{match.visitorClubScore}</div>
+                  <div className="scoreformatting">{visitorClubScore}</div>
                 </div>
                 <div className="livenarrative narrative">{renderHTML(narrative)}</div>
                 </div>

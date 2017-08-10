@@ -71,10 +71,7 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.logoname img{
-  width: 86px;
-  height: 27px;
-}
+
 .info {
   flex: 0 1 214px;
 }

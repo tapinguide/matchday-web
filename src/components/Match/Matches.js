@@ -15,8 +15,8 @@ import './css/matches.css';
 var Loader = require('react-loader');
 var axios = require("axios");
 
-//var domain = "http://localhost:8000";
-var domain = "https://www.tapinguide.com";
+var domain = "http://localhost:8000";
+//var domain = "https://www.tapinguide.com";
 
 var matchesUrl = domain + "/api/activematches/?format=json";
 var linksUrl = domain + "/api/links/?format=json";
@@ -60,7 +60,10 @@ export default class Matches extends React.Component {
           var notCompleted = [];
           var completed = [];
           for(var i = 0, numResults = matches.length; i < numResults; i++){
-              if(matches[i].status.description.toLowerCase() === "ft" || matches[i].status.description.toLowerCase() === "aet"){
+              if(matches[i].status.description.toLowerCase() === "ft" 
+                || matches[i].status.description.toLowerCase() === "aet" 
+                || matches[i].status.description.toLowerCase() === "pen."
+                || matches[i].status.description.toLowerCase() === "cancl."){
                 completed.push(matches[i]);
               }
               else{
@@ -101,7 +104,6 @@ export default class Matches extends React.Component {
   }
 
   setMatchDateRange(){
-
     var sortedMatches = JSON.parse(JSON.stringify(this.state.matches));
     sortedMatches.sort(function(a,b){
       return new Date(a.matchTime) - new Date(b.matchTime);
