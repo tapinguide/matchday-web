@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     overflow-x: hidden;
     width: 100%;
-    padding:80px 84px 84px 115px;
+    padding:80px 84px 44px 115px;
     background-color: #FFFFFF;	
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
 }
@@ -32,7 +32,11 @@
 	font-family: Poppins;
 	font-size: 13px;
     line-height: 19px;
-    padding-bottom: 60px;
+    padding-bottom: 0px;
+}
+
+.contact-link{
+    color: #18EFC6;
 }
 
 .line 
@@ -41,7 +45,7 @@
     height: 3px;	
     width: 100%;	
     border-bottom: 1px solid #CFCCCC;
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 .tapin-logo{
@@ -57,10 +61,6 @@
     padding-bottom:20px;
 }
 
-.contact-link{
-    color: #18EFC6;
-}
-
 .people{
     display: table;
     width: 100%;
@@ -70,6 +70,10 @@
 .person{
     display: table-cell;
     padding:5px;
+}
+
+.person .image img{
+    width: 100%;
 }
 
 .person .text{	
@@ -94,8 +98,7 @@
 	font-family: Poppins;
 	font-size: 13px;
     line-height: 19px;
-    padding-top: 68px;
-    display:none;
+    padding-top: 30px;
 }
 
 

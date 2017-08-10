@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+
 import logo from '../../images/tapin-logo.png';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import curt from './images/curt.jpg';
 import mike from './images/mike.jpg';
 import clint from './images/clint.jpg';
-import { Link } from 'react-router-dom';
-
 import './css/about.css';
 
 class About extends Component {
@@ -60,7 +60,9 @@ class About extends Component {
                   <div className="people">
                     <div className="person">
                       <div className="image">
-                        <img alt="Tapin Guide" src={curt} />
+                        <Link to="https://twitter.com/curtyb" target="_blank">
+                          <img alt="Curt" src={curt} />
+                        </Link>
                       </div>
                       <div className="text">
                         <strong><Link to="https://twitter.com/curtyb" target="_blank" className="contact-link">Curt Baker</Link></strong> Defensive Midfielder. Strategist. Hoping for another Friendly Fires album.
@@ -68,7 +70,9 @@ class About extends Component {
                     </div>
                     <div className="person">
                       <div className="image">
-                        <img alt="Tapin Guide" src={mike} />
+                        <Link to="https://twitter.com/mike_arney" target="_blank">
+                          <img alt="Mike" src={mike} />
+                        </Link>
                       </div>
                       <div className="text">
                         <strong><Link to="https://twitter.com/mike_arney" target="_blank" className="contact-link">Mike Arney</Link></strong> Design, UX and a bit of Front-end development. Nerd.. which is fine. Dad of Jámes.
@@ -76,7 +80,9 @@ class About extends Component {
                     </div>
                     <div className="person">
                       <div className="image">
-                        <img alt="Tapin Guide" src={clint} />
+                        <Link to="https://twitter.com/minnepixel" target="_blank">
+                          <img alt="Clint" src={clint} />
+                        </Link>
                       </div>
                       <div className="text">
                         <strong><Link to="https://twitter.com/minnepixel" target="_blank" className="contact-link">Clint McMahon</Link></strong> Code, soccer, Seinfeld quotes, yadda yadda yadda.
@@ -88,7 +94,7 @@ class About extends Component {
                     </div>
                   <div className="line"></div>
                   <div className="medium">
-                    Check out our series of conversations with soccer makers and creators. [link to Medium]
+                    Check out our <Link to="https://medium.com/tapinguide" target="_blank" className="contact-link">series of conversations with soccer makers and creators</Link>. 
                   </div>
                 </div>
                 <div>

@@ -15,8 +15,8 @@ import './css/matches.css';
 var Loader = require('react-loader');
 var axios = require("axios");
 
-var domain = "http://localhost:8000";
-//var domain = "https://www.tapinguide.com";
+//var domain = "http://localhost:8000";
+var domain = "https://www.tapinguide.com";
 
 var matchesUrl = domain + "/api/activematches/?format=json";
 var linksUrl = domain + "/api/links/?format=json";

@@ -2,8 +2,8 @@ import React from 'react';
 import {ExpanderContent} from 'pui-react-expander';
 import shapegreendown from './images/shapegreendown.svg'
 import shapegreenup from './images/shapegreenup.svg'
-import Event from './Event/Event';
-import './Event/css/event.css';
+import Event from '../Event/Event';
+import '../Event/css/event.css';
 
 export default class MoreInfo extends React.Component {
     getBackgroundImage(value){
