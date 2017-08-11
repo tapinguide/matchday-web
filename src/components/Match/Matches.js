@@ -110,7 +110,7 @@ export default class Matches extends React.Component {
     var matchDateRange = ''
     var firstMatchDate = moment.utc(sortedMatches[0].matchTime).local();
     var lastMatchDate = moment.utc(sortedMatches[sortedMatches.length - 1].matchTime).local();
-    
+
     //check if the matches are in the same month; else display different months
     if(firstMatchDate.month === lastMatchDate.month){
       matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('D, YYYY').toUpperCase();
@@ -131,17 +131,13 @@ export default class Matches extends React.Component {
       this.state.matches.forEach((match, i) => {
         // Add all matches to left column
         columnLeft.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
-
-        // Add only even numbered matches to right column
-        if ( (i % 2) === 1) {
-          columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
-        }
+        columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
       });
-      
+
       var links = this.state.links;
       var mustRead;
       var mustWatch;
-      
+
       for(var i = 0, numResults = links.length; i < numResults; i++){
           if(links[i].shortCode === 'READ'){
             mustRead = links[i];
@@ -152,9 +148,9 @@ export default class Matches extends React.Component {
           }
       }
 
-      columnLeft.push(<MustReadWatch link={mustRead} header="Must Read" icon={mustReadIcon} key="mustRead" />);
-      columnLeft.push(<MustReadWatch link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatch"/>);
-      columnRight.push(<MustReadWatch link={mustWatch} header="Must Watch" icon={mustWatchIcon} key="mustWatchRight"/>);
+      columnLeft.push(<MustReadWatch link={mustRead} header="Must Read" additionalClass="must-read" icon={mustReadIcon} key="mustRead" />);
+      columnLeft.push(<MustReadWatch link={mustWatch} header="Must Watch" additionalClass="must-watch" icon={mustWatchIcon} key="mustWatch"/>);
+      columnRight.push(<MustReadWatch link={mustWatch} header="Must Watch" additionalClass="must-watch" icon={mustWatchIcon} key="mustWatch"/>);
     }
     var bigtext = "Essential Matches";
     return (
