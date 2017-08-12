@@ -10,8 +10,9 @@ export default class MustReadWatch extends React.Component {
         var link = this.props.link;
         var header = this.props.header;
         var icon = this.props.icon;
+        var additionalClass = this.props.additionalClass;
         var content = (
-            <div className="match-container">
+            <div className={"match-container " + additionalClass}>
                 <div className="match w-clearfix has-expander link" onClick={() => this.openWindow(link.url)}>
                     <div className="contentcontainer w-clearfix must-read">
                         <div className="header">
@@ -26,7 +27,7 @@ export default class MustReadWatch extends React.Component {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             );
