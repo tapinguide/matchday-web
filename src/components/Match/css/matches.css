@@ -13,8 +13,25 @@
   width: 50%;
 }
 
-.column.column-left .match-container:nth-child(even) {
+.column.column-left .match-container:nth-child(even),
+.column.column-right .match-container:nth-child(odd) {
   display: none;
+}
+
+.column.column-left .match-container:nth-child(even).must-read,
+.column.column-right .match-container:nth-child(odd).must-watch {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .column.column-left .match-container:nth-child(even).must-watch {
+    display: block;
+  }
+
+  .column.column-right .match-container:nth-child(odd).must-watch {
+    display: none;
+  }
+
 }
 
 .match-container {
@@ -32,11 +49,11 @@
 }
 
 .dateRangeText{
-  height: 18px;	
+  height: 18px;
   color: #363636;
-  font-family: Poppins;	
-  font-size: 11px;	
-  letter-spacing: 1px;	
+  font-family: Poppins;
+  font-size: 11px;
+  letter-spacing: 1px;
   line-height: 18px;
   font-weight: normal;
 }
