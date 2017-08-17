@@ -129,11 +129,11 @@
   }
 
   .innercontainer{
-     height:150px;
+     height:170px;
   }
 
   .scheduled .innercontainer{
-    height: 150px;
+    height: 170px;
   }
   .node {
     /* height: 200px; */
@@ -262,7 +262,9 @@
   .scoreformatting.scoretime.in-progress {
     padding-top: 15px;
   }
-
+  .seconds img{
+    height: 12px  
+  }
   @media screen and (max-width: 767px) {
     .match{
       padding-bottom: 0;

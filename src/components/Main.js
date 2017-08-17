@@ -4,15 +4,13 @@ import Matches from './Match/Matches';
 import Wallpaper from './Wallpaper/Wallpaper';
 import About from './About/About';
 import Contact from './Contact';
-import Home from './Home';
 import Privacy from './Privacy/Privacy';
 
 class Main extends Component {
   render() {
     return (
             <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route exact path='/matchday' component={Matches}/>
+                <Route exact path='/' component={Matches}/>
                 <Route path='/wallpaper' component={Wallpaper}/>
                 <Route path='/about' component={About}/>
                 <Route path='/contact' component={Contact}/>

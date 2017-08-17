@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import MoreInfo from './MoreInfo';
 import rectangle from './images/rectangle.png';
-import seconds from './images/seconds.svg';
+import seconds from './images/seconds.gif';
 import renderHTML from 'react-render-html';
 import './css/match.css';
 
@@ -28,8 +28,7 @@ export default class MatchRow extends React.Component {
   }
   render() {
     var numberStyle = {backgroundImage: "url(" + rectangle + ")"};
-    var secondsStyle = {height: "12px", backgroundPosition: "center top", backgroundRepeat: "no-repeat", backgroundImage: "url(" + seconds + ")"};
-  
+    
     var ref = 'match';
     let matchRow = null;
     var match = this.props.match;
@@ -37,12 +36,12 @@ export default class MatchRow extends React.Component {
 
     var homeClubScore = match.homeClubScore;
     var homeClubPenalties = match.homeClubPenalties;
-    var homeClubCrestUrl = match.homeClub.crest;
+    var homeClubCrestUrl = match.homeClub.crest.replace("http://", "https://");
     var homeClubShortName = match.homeClub.shortName;
-    
+     
     var visitorClubScore = match.visitorClubScore;
     var visitorClubPenalties = match.visitorClubPenalties;
-    var visitorClubCrestUrl = match.visitorClub.crest;
+    var visitorClubCrestUrl = match.visitorClub.crest.replace("http://", "https://");;
     var visitorClubShortName = match.visitorClub.shortName;
 
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
@@ -176,7 +175,9 @@ export default class MatchRow extends React.Component {
                   </div>
                   <div className="scoreformatting scoretime in-progress">
                     <div>{matchStatusDescription}</div>
-                    <div style={secondsStyle}></div>
+                    <div className="seconds">
+                      <img src={seconds} alt="" />
+                    </div>
                   </div>
                   <div className="awaycrest scoreformatting">
                     <img src={visitorClubCrestUrl} alt={visitorClubShortName} />

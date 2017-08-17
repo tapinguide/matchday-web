@@ -34,7 +34,7 @@ export default class MoreInfo extends React.Component {
     }
     getTVVenueDetails(tvDetails, venue){
         
-        if(tvDetails.length > 0 && venue.length > 0)
+        if(tvDetails != null && venue != null && tvDetails.length > 0 && venue.length > 0)
         {
             return (
                 <tv-venue>
@@ -47,10 +47,10 @@ export default class MoreInfo extends React.Component {
                 </tv-venue>
             )
         }
-        else if(tvDetails.length > 0 && venue.length === 0){
+        else if(tvDetails != null && venue != null && tvDetails.length > 0 && venue.length === 0){
             return <div className='tv-venue'><div className='tv'>TV:</div>  {tvDetails}</div> 
         }
-        else if(tvDetails.length === 0 && venue.length > 0){
+        else if(tvDetails != null && venue != null && tvDetails.length === 0 && venue.length > 0){
             return <div className='tv-venue'><div className='tv'>Venue:</div> {venue}</div>
         }
         else{

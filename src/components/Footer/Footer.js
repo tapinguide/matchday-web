@@ -15,7 +15,7 @@ class Footer extends Component {
           <nav className="footer-nav-primary">
             <Link
               className="footer-text-link"
-              to="/matchday"
+              to="/"
             >
               Matches
             </Link>
