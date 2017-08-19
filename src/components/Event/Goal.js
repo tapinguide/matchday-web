@@ -7,7 +7,7 @@ export default class Goal extends React.Component {
         var event = this.props.event;
         var minute = parseInt(event.minute, 10) + parseInt(event.extraMinute, 10);
         var player = event.player;
-        var clubCrestUrl = event.club.crest.replace("http://", "https://");;
+        var clubCrestUrl = event.club.crest.replace("http://", "https://");
         var clubCrestStyle = {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }
@@ -15,8 +15,8 @@ export default class Goal extends React.Component {
            backgroundImage: "url(" + goal + ")"
         }
 
-        var homeTeam = event.match.homeClub.name;
-        var awayTeam = event.match.visitorClub.name;
+        var homeTeamShortName = event.match.homeClub.shortName;
+        var awayTeamShortName = event.match.visitorClub.shortName;
         var homeTeamSubScore = 0;
         var awayTeamSubScore = 0;
         var result;
@@ -26,7 +26,7 @@ export default class Goal extends React.Component {
             awayTeamSubScore = result[1];
         }
         var cardSide;
-        if(event.eventTeamName === homeTeam){
+        if(event.eventTeamName === event.match.homeClub.name){
             cardSide = (
                 <div className="incard">
                     <div className="cardcontainerhome">
@@ -37,7 +37,7 @@ export default class Goal extends React.Component {
                             {player}
                         </div>
                         <div className="goaltext">
-                             {homeTeam} ({homeTeamSubScore}) {awayTeam} ({awayTeamSubScore})
+                             {homeTeamShortName} ({homeTeamSubScore}) {awayTeamShortName} ({awayTeamSubScore})
                         </div>
                     </div>
 		        </div>
@@ -52,7 +52,7 @@ export default class Goal extends React.Component {
 			                {player}
 			            </div>
 					    <div className="goaltext away">
-						    {homeTeam} ({homeTeamSubScore}) {awayTeam} ({awayTeamSubScore})
+						    {homeTeamShortName} ({homeTeamSubScore}) {awayTeamShortName} ({awayTeamSubScore})
 					    </div>
 			        </div>
                     <div className="cardcontaineraway">
