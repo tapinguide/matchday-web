@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
+
 import MoreInfo from './MoreInfo';
 import rectangle from './images/rectangle.png';
 import seconds from './images/seconds.gif';
@@ -15,7 +17,14 @@ export default class MatchRow extends React.Component {
   }
 
   expandCollapse(value) {
+
     this.setState({expanded: !value});
+  }
+
+  openHighlights = (event) => {
+    event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+    console.log('clicked');
   }
 
   getClass(value, optionalClass){
@@ -28,7 +37,7 @@ export default class MatchRow extends React.Component {
   }
   render() {
     var numberStyle = {backgroundImage: "url(" + rectangle + ")"};
-    
+
     var ref = 'match';
     let matchRow = null;
     var match = this.props.match;
@@ -38,7 +47,7 @@ export default class MatchRow extends React.Component {
     var homeClubPenalties = match.homeClubPenalties;
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubShortName = match.homeClub.shortName;
-     
+
     var visitorClubScore = match.visitorClubScore;
     var visitorClubPenalties = match.visitorClubPenalties;
     var visitorClubCrestUrl = match.visitorClub.crest;
@@ -46,7 +55,7 @@ export default class MatchRow extends React.Component {
 
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
     var narrative = match.preMatchDetails;
-    
+
     if(match.inMatchDetails){
       narrative = match.inMatchDetails;
     }
@@ -117,8 +126,8 @@ export default class MatchRow extends React.Component {
         </div>
       )
     }
-    else if (match.status.description === "FT" 
-      || match.status.description === "AET" 
+    else if (match.status.description === "FT"
+      || match.status.description === "AET"
       || match.status.description === "Pen."
       || match.status.description === "Awarded"
       || match.status.description === "Cancl."){
@@ -149,7 +158,17 @@ export default class MatchRow extends React.Component {
                     </div>
                     <div className="scoreformatting">{visitorClubScore}</div>
                   </div>
-                  <div className="livenarrative livenarrativecomplete narrative">{renderHTML(narrative)}</div>
+                  <div className="livenarrative livenarrativecomplete narrative">
+                    <Link
+                      to="https://goo.gl/FKGZQF"
+                      target="_blank"
+                      // onClick={this.openHighlights.bind(this)}
+                      onClick={(event) => this.openHighlights(event)}
+                    >
+                      Highlights
+                    </Link>
+                    {renderHTML(narrative)}
+                  </div>
                   </div>
                   <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
                 </div>
