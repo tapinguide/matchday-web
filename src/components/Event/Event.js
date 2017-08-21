@@ -7,7 +7,7 @@ import Substitute from './Substitute';
 class Event extends React.Component {
  
     getEventType(event, index){
-        if(event.eventType === "yellowcard"){
+        if(event.eventType === "yellowcard" || event.eventType === "yellowred"){
             return <YellowCard event={event} />;
         }
         else if(event.eventType === "redcard"){

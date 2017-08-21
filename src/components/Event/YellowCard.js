@@ -1,5 +1,6 @@
 import React from 'react';
-import card from './images/card.svg'
+import card from './images/card.svg';
+import yellowred from './images/yellowred.svg';
 
 class YellowCard extends React.Component {
 
@@ -11,8 +12,19 @@ class YellowCard extends React.Component {
         var clubCrestStyle = {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }
-        var cardStyle = {
-           backgroundImage: "url(" + card + ")"
+        var cardStyle = {};
+        var cardType = 'Yellow Card';
+
+        if(event.eventType === "yellowred"){
+            cardStyle={
+                backgroundImage: "url(" + yellowred + ")"
+            }
+            cardType = 'Second Yellow Card';
+        }
+        else{
+            cardStyle={
+                backgroundImage: "url(" + card + ")"
+            }
         }
         var homeTeam = event.match.homeClub.name;
         var cardSide;
@@ -51,7 +63,7 @@ class YellowCard extends React.Component {
                     <div className="actionicon">
                         <div className="yellowcard" style={cardStyle}></div>
                     </div>
-                    <div className="headertitle">Yellow Card</div>
+                    <div className="headertitle">{cardType}</div>
                     <div className="gametime">{minute}'</div>
                 </div>
                 {cardSide}
