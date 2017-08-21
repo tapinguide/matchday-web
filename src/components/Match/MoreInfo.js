@@ -67,6 +67,8 @@ export default class MoreInfo extends React.Component {
         {
             var timelineEvents = [];
             events.forEach(function(event, index) {
+                if(event.eventType === "yellowcard" || event.eventType === "yellowred" || event.eventType === "redcard" || event.eventType === "subst" || event.eventType === "goal"){
+                
                 if(index > 0){
                     timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
                 }
@@ -74,7 +76,7 @@ export default class MoreInfo extends React.Component {
                 {
                     timelineEvents.push(<Event event={event} key={event.id} />);
                 }
-                
+            }
             });
 
             return timelineEvents;

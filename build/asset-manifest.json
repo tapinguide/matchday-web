@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.4de6f827.css",
-  "main.css.map": "static/css/main.4de6f827.css.map",
-  "main.js": "static/js/main.07575dc4.js",
-  "main.js.map": "static/js/main.07575dc4.js.map",
+  "main.css": "static/css/main.11743642.css",
+  "main.css.map": "static/css/main.11743642.css.map",
+  "main.js": "static/js/main.635db6ee.js",
+  "main.js.map": "static/js/main.635db6ee.js.map",
   "static/media/Soccer_Field_Transparant-01.svg": "static/media/Soccer_Field_Transparant-01.a3ffcb10.svg",
   "static/media/app-store.png": "static/media/app-store.d70aa0ed.png",
   "static/media/card.svg": "static/media/card.c9cf64ff.svg",
@@ -19,5 +19,6 @@
   "static/media/suboff.svg": "static/media/suboff.bfbac5c9.svg",
   "static/media/subon.svg": "static/media/subon.2a724f57.svg",
   "static/media/tapin-logoV2B-11.svg": "static/media/tapin-logoV2B-11.92edf04a.svg",
-  "static/media/twitter-logo.svg": "static/media/twitter-logo.5697d3e3.svg"
+  "static/media/twitter-logo.svg": "static/media/twitter-logo.5697d3e3.svg",
+  "static/media/yellowred.svg": "static/media/yellowred.aed2ed37.svg"
 }
