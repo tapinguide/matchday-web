@@ -15,8 +15,8 @@ export default class Header extends Component {
   }
     return (
       <div className="mobile-header">
-        <div className="bigtext">
-          <span>{bigtext}</span>
+        <div className="header-text">
+          <span className="bigtext">{bigtext}</span>
           <div className="dateRangeText">
             <span>{smalltext}</span>
           </div>

@@ -125,25 +125,32 @@
   }
 
   .matches{max-width:100%;}
+
   .mobile-header{
+    display:block;
+    padding:  8px 16px;
+  }
+
+  .bigtext, 
+  .logoname, 
+  .dateRangeText,
+  .desktop-header,
+  .column.column-right{
     display:none;
   }
-  .bigtext{
+  
+  .contextblurb{
+    letter-spacing: normal;
+    line-height: 22px;
+    font-size: 14px;
     padding-top:0px;
+    width:100%;
   }
-  .logoname{
-    margin-left: auto;
-  }
-  .desktop-header{display:none;}
-
   .column {
     width: 100%;
   }
   .column.column-left .match-container:nth-child(even) {
     display: block;
-  }
-  .column.column-right{
-    display: none;
   }
 }
 
