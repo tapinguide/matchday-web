@@ -128,7 +128,7 @@
 
   .mobile-header{
     display:block;
-    padding:  8px 16px;
+    padding: 10px !important;
   }
 
   .bigtext, 
@@ -142,8 +142,9 @@
   .contextblurb{
     letter-spacing: normal;
     line-height: 22px;
-    font-size: 14px;
-    padding-top:0px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0px;
     width:100%;
   }
   .column {
