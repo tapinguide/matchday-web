@@ -265,6 +265,10 @@
   .seconds img{
     height: 12px
   }
+  .livematchdata{
+    font-family: 'Poppins';
+    font-size: 13px;
+  }
   @media screen and (max-width: 767px) {
     .match{
       padding-bottom: 0;
