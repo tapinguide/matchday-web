@@ -10,7 +10,7 @@ class Substitute extends React.Component {
     var minute = parseInt(event.minute, 10) + parseInt(event.extraMinute, 10);
     var player = event.player;
     var subPlayer = event.assist;
-    var clubCrestUrl = event.club.crest.replace("http://", "https://");;    
+    var clubCrestUrl = event.club.crest;    
     var clubCrestStyle = {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }

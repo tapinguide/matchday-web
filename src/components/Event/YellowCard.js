@@ -8,7 +8,7 @@ class YellowCard extends React.Component {
         var event = this.props.event;
         var minute = parseInt(event.minute, 10) + parseInt(event.extraMinute, 10);
         var player = event.player;
-        var clubCrestUrl = event.club.crest.replace("http://", "https://");;
+        var clubCrestUrl = event.club.crest;
         var clubCrestStyle = {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }

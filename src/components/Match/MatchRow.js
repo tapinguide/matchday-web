@@ -36,12 +36,12 @@ export default class MatchRow extends React.Component {
 
     var homeClubScore = match.homeClubScore;
     var homeClubPenalties = match.homeClubPenalties;
-    var homeClubCrestUrl = match.homeClub.crest.replace("http://", "https://");
+    var homeClubCrestUrl = match.homeClub.crest;
     var homeClubShortName = match.homeClub.shortName;
      
     var visitorClubScore = match.visitorClubScore;
     var visitorClubPenalties = match.visitorClubPenalties;
-    var visitorClubCrestUrl = match.visitorClub.crest.replace("http://", "https://");;
+    var visitorClubCrestUrl = match.visitorClub.crest;
     var visitorClubShortName = match.visitorClub.shortName;
 
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
