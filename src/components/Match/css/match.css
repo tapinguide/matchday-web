@@ -52,6 +52,10 @@
     /*line-height: 26px;*/
     font-weight: 600;
   }
+  .homecrest img,
+  .awaycrest img {
+    border: 1px solid #D8D8D8;
+  }
   .homecrest {
     position: static;
     left: 40px;
