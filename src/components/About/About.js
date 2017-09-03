@@ -54,11 +54,11 @@ class About extends Component {
                     <img alt="Tapin Guide Logo" src={logo} />
                   </div>
                   <div className="detail">
-                     Tap In Design is a digital product studio. We created the original Tap In Guide to help new soccer fans follow the 2014 World Cup. We’ve gone on to continue to evolve the Tap In product, as well as collaborate with some of our favorite soccer media brands, including KICK and Howler Magazine. We’re always on the lookout for the next collaboration or project, get in touch: curt@tapinguide.com. <Link
+                     Tap In Design is a digital product studio. We created the original Tap In Guide to help new soccer fans follow the 2014 World Cup. We’ve gone on to continue to evolve the Tap In product, as well as collaborate with some of our favorite soccer media brands, including KICK and Howler Magazine. We’re always on the lookout for the next collaboration or project, get in touch: <Link
                       className="contact-link"
                       to="mailto:curt@tapinguide.com"
                       target="_blank"
-                    >curt@tapinguide.com</Link>.
+                    >curt@tapinguide.com</Link>
                   </div>
                   <div className="people">
                     <div className="person">
