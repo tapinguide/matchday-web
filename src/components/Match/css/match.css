@@ -52,6 +52,10 @@
     /*line-height: 26px;*/
     font-weight: 600;
   }
+  .homecrest img,
+  .awaycrest img {
+    border: 1px solid #D8D8D8;
+  }
   .homecrest {
     position: static;
     left: 40px;
@@ -171,7 +175,7 @@
   .expanderclosed {
     position: relative;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     left: 0px;
     right: 0px;
     bottom: 0px;
@@ -189,7 +193,7 @@
   .expanderopen {
     position: relative;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     left: 0px;
     right: 0px;
     bottom: 0px;

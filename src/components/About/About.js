@@ -57,47 +57,47 @@ class About extends Component {
                      Tap In Design is a digital product studio. We created the original Tap In Guide to help new soccer fans follow the 2014 World Cup. We’ve gone on to continue to evolve the Tap In product, as well as collaborate with some of our favorite soccer media brands, including KICK and Howler Magazine. We’re always on the lookout for the next collaboration or project, get in touch: <Link
                       className="contact-link"
                       to="mailto:curt@tapinguide.com"
-                      target="_blank"
-                    >curt@tapinguide.com</Link>
+                      target="_blank" rel="noopener"
+                    >curt@tapinguide.com</Link>.
                   </div>
                   <div className="people">
                     <div className="person">
                       <div className="image">
-                        <Link to="https://twitter.com/curtyb" target="_blank">
+                        <Link to="https://twitter.com/curtyb" target="_blank" rel="noopener">
                           <img alt="Curt" src={curt} />
                         </Link>
                       </div>
                       <div className="text">
-                        <strong><Link to="https://twitter.com/curtyb" target="_blank" className="contact-link">Curt Baker</Link></strong> Defensive Midfielder. Strategist. Hoping for another Friendly Fires album.
+                        <strong><Link to="https://twitter.com/curtyb" target="_blank" rel="noopener" className="contact-link">Curt Baker</Link></strong> Defensive Midfielder. Strategist. Hoping for another Friendly Fires album.
                       </div>
                     </div>
                     <div className="person">
                       <div className="image">
-                        <Link to="https://twitter.com/mike_arney" target="_blank">
+                        <Link to="https://twitter.com/mike_arney" target="_blank" rel="noopener">
                           <img alt="Mike" src={mike} />
                         </Link>
                       </div>
                       <div className="text">
-                        <strong><Link to="https://twitter.com/mike_arney" target="_blank" className="contact-link">Mike Arney</Link></strong> Design, UX and a bit of Front-end development. Nerd.. which is fine. Dad of Jámes.
+                        <strong><Link to="https://twitter.com/mike_arney" target="_blank" rel="noopener" className="contact-link">Mike Arney</Link></strong> Design, UX and a bit of Front-end development. Nerd.. which is fine. Dad of Jámes.
                       </div>
                     </div>
                     <div className="person">
                       <div className="image">
-                        <Link to="https://twitter.com/minnepixel" target="_blank">
+                        <Link to="https://twitter.com/minnepixel" target="_blank" rel="noopener">
                           <img alt="Clint" src={clint} />
                         </Link>
                       </div>
                       <div className="text">
-                        <strong><Link to="https://twitter.com/minnepixel" target="_blank" className="contact-link">Clint McMahon</Link></strong> Code, soccer, Seinfeld quotes, yadda yadda yadda.
+                        <strong><Link to="https://twitter.com/minnepixel" target="_blank" rel="noopener" className="contact-link">Clint McMahon</Link></strong> Code, soccer, Seinfeld quotes, yadda yadda yadda.
                       </div>
                     </div>
                   </div>
                    <div className="person-extra">
-                      <strong><Link to="https://twitter.com/alx_mrtnz" target="_blank" className="contact-link">Alex Martinez</Link></strong> and <strong><Link to="https://twitter.com/handrajs" target="_blank" className="contact-link">Jared Handra</Link></strong> are the newest members of the Tap In squad, both taking on front end development and design duties.
+                      <strong><Link to="https://twitter.com/alx_mrtnz" target="_blank" rel="noopener" className="contact-link">Alex Martinez</Link></strong> and <strong><Link to="https://twitter.com/handrajs" target="_blank" rel="noopener" className="contact-link">Jared Handra</Link></strong> are the newest members of the Tap In squad, both taking on front end development and design duties.
                     </div>
                   <div className="line"></div>
                   <div className="medium">
-                    Check out our <Link to="https://medium.com/tapinguide" target="_blank" className="contact-link">series of conversations with soccer makers and creators</Link>.
+                    Check out our <Link to="https://medium.com/tapinguide" target="_blank" rel="noopener" className="contact-link">series of conversations with soccer makers and creators</Link>.
                   </div>
                 </div>
                 <div>

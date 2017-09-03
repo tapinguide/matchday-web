@@ -30,14 +30,14 @@ class Footer extends Component {
             <Link
               className="footer-nav-social-icon"
               to="https://www.facebook.com/tapindesign"
-              target="_blank"
+              target="_blank" rel="noopener"
             >
               <img alt="Facebook" src={facebookLogo} />
             </Link>
             <Link
               className="footer-nav-social-icon"
               to="https://www.twitter.com/tapinguide"
-              target="_blank"
+              target="_blank" rel="noopener"
             >
               <img alt="Twitter" src={twitterLogo} />
             </Link>
@@ -47,14 +47,14 @@ class Footer extends Component {
           <Link
             className="footer-app-store-logo"
             to="/about"
-            target="_blank"
+            target="_blank" rel="noopener"
           >
             <img alt="App Store" src={appStoreLogo} />
           </Link>
           <Link
             className="footer-app-store-logo"
             to="/about"
-            target="_blank"
+            target="_blank" rel="noopener"
           >
             <img alt="Google Play Store" src={googlePlayLogo} />
           </Link>
