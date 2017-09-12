@@ -162,10 +162,9 @@ export default class MatchRow extends React.Component {
                     <Link
                       to="https://goo.gl/FKGZQF"
                       target="_blank"
-                      // onClick={this.openHighlights.bind(this)}
                       onClick={(event) => this.openHighlights(event)}
                     >
-                      Highlights
+                      Highlights&nbsp;
                     </Link>
                     {renderHTML(narrative)}
                   </div>
