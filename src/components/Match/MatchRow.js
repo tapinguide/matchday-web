@@ -21,10 +21,10 @@ export default class MatchRow extends React.Component {
     this.setState({expanded: !value});
   }
 
-  openHighlights = (event) => {
+  openHighlights = (event, highlightsUrl) => {
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
-    console.log('clicked');
+    console.log('clicked: ', highlightsUrl);
   }
 
   getClass(value, optionalClass){
@@ -52,6 +52,7 @@ export default class MatchRow extends React.Component {
     var visitorClubPenalties = match.visitorClubPenalties;
     var visitorClubCrestUrl = match.visitorClub.crest;
     var visitorClubShortName = match.visitorClub.shortName;
+    var highlightsUrl = match.highlightsUrl;
 
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
     var narrative = match.preMatchDetails;
@@ -95,6 +96,18 @@ export default class MatchRow extends React.Component {
     var sortedEvents = match.events.sort((a,b) => {
       return a.id - b.id
     }).reverse();
+
+    let highlightsLink = null;
+    if (highlightsUrl != null) {
+      highlightsLink =
+        <Link
+          to={highlightsUrl}
+          target="_blank"
+          onClick={(event) => this.openHighlights(event, highlightsUrl)}
+        >
+        Highlights
+      </Link>;
+    }
 
     if(match.status.description === "Scheduled" || match.status.description === "Post."){
       matchRow = (
@@ -159,14 +172,7 @@ export default class MatchRow extends React.Component {
                     <div className="scoreformatting">{visitorClubScore}</div>
                   </div>
                   <div className="livenarrative livenarrativecomplete narrative">
-                    <Link
-                      to="https://goo.gl/FKGZQF"
-                      target="_blank"
-                      onClick={(event) => this.openHighlights(event)}
-                    >
-                      Highlights&nbsp;
-                    </Link>
-                    {renderHTML(narrative)}
+                    {highlightsLink} {renderHTML(narrative)}
                   </div>
                   </div>
                   <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
