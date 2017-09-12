@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
+
 import MoreInfo from './MoreInfo';
 import rectangle from './images/rectangle.png';
 import seconds from './images/seconds.gif';
@@ -15,7 +17,14 @@ export default class MatchRow extends React.Component {
   }
 
   expandCollapse(value) {
+
     this.setState({expanded: !value});
+  }
+
+  openHighlights = (event, highlightsUrl) => {
+    event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+    console.log('clicked: ', highlightsUrl);
   }
 
   getClass(value, optionalClass){
@@ -28,7 +37,7 @@ export default class MatchRow extends React.Component {
   }
   render() {
     var numberStyle = {backgroundImage: "url(" + rectangle + ")"};
-    
+
     var ref = 'match';
     let matchRow = null;
     var match = this.props.match;
@@ -38,15 +47,16 @@ export default class MatchRow extends React.Component {
     var homeClubPenalties = match.homeClubPenalties;
     var homeClubCrestUrl = match.homeClub.crest;
     var homeClubShortName = match.homeClub.shortName;
-     
+
     var visitorClubScore = match.visitorClubScore;
     var visitorClubPenalties = match.visitorClubPenalties;
     var visitorClubCrestUrl = match.visitorClub.crest;
     var visitorClubShortName = match.visitorClub.shortName;
+    var highlightsUrl = match.highlightsUrl;
 
     var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
     var narrative = match.preMatchDetails;
-    
+
     if(match.inMatchDetails){
       narrative = match.inMatchDetails;
     }
@@ -87,6 +97,18 @@ export default class MatchRow extends React.Component {
       return a.id - b.id
     }).reverse();
 
+    let highlightsLink = null;
+    if (highlightsUrl != null) {
+      highlightsLink =
+        <Link
+          to={highlightsUrl}
+          target="_blank"
+          onClick={(event) => this.openHighlights(event, highlightsUrl)}
+        >
+        Highlights
+      </Link>;
+    }
+
     if(match.status.description === "Scheduled" || match.status.description === "Post."){
       matchRow = (
        <div ref={ref} className={this.getClass(this.state.expanded, 'matchscheduled')}
@@ -117,8 +139,8 @@ export default class MatchRow extends React.Component {
         </div>
       )
     }
-    else if (match.status.description === "FT" 
-      || match.status.description === "AET" 
+    else if (match.status.description === "FT"
+      || match.status.description === "AET"
       || match.status.description === "Pen."
       || match.status.description === "Awarded"
       || match.status.description === "Cancl."){
@@ -149,7 +171,9 @@ export default class MatchRow extends React.Component {
                     </div>
                     <div className="scoreformatting">{visitorClubScore}</div>
                   </div>
-                  <div className="livenarrative livenarrativecomplete narrative">{renderHTML(narrative)}</div>
+                  <div className="livenarrative livenarrativecomplete narrative">
+                    {highlightsLink} {renderHTML(narrative)}
+                  </div>
                   </div>
                   <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
                 </div>
