@@ -23,6 +23,7 @@
 }
   .match.has-expander {
     cursor: pointer;
+    padding-bottom: 5px;
     transition: all 0.2s;
   }
 

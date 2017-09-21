@@ -216,13 +216,33 @@
     padding-bottom:20px;
   }
   .tv-venue{
+    align-items: center;
+    background: #F6F6F6;
+    color: #060606;
+    display:flex;
     font-family: Poppins, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 300;
+    letter-spacing: 1px;
     line-height: 18px;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding: 0.5em 0.7em;
+    text-transform: uppercase;
   }
-  .tv{
-    font-weight: bold;
-    display:inline-block
+  .tv-venue-icon{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+    height: 16px;
+    margin-right: 0.7em;
+    overflow: hidden;
+    width: 16px;
+  }
+  .tv-venue-text {
+    /* display: inline-block; */
+  }
+  .tv-venue-icon img {
+    height: 15px;
+    width: 15px;
   }
