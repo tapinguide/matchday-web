@@ -47,6 +47,7 @@ class About extends Component {
                       className="contact-link"
                       to="mailto:curt@tapinguide.com"
                       target="_blank"
+                      rel="noopener"
                     >curt@tapinguide.com</Link>
                   </div>
                   <div className="line"></div>
@@ -57,7 +58,8 @@ class About extends Component {
                      Tap In Design is a digital product studio. We created the original Tap In Guide to help new soccer fans follow the 2014 World Cup. We’ve gone on to continue to evolve the Tap In product, as well as collaborate with some of our favorite soccer media brands, including KICK and Howler Magazine. We’re always on the lookout for the next collaboration or project, get in touch: <Link
                       className="contact-link"
                       to="mailto:curt@tapinguide.com"
-                      target="_blank" rel="noopener"
+                      target="_blank"
+                      rel="noopener"
                     >curt@tapinguide.com</Link>.
                   </div>
                   <div className="people">
