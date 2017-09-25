@@ -104,7 +104,9 @@ export default class MatchRow extends React.Component {
           to={highlightsUrl}
           target="_blank"
           onClick={(event) => this.openHighlights(event, highlightsUrl)}
+          className="highlights-link"
         >
+        <div className="highlights-link-icon"></div>
         Highlights
       </Link>;
     }
@@ -172,7 +174,12 @@ export default class MatchRow extends React.Component {
                     <div className="scoreformatting">{visitorClubScore}</div>
                   </div>
                   <div className="livenarrative livenarrativecomplete narrative">
-                    {highlightsLink} {renderHTML(narrative)}
+                    <div className="match-highlights-link-container">
+                      {highlightsLink}
+                    </div>
+                    <div className="match-summary">
+                      {renderHTML(narrative)}
+                    </div>
                   </div>
                   </div>
                   <MoreInfo events={sortedEvents} expandedState={this.state.expanded} tvDetails={tvDetails} venue={venue} />
