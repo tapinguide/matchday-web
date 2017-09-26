@@ -68,6 +68,10 @@
   width: 90%;
 }
 
+.contextblurb a {
+  color: #00c6e7;
+}
+
 .desktop-header{
   display:block;
 }
@@ -131,14 +135,14 @@
     padding: 10px !important;
   }
 
-  .bigtext, 
-  .logoname, 
+  .bigtext,
+  .logoname,
   .dateRangeText,
   .desktop-header,
   .column.column-right{
     display:none;
   }
-  
+
   .contextblurb{
     letter-spacing: normal;
     line-height: 22px;
