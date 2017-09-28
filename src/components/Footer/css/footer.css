@@ -44,7 +44,6 @@ footer.footer {
 
 .footer-app-store-links {
   text-align: center;
-  display:none;
 }
 
 .footer-app-store-links .footer-app-store-logo {
@@ -93,7 +92,6 @@ footer.footer {
     justify-content: center;
     margin: 20px 0 0;
     flex-wrap: wrap;
-    display:none;
   }
 
   .footer-app-store-links .footer-app-store-logo {

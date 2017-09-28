@@ -46,14 +46,14 @@ class Footer extends Component {
         <div className="footer-app-store-links">
           <Link
             className="footer-app-store-logo"
-            to="/about"
+            to="https://itunes.apple.com/us/app/tap-in-guide/id1265129819"
             target="_blank" rel="noopener"
           >
             <img alt="App Store" src={appStoreLogo} />
           </Link>
           <Link
-            className="footer-app-store-logo"
-            to="/about"
+            className="footer-app-store-logo android"
+            to="https://play.google.com/store/apps/details?id=com.tapinguide.matchday"
             target="_blank" rel="noopener"
           >
             <img alt="Google Play Store" src={googlePlayLogo} />
