@@ -64,10 +64,6 @@ export default class MatchRow extends React.Component {
       narrative = match.postMatchDetails
     }
 
-    if(narrative.length > 320){
-      narrative = narrative.substring(0, 320) + '...';
-    }
-
     var matchStatusDescription = match.status.description;
 
     if(matchStatusDescription === "Pen.")
