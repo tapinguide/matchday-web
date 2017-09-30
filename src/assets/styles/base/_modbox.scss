@@ -1,0 +1,40 @@
+// Modbox
+$modulus: 2em;
+
+@mixin mw {
+  @include better-box;
+  clear: both;
+  margin: 0 - $modulus;
+  width: calc(100% + (#{$modulus} * 2));
+
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    @include full-box;
+    margin: 0;
+  } // End Phone & Below
+}
+
+@mixin mb {
+  @include better-box;
+  float: left;
+  margin: $modulus;
+
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    margin: 0;
+  } // End Phone & Below
+}
+
+@mixin modbox($width) {
+  @include mb;
+  width: calc(#{$width} - (#{$modulus} * 2));
+}
+
+.one-third {
+  @include modbox(33.33333%);
+  
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    @include full-box;
+  } // End Phone & Below
+}

@@ -1,0 +1,139 @@
+@mixin nav-link($color: $background) {
+  @include no-select;
+  @include better-box;
+  color: rgba($color, 0.8);
+  cursor: pointer;
+  font-family: $font-medium;
+  font-size: 0.875em;
+  line-height: 100%;
+  padding: 1.125em;
+  text-decoration: none;
+  transition: color 0.2s;
+  vertical-align: middle;
+
+  &:hover {
+    color: rgba($color, 1.0);
+  }
+
+  &.desktop-link {
+    // Secondary Mobile - Phone & Below
+    @media screen and (max-width: $phone) {
+      display: none;
+    } // End Phone & Below
+  }
+}
+
+nav {
+  // @include full-box(flex);
+  // background: $brand;
+  // justify-content: space-between;
+  // padding: $nano-space $minor-space;
+  // position: fixed;
+  // top: 0;
+  // z-index: 10;
+
+  // // Secondary Mobile - Phone & Below
+  // @media screen and (max-width: $phone) {
+  //   padding: $micro-space;
+  // } // End Phone & Below
+
+  // a {
+  //   @include nav-link;
+
+  //   &.nav-logo {
+  //     @include better-box(flex);
+  //     align-items: center;
+  //     height: 2em;
+  //     padding: 0;
+  //     width: 7.25em;
+
+  //     // Secondary Mobile - Phone & Below
+  //     @media screen and (max-width: $phone) {
+  //       margin-right: $half-space;
+  //       width: 6em;
+  //     } // End Phone & Below
+
+  //     svg {
+  //       height: 100%;
+  //       width: 100%;
+
+  //       &, use {
+  //         fill: $background;
+  //       }
+  //     }
+  //   }
+
+  //   &.nav-callout {
+  //     color: $background;
+  //     margin: 0 1em;
+  //   }
+
+  //   &.create-an-account {
+  //     margin-right: 0;
+  //     padding-left: 0;
+  //     padding-right: 0;
+  //   }
+  // } // end .nav a
+
+  // // Nav Structures
+  // .nav {
+  //   &-search-wrapper {
+  //     align-items: center;
+  //     display: flex;
+  //     min-width: 14em;
+  //     width: 30%;
+
+  //     // Secondary Mobile - Phone & Below
+  //     @media screen and (max-width: $phone) {
+  //       min-width: none;
+  //       width: 100%;
+  //     } // End Phone & Below
+  //   } // End .nav-search-wrapper
+
+  //   &-left, &-right {
+  //     display: flex;
+  //     align-items: center;
+  //   }
+
+  //   &-right {
+
+  //     a.nav-user-avatar {
+  //       @include better-box(flex);
+  //       align-items: center;
+  //       background-color: $brand-dark;
+  //       border-radius: 100%;
+  //       color: $background;
+  //       font-family: $font;
+  //       height: 2.25em;
+  //       justify-content: center;
+  //       padding: 0;
+  //       text-transform: uppercase;
+  //       width: 2.25em;
+
+  //       // Secondary Mobile - Phone & Below
+  //       @media screen and (max-width: $phone) {
+  //         margin-left: $half-space;
+  //       } // End Phone & Below
+
+  //       &:before {
+  //         @include better-box;
+  //         @include vertical-center;
+  //         background: rgba($background, 0.2);
+  //         content: "";
+  //         height: 90%;
+  //         left: calc(-#{$half-space} + 1px);
+  //         width: 1px;
+
+  //         // Secondary Mobile - Phone & Below
+  //         @media screen and (max-width: $phone) {
+  //           display: none;
+  //         } // End Phone & Below
+  //       } // End :before
+
+  //       span {
+  //         @include absolute-center;
+  //       }
+  //     } // End a.nav-user-avatar
+  //   } // End .nav-right
+  // } // End .nav
+} // End nav

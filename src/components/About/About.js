@@ -7,7 +7,6 @@ import Footer from '../Footer/Footer';
 import curt from './images/curt.jpg';
 import mike from './images/mike.jpg';
 import clint from './images/clint.jpg';
-import './css/about.css';
 
 class About extends Component {
   componentDidMount(){
