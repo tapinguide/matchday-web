@@ -45,8 +45,8 @@ class RedCard extends React.Component {
             )
         }
         return (
-            <div className="card">
-                <div className="cardheader red">
+            <div className="event-card">
+                <div className="event-card-header red">
                     <div className="actionicon">
                         <div className="redcard" style={cardStyle}></div>
                     </div>

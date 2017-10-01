@@ -39,27 +39,27 @@ class YellowCard extends React.Component {
                             {player}
                         </div>
                     </div>
-		        </div>
+            </div>
             )
         }
         else
         {
             cardSide = (
                 <div className="incard">
-			        <div className="awaytextaction">
-			            <div className="playernamecardaway">
-			                {player}
-			            </div>
-			        </div>
-				    <div className="cardcontaineraway">
-					    <div className="awaycrest" style={clubCrestStyle}></div>
-				    </div>
-			    </div>
+              <div className="awaytextaction">
+                  <div className="playernamecardaway">
+                      {player}
+                  </div>
+              </div>
+            <div className="cardcontaineraway">
+              <div className="awaycrest" style={clubCrestStyle}></div>
+            </div>
+          </div>
             )
         }
         return (
-            <div className="card">
-                <div className="cardheader yellow">
+            <div className="event-card">
+                <div className="event-card-header yellow">
                     <div className="actionicon">
                         <div className="yellowcard" style={cardStyle}></div>
                     </div>

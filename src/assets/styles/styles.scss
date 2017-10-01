@@ -38,6 +38,10 @@ $phone: 680px;
 // Basic Colors
 $black: #000000;
 $white: #FFFFFF;
+$yellow: #ffdf1a;
+$red: #d03401;
+$green: #18efc6;
+
 
 // App Colors
 $background: $white;
@@ -111,7 +115,8 @@ $border-radius: 0.250em;
 
 // COMPONENTS
 // ----------------------------------------------------------------------------------------------------
-@import "components/footer";
+@import "./components/footer";
+@import './components/event';
 // @import './components/button';
 // @import "./components/nav";
 
