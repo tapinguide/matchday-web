@@ -32,17 +32,18 @@
 // Responsive
 $large-screen: 1280px;
 $tablet: 1024px;
-$big-phone: 840px;
+$big-phone: 767px;
 $phone: 680px;
 
-// Color
-$background: #FFFFFF;
-$background-alt: #F8F8FA;
+// Basic Colors
+$black: #000000;
+$white: #FFFFFF;
+
+// App Colors
+$background: $white;
+$background-alt: $black;
 $border-color: #EAE9F1;
 $brand: #5D4BF4;
-$brand-light: #8987A1;
-$brand-dark: darken($brand, 30%);
-$brand-darker: darken($brand, 50%);
 $brand-alt: #4BA8F4;
 $error: #85260D;
 $form-border: #D6D4E3;
@@ -80,7 +81,7 @@ $animate-time: 0.2s;
 $border-radius: 0.250em;
 
 // Base Imports
-// @import "base/utilities";
+@import "base/utilities";
 // @import "base/resets";
 // @import "base/generics";
 // @import "base/modbox";
@@ -91,7 +92,6 @@ $border-radius: 0.250em;
 // @import "layout/global";
 
 // Footer Structure
-// @import "layout/footer";
 
 // Headings
 // @import "layout/headings";
@@ -109,14 +109,16 @@ $border-radius: 0.250em;
 // Override Utilities
 @import "base/override-utilities";
 
+// COMPONENTS
+// ----------------------------------------------------------------------------------------------------
+@import "components/footer";
+// @import './components/button';
+// @import "./components/nav";
+
 // SCREENS
 // ----------------------------------------------------------------------------------------------------
 @import './screens/about';
 
-// COMPONENTS
-// ----------------------------------------------------------------------------------------------------
-// @import './components/button';
-// @import "./components/nav";
 
 // RESPONSIVE
 // ----------------------------------------------------------------------------------------------------
