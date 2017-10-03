@@ -11,9 +11,9 @@ class Privacy extends Component {
       var smalltext = "";
     return (
          <div className="container-fluid">
-            <div className="w-container w-container-matches">
+            <div className="wrapper wrapper-matches">
               <div className="info desktop-header">
-                <div className="logoname">
+                <div className="header-logo">
                  <Link to="/">
                       <img alt="Tapin Guide Logo" src={logo} />
                     </Link>

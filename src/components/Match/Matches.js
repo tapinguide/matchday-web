@@ -60,8 +60,8 @@ export default class Matches extends React.Component {
           var notCompleted = [];
           var completed = [];
           for(var i = 0, numResults = matches.length; i < numResults; i++){
-              if(matches[i].status.description.toLowerCase() === "ft" 
-                || matches[i].status.description.toLowerCase() === "aet" 
+              if(matches[i].status.description.toLowerCase() === "ft"
+                || matches[i].status.description.toLowerCase() === "aet"
                 || matches[i].status.description.toLowerCase() === "pen."
                 || matches[i].status.description.toLowerCase() === "cancl."){
                 completed.push(matches[i]);
@@ -157,9 +157,9 @@ export default class Matches extends React.Component {
     var bigtext = "Essential Matches";
     return (
           <div className="container-fluid">
-            <div className="w-container w-container-matches">
+            <div className="wrapper wrapper-matches">
               <div className="info desktop-header">
-                <div className="logoname">
+                <div className="header-logo">
                   <img alt="Tapin Guide Logo" src={logo} />
                 </div>
                 <div className="bigtext">

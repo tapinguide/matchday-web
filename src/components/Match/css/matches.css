@@ -43,7 +43,7 @@
   color: #000000;
   font-family: Poppins;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 800;
   letter-spacing: -1.27px;
   line-height: 44px;
 }
@@ -80,7 +80,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .w-container.w-container-matches{
+  .wrapper.wrapper-matches{
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
@@ -121,7 +121,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .w-container{
+  .wrapper{
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;

@@ -12,6 +12,38 @@
   text-decoration: none;
 }
 
+/* Reset */
+html, body, div {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+// Body Resets
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100%;
+  background-color: $background-gray !important;
+  font-family: Arial,sans-serif;
+  font-size: $base;
+  line-height: 120%;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Box-sizing border-box */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 a, a:link, a:visited, a:active, input, button, textarea, select {
   @include animate;
   border-radius: 0;
@@ -43,9 +75,16 @@ svg {
 
 // Selections
 @mixin selection {
-  background: $brand-dark;
-  color: $background;
+  background: lighten($brand, 30%);
+  color: $type;
 }
 
 ::selection { @include selection; }
 ::-moz-selection { @include selection; }
+
+
+
+/* Set up a default font and some padding to provide breathing room */
+body {
+
+}

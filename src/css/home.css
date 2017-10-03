@@ -398,20 +398,20 @@ textarea.w-select {
 .w-radio-input {
   margin-top: 3px;
 }
-.w-container-home {
+.wrapper-home {
   margin-left: auto;
   margin-right: auto;
   max-width: 940px;
 }
-.w-container-home:before,
-.w-container-home:after {
+.wrapper-home:before,
+.wrapper-home:after {
   content: " ";
   display: table;
 }
-.w-container-home:after {
+.wrapper-home:after {
   clear: both;
 }
-.w-container-home .w-row {
+.wrapper-home .w-row {
   margin-left: -10px;
   margin-right: -10px;
 }
@@ -479,7 +479,7 @@ textarea.w-select {
   display: none !important;
 }
 @media screen and (max-width: 991px) {
-  .w-container-home {
+  .wrapper-home {
     max-width: 728px;
   }
   .w-hidden-main {
@@ -541,7 +541,7 @@ textarea.w-select {
     display: none !important;
   }
   .w-row,
-  .w-container-home .w-row {
+  .wrapper-home .w-row {
     margin-left: 0;
     margin-right: 0;
   }
@@ -588,7 +588,7 @@ textarea.w-select {
   }
 }
 @media screen and (max-width: 479px) {
-  .w-container-home {
+  .wrapper-home {
     max-width: none;
   }
   .w-hidden-main {

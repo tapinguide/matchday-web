@@ -42,13 +42,18 @@ $yellow: #ffdf1a;
 $red: #d03401;
 $green: #18efc6;
 
+// Grays
+$gray1: #9d9d9d;
+$black1: #333;
+$background-gray: #f0f0f0;
+
 
 // App Colors
 $background: $white;
 $background-alt: $black;
 $border-color: #EAE9F1;
-$brand: #5D4BF4;
-$brand-alt: #4BA8F4;
+$brand: #30EEC6;
+$brand-alt: #00c6e7;
 $error: #85260D;
 $form-border: #D6D4E3;
 $type: #201C3A;
@@ -83,17 +88,18 @@ $social: "";
 // Misc
 $animate-time: 0.2s;
 $border-radius: 0.250em;
+$card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 
 // Base Imports
 @import "base/utilities";
-// @import "base/resets";
+@import "base/resets";
 // @import "base/generics";
 // @import "base/modbox";
 // @import "base/fonts";
 
 // LAYOUT - Global Structure
 // ----------------------------------------------------------------------------------------------------
-// @import "layout/global";
+@import "layout/global";
 
 // Footer Structure
 
@@ -115,6 +121,7 @@ $border-radius: 0.250em;
 
 // COMPONENTS
 // ----------------------------------------------------------------------------------------------------
+@import "./components/header";
 @import "./components/footer";
 @import './components/event';
 // @import './components/button';
@@ -123,6 +130,8 @@ $border-radius: 0.250em;
 // SCREENS
 // ----------------------------------------------------------------------------------------------------
 @import './screens/about';
+
+// TO REMOVE
 
 
 // RESPONSIVE

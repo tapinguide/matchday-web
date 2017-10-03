@@ -18,9 +18,9 @@ class About extends Component {
 
     return (
      <div className="container-fluid">
-        <div className="w-container w-container-matches">
+        <div className="wrapper wrapper-matches">
           <div className="info desktop-header">
-            <div className="logoname">
+            <div className="header-logo">
               <Link to="/">
                   <img alt="Tapin Guide Logo" src={logo} />
                 </Link>
@@ -36,12 +36,12 @@ class About extends Component {
                 <div className="about-us-header">
                   About
                 </div>
-                <div>
+                <p>
                 There's more coverage of the beautiful game than ever, but even as football fanatics, we found ourselves having trouble keeping up. So, we created the latest version of Tap In.
-                </div>
-                <div>
+                </p>
+                <p>
                 It’s a soccer calendar with context that helps fans follow global soccer’s essential matches. Quick previews to get you prepped for the weekend, live match data, and match recaps with highlights.
-                </div>
+                </p>
               </div>
               <div className="contact">
                 We’d love to hear what you think and what would make Tap In better. Drop us a line:&nbsp;

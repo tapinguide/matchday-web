@@ -24,8 +24,9 @@ export default class Header extends Component {
             <span>{contextblurb}</span>
           </div>
         </div>
-        <div className="logoname">
-          <Link to="/"><img alt="Tapin Guide Logo" src={logo} /></Link>
+        <div className="header">
+          <Link to="/">
+          <img alt="Tapin Guide Logo" src={logo} /></Link>
         </div>
       </div>
     );

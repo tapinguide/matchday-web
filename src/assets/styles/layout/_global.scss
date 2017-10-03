@@ -33,40 +33,54 @@ section {
 }
 
 p {
-  font-family: $font;
+  // font-family: $font;
   font-size: 1em;
   line-height: 160%;
   margin-bottom: $minor-space;
 } // End p
 
 .note {
-  font-size: 0.875em;
+  // font-size: 0.875em;
 }
 
 strong {
-  font-family: $font-medium;
+  // font-family: $font-medium;
 
-  em {
-    font-family: $font-bold-italic;
-  }
+  // em {
+  //   font-family: $font-bold-italic;
+  // }
 }
 
 em {
-  font-family: $font-italic;
+  // font-family: $font-italic;
 
-  strong {
-    font-family: $font-bold-italic;
-  }
+  // strong {
+  //   font-family: $font-bold-italic;
+  // }
 }
 
 hr {
-  @include full-box(table);
-  background-color: $border-color;
-  height: 1px;
-  margin-bottom: $space;
+  // @include full-box(table);
+  // background-color: $border-color;
+  // height: 1px;
+  // margin-bottom: $space;
 }
 
 a {
-  color: $brand;
-  text-decoration: underline;
+  color: $brand-alt;
+  text-decoration: none;
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+  display: flex;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  @media screen and (max-width: 479px) {
+    padding-top: 0px;
+  }
 }
