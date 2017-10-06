@@ -17,7 +17,7 @@ class About extends Component {
     var smalltext = "";
 
     return (
-     <div className="container-fluid">
+     <div className="container-fluid container-about">
         <div className="wrapper wrapper-matches">
           <div className="info desktop-header">
             <div className="header-logo">

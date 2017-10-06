@@ -1,3 +1,10 @@
+.container-about {
+  .mobile-header {
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+    }
+  }
+}
 .about {
   @include better-box(flex);
   flex-wrap: wrap;
@@ -20,9 +27,9 @@
     line-height: 200%;
     padding-bottom: 32px;
 
-    @media screen and (max-width: 479px) {
-      font-size:26px;
-      line-height: 32px;
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+      line-height: 26px;
     }
 
     p {
@@ -32,18 +39,19 @@
     .about-us-header{
       display:none;
 
-      @media screen and (max-width: 479px) {
+      @media screen and (max-width: 767px) {
         display: block;
         color: $black;
         font-family: Poppins;
-        font-size: 40pt;
+        font-size: 36px;
         font-weight: bold;
         letter-spacing: -1pt;
-        line-height: 42pt;
+        line-height: 120%;
         padding-bottom: 6pt;
       }
     } // End .about-us-header
   } // End .about-us
+
 
   .contact {
     height: 38px;
