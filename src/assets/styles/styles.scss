@@ -121,15 +121,17 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 
 // COMPONENTS
 // ----------------------------------------------------------------------------------------------------
-@import "./components/header";
-@import "./components/footer";
-@import './components/event';
-// @import './components/button';
-// @import "./components/nav";
+@import "components/header";
+@import "components/footer";
+@import 'components/event';
+@import "components/match";
+// @import 'components/button';
+// @import "components/nav";
 
 // SCREENS
 // ----------------------------------------------------------------------------------------------------
-@import './screens/about';
+@import 'screens/matches';
+@import 'screens/about';
 
 // TO REMOVE
 

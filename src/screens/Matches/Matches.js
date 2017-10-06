@@ -9,12 +9,11 @@ import MatchRow from './MatchRow';
 import MustReadWatch from '../MustReadWatch/MustReadWatch';
 
 // Assets
-// * Images
 import logo from '../../assets/images/tapin-logo.png';
 import mustReadIcon from '../MustReadWatch/images/mustread.png'
 import mustWatchIcon from '../MustReadWatch/images/mustwatch.png'
-
-// import './css/matches.css';
+import './css/normalize.css';
+import './css/matches.css';
 
 var Loader = require('react-loader');
 var axios = require("axios");

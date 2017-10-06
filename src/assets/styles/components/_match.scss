@@ -1,0 +1,368 @@
+.match {
+    max-width: 479px;
+    padding-bottom: 0;
+    border-right: 0 none #e7e7e7;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
+    border-left: 0 none #e7e7e7;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #fff;
+    -webkit-transition: max-height 3.5s ease-in-out;
+    transition: max-height 3.5s ease-in-out;
+}
+
+.match .shortname{
+  color: #757575;
+  font-family: Poppins;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 18px;
+  text-align: center;
+  padding-top: 5px;
+  font-weight: 400;
+}
+  .match.has-expander {
+    cursor: pointer;
+    padding-bottom: 5px;
+    transition: all 0.2s;
+  }
+
+  .match.matchcomplete {
+    background-color: #f5f5f5;
+    box-shadow: none;
+  }
+  .match.has-expander:hover, .match.expander-open {
+    background-color: #fff;
+    box-shadow: 0px 26px 21px -10px rgba(0,0,0,.18);
+    transform: translateY(-2px);
+  }
+  .numberbg {
+
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 42px;
+    height: 45px;
+  }
+  .numberplace {
+    position: relative;
+    padding-left: 7px;
+    padding-top: 5px;
+    font-family: Poppins,sans-serif;
+    color: #fff;
+    font-size: 16px;
+    /*line-height: 26px;*/
+    font-weight: 600;
+  }
+  /*
+  .homecrest img,
+  .awaycrest img {
+    border: 1px solid #D8D8D8;
+  }
+  */
+  .homecrest {
+    position: static;
+    left: 40px;
+    top: -20px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .homecrest.incard {
+    margin: 15px auto 8px;
+    padding-top: 0px;
+  }
+
+  .homecrest img{
+    width:40px;
+    height:40px;
+  }
+  .crestcontainer {
+    position: relative;
+    left: 4%;
+    top: -14px;
+    width: 40px;
+    float: left;
+  }
+  .vs {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-family: Poppins, sans-serif;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .awaycrest {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .awaycrest img{
+    width: 40px;
+    height: 40px;
+  }
+  .infocontainer {
+    position: relative;
+    left: 12%;
+    top: -14px;
+    width: 79%;
+    height: auto;
+    padding-right: 26px;
+    float: left;
+  }
+  .datetime {
+    font-family: Poppins, sans-serif;
+    color: #000;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+  .narrative {
+    font-family: Poppins, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 19px;
+    overflow: hidden;
+    padding-top: 12px;
+    position: relative;
+  }
+
+  .innercontainer{
+     height: 200px;
+  }
+
+  .scheduled .innercontainer{
+    height:  200px;
+  }
+  .node {
+    /* height: 200px; */
+    width: 100%;
+    background: red;
+  }
+  .node.firstNode {
+    background: blue;
+    /* height: 250px; */
+  }
+    .narrative:after {
+      background: blue;
+      bottom: 0;
+      content: '';
+      /* height: 12px; */
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+    .match.matchcomplete .narrative:after {
+      background: red;
+    }
+    .match.matchscheduled .narrative:after {
+      background: orange;
+    }
+  .narrative.livenarrative {
+    margin-bottom: 16px;
+  }
+  .narrative.livenarrative.livenarrativecomplete {
+    color: #7E7E7E;
+    display: flex;
+    flex-direction: row;
+  }
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container {
+    margin-right: 20px;
+    margin-left: 2px;
+    padding-bottom: 14px;
+  }
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container .highlights-link {
+    border: 1px solid #D8D8D8;
+    color: #080808;
+    cursor: pointer;
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 4px;
+    padding: 18px 10px 10px;
+    transition: all 0.2s;
+  }
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container .highlights-link:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 14px 20px -11px;
+  }
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container .highlights-link:focus {
+    text-decoration: none;
+  }
+  .highlights-link .highlights-link-icon {
+    -webkit-transition: all 317ms ease;
+    background-image: -o-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+    background-image: -webkit-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+    background-image: linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+    border-radius: 4px;
+    height: 20px;
+    margin: 0 auto 12px;
+    position: relative;
+    width: 26px;
+  }
+  .highlights-link .highlights-link-icon:after {
+    background-image: url('../images/video-camera.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 54%;
+  }
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container .highlights-link:hover {
+    color: #080808;
+    text-decoration: none;
+  }
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container .highlights-link:focus,
+  .narrative.livenarrative.livenarrativecomplete .match-highlights-link-container .highlights-link:active {
+    color: #080808;
+  }
+  .match-summary {
+    line-height: 20px;
+  }
+  .noexpander{
+    margin-top:28px;
+  }
+  .expanderclosed {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 21px;
+    margin-right: auto;
+    margin-left: auto;
+    clear: left;
+    background-position: 50% 50%;
+    background-size: auto;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .expanderopen {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 21px;
+    margin-right: auto;
+    margin-left: auto;
+    clear: left;
+    background-position: 50% 50%;
+    background-size: auto;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .clear{
+    position: relative;
+    margin-bottom: 5px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 21px;
+    margin-right: auto;
+    margin-left: auto;
+    clear: left;
+  }
+  .teamnametext {
+    font-weight: 600;
+  }
+  .contentcontainer {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+  }
+  .livescore {
+    position: relative;
+    top: -13px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 84%;
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-style: none;
+    padding-bottom: 10px;
+  }
+  .scoreformatting {
+    display: inline-block;
+    width: 20%;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 5px;
+    border: 1px none #000;
+    font-family: Poppins, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .scoreformatting.scoretime {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .scoreformatting.scoretime.in-progress {
+    padding-top: 15px;
+  }
+  .seconds img{
+    height: 12px
+  }
+  .livematchdata{
+    color: #868686;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  @media screen and (max-width: 767px) {
+    .match{
+      padding-bottom: 0;
+      border-right: 0 none #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
+      border-left: 0 none #e7e7e7;
+    }
+    .narrative{
+      height: 100% !important;
+    }
+
+  }
+  @media screen and (max-width: 479px) {
+    .innercontainer{
+      height: 100%;
+    }
+    .match.has-expander:hover, .match.expander-open {
+      background-color: #fff;
+      box-shadow: none;
+      transform: none;
+    }
+    .match-container:last-of-type .match:hover {
+      box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
+    }
+  }
