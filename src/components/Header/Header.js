@@ -15,6 +15,10 @@ export default class Header extends Component {
   }
     return (
       <div className="mobile-header">
+        <div className="header logoname">
+          <Link to="/">
+          <img alt="Tapin Guide Logo" src={logo} /></Link>
+        </div>
         <div className="header-text">
           <span className="bigtext">{bigtext}</span>
           <div className="dateRangeText">
@@ -23,10 +27,6 @@ export default class Header extends Component {
           <div className="contextblurb">
             <span>{contextblurb}</span>
           </div>
-        </div>
-        <div className="header logoname">
-          <Link to="/">
-          <img alt="Tapin Guide Logo" src={logo} /></Link>
         </div>
       </div>
     );

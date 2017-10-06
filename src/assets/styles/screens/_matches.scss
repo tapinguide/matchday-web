@@ -152,11 +152,22 @@
     padding-top: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
+    position: relative;
   }
 
   @media screen and (max-width: 767px) {
-    display:block;
-    padding: 10px !important;
+    display: block;
+    width: 100%;
+    max-width: 479px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 10px;
   }
 }
 
@@ -182,11 +193,14 @@
 
 .logoname {
   @media screen and (max-width: 1024px) {
-    margin-left: auto;
+    position: absolute;
+    right: 15px;
   }
 
   @media screen and (max-width: 767px) {
-    display: none;
+    position: relative;
+    right: 0;
+    margin-bottom: 15px;
   }
 
   img {
