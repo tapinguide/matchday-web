@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import logo from '../../images/tapin-logo.png';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
+
 import './css/privacy.css';
+
+// Components
+import logo from '../../assets/images/tapin-logo.png';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
 class Privacy extends Component {
   render() {

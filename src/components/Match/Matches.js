@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import MatchRow from './MatchRow';
 import MustReadWatch from '../MustReadWatch/MustReadWatch';
-import logo from '../../images/tapin-logo.png';
+import logo from '../../assets/images/tapin-logo.png';
 import mustReadIcon from '../MustReadWatch/images/mustread.png'
 import mustWatchIcon from '../MustReadWatch/images/mustwatch.png'
 import './css/normalize.css';

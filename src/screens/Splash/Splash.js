@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../images/tapin-logo-white.png';
-import '../css/home.css';
+import logo from '../../assets/images/tapin-logo-white.png';
+import './styles/splash.css';
 
-export default class Home extends Component {
+export default class Splash extends Component {
   render() {
     return (
         <div className="div-block" id="gradient">
@@ -27,4 +27,3 @@ export default class Home extends Component {
     );
   }
 }
- 
