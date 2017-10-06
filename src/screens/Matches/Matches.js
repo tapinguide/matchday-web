@@ -3,17 +3,15 @@ import moment from 'moment';
 import renderHTML from 'react-render-html';
 
 // Components
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import MatchRow from './MatchRow';
-import MustReadWatch from '../MustReadWatch/MustReadWatch';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import MatchRow from '../../components/Match/MatchRow';
+import MustReadWatch from '../../components/MustReadWatch/MustReadWatch';
 
 // Assets
 import logo from '../../assets/images/tapin-logo.png';
-import mustReadIcon from '../MustReadWatch/images/mustread.png'
-import mustWatchIcon from '../MustReadWatch/images/mustwatch.png'
-import './css/normalize.css';
-import './css/matches.css';
+import mustReadIcon from '../../components/MustReadWatch/images/mustread.png'
+import mustWatchIcon from '../../components/MustReadWatch/images/mustwatch.png'
 
 var Loader = require('react-loader');
 var axios = require("axios");
