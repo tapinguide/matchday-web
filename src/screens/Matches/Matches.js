@@ -16,6 +16,7 @@ import mustWatchIcon from '../../components/MustReadWatch/images/mustwatch.png'
 var Loader = require('react-loader');
 var axios = require("axios");
 
+// Matches API Configuration
 //var domain = "https://api.tapinguide.demo.nordicdev.io";
 var domain = "https://api.tapinguide.com"
 
@@ -157,7 +158,7 @@ export default class Matches extends React.Component {
     }
     var bigtext = "Essential Matches";
     return (
-          <div className="container-fluid">
+          <div className="container-fluid container-fluid-matches">
             <div className="wrapper wrapper-matches">
               <div className="info desktop-header">
                 <div className="header-logo">
@@ -176,10 +177,10 @@ export default class Matches extends React.Component {
               <Header bigtext={bigtext} smalltext={this.state.matchDateRange} contextblurb={this.state.contextBlurb} />
               <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
                 <div className="matches">
-                  <div className="column column-left">
+                  <div className="matches-column column-left">
                      {columnLeft}
                   </div>
-                  <div className="column column-right">
+                  <div className="matches-column column-right">
                     {columnRight}
                   </div>
                   <Footer />
