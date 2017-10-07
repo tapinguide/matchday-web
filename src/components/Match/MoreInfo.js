@@ -5,7 +5,6 @@ import shapegreenup from './images/shapegreenup.svg';
 import pitchIcon from './images/pitch@2x.png';
 import tvIcon from './images/TV@2x.png';
 import Event from '../Event/Event';
-import '../Event/css/event.css';
 
 export default class MoreInfo extends React.Component {
   getBackgroundImage(value){

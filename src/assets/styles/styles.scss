@@ -1,0 +1,161 @@
+// BASE
+//  Variables
+//  Generics, Utilities, & Consolidations
+//  Resets
+//  Webfonts
+
+// LAYOUT
+//  Header Structure
+//  Footer Structure
+//  Headings
+//  Forms
+//  Lists
+//  Pagination
+
+// MODULES
+//  Page Specific
+
+// RESPONSIVE
+//  Only Computer - No tablet or below
+//  Only Tablet & Above - No Mobile Phone
+//  Primary Mobile - Tablet & Below
+//  Secondary Mobile - Phone & Below
+//  iPad Only
+//  iPhone Only
+
+// Themes
+//  If Applicable
+
+// BASE
+// ----------------------------------------------------------------------------------------------------
+
+// Responsive
+$large-screen: 1280px;
+$tablet: 1024px;
+$big-phone: 767px;
+$phone: 680px;
+
+// Basic Colors
+$black: #000000;
+$white: #FFFFFF;
+$yellow: #ffdf1a;
+$red: #d03401;
+$green: #18efc6;
+
+// Grays
+$gray1: #9d9d9d;
+$black1: #333;
+$background-gray: #f0f0f0;
+
+
+// App Colors
+$background: $white;
+$background-alt: $black;
+$border-color: #EAE9F1;
+$brand: #30EEC6;
+$brand-alt: #00c6e7;
+$error: #85260D;
+$form-border: #D6D4E3;
+$type: #201C3A;
+$type-alt: #8F8D9C;
+
+// Space
+$base: 16px;
+$tablet-base: 15px;
+$phone-base: 15px;
+
+$space: 2rem;
+$half-space: $space / 2;
+$double-space: $space * 2;
+$triple-space: $space * 3;
+$minor-space: 1.250rem;
+$double-minor-space: $minor-space * 2;
+$micro-space: 0.750rem;
+$nano-space: $micro-space / 2;
+
+// Fonts
+$font: "roboto_regular";
+$font-light: "roboto_light";
+$font-medium: "roboto_medium";
+$font-bold: "roboto_bold";
+$font-bold-italic: "roboto_bold_italic";
+$font-italic: "roboto_italic";
+$font-alt: "";
+$font-alt-bold: "";
+$font-stack: $font, "Georgia", "Times New Roman", serif;
+$social: "";
+
+// Misc
+$animate-time: 0.2s;
+$border-radius: 0.250em;
+$card-drop-shadow: 0 7px 22px 0 #d3d3d3;
+
+// Base Imports
+@import "base/utilities";
+@import "base/resets";
+// @import "base/generics";
+// @import "base/modbox";
+// @import "base/fonts";
+
+// LAYOUT - Global Structure
+// ----------------------------------------------------------------------------------------------------
+@import "layout/global";
+
+// Footer Structure
+
+// Headings
+// @import "layout/headings";
+
+// Forms
+// @import "layout/forms";
+
+// MODULES - Page Specific
+// ----------------------------------------------------------------------------------------------------
+
+// Globals
+
+// Weblink Styles
+
+// Override Utilities
+@import "base/override-utilities";
+
+// COMPONENTS
+// ----------------------------------------------------------------------------------------------------
+@import "components/header";
+@import "components/footer";
+@import 'components/event';
+@import "components/match";
+// @import 'components/button';
+// @import "components/nav";
+
+// SCREENS
+// ----------------------------------------------------------------------------------------------------
+@import 'screens/matches';
+@import 'screens/about';
+
+// TO REMOVE
+
+
+// RESPONSIVE
+// ----------------------------------------------------------------------------------------------------
+
+// Only Computer - No tablet or below
+// @media screen and (min-width: $tablet) {} // End Only Computer
+
+// Only Tablet & Above - No Mobile Phone
+// @media screen and (min-width: $phone) {} // End Tablet & Above
+
+// Primary Mobile - Tablet & Below
+// @media screen and (max-width: $tablet) {} // End Tablet & Below
+
+// Big Phone
+// @media screen and (max-width: $big-phone) {} // End Big Phone
+
+// Secondary Mobile - Phone & Below
+// @media screen and (max-width: $phone) {} // End Phone & Below
+
+// iPad Only
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {} // End iPad Only
+
+// iPhone Only
+// @media only screen and (max-device-width: 480px) {} // End iPhone Only

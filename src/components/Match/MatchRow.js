@@ -6,7 +6,6 @@ import MoreInfo from './MoreInfo';
 import rectangle from './images/rectangle.png';
 import seconds from './images/seconds.gif';
 import renderHTML from 'react-render-html';
-import './css/match.css';
 
 export default class MatchRow extends React.Component {
   constructor(props) {

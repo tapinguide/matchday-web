@@ -1,0 +1,219 @@
+.matches-container {
+  width: calc(100% - 220px);
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
+  .matches {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    width: 100%;
+
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+    }
+
+    .matches-column {
+      width: 50%;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+
+      &.column-left {
+        .match-container {
+          &:nth-child(even) {
+            display: none;
+
+            @media screen and (max-width: 767px) {
+              display: block;
+            }
+
+            &.must-read {
+              display: block;
+            }
+
+            &.must-watch {
+              @media screen and (max-width: 767px) {
+                display: block;
+              }
+            }
+          }
+        }
+      } // End .matches-column.column-left
+
+      &.column-right {
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+
+        .match-container {
+          &:nth-child(odd) {
+            display: none;
+
+            &.must-watch {
+              display: block;
+
+              @media screen and (max-width: 767px) {
+                display: none;
+              }
+            }
+          }
+        }
+      } // End .matches-column.column-left
+    } // End .matches-column
+  } // End .matches
+} // End .matches-container
+
+
+.match-container {
+  width: 100%;
+  padding: 10px;
+
+  @media screen and (max-width: 479px) {
+    padding: 0;
+  }
+}
+
+.bigtext {
+  color: #000000;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -1.27px;
+  line-height: 44px;
+
+  @media screen and (max-width: 1024px) {
+    padding-top:5px;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.dateRangeText{
+  height: 18px;
+  color: #363636;
+  font-family: Poppins;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 18px;
+  font-weight: normal;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.contextblurb{
+  color: #000000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  padding-top: 20px;
+  width: 90%;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 14pt;
+    line-height: 19pt;
+  }
+
+  @media screen and (max-width: 767px) {
+    letter-spacing: normal;
+    line-height: 22px;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 0px;
+    width:100%;
+  }
+
+  a {
+    color: #00c6e7;
+  }
+}
+
+.desktop-header{
+  display:block;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+.mobile-header{
+  display: none;
+
+  @media screen and (max-width: 1024px) {
+    display:flex;
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    position: relative;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: block;
+    width: 100%;
+    max-width: 479px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.wrapper {
+  @media screen and (max-width: 767px) {
+    -webkit-flex-direction: column;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+  }
+  &.wrapper-matches {
+    @media screen and (max-width: 1024px) {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  } // End .wrapper.wrapper-matches
+} // End .wrapper
+
+.logoname {
+  @media screen and (max-width: 1024px) {
+    position: absolute;
+    right: 15px;
+  }
+
+  @media screen and (max-width: 767px) {
+    position: relative;
+    right: 0;
+    margin-bottom: 15px;
+  }
+
+  img {
+    @media screen and (max-width: 1024px) {
+      height: auto;
+      width: auto;
+    }
+  }
+} // End .logoname
+
+.container-fluid.container-fluid-matches {
+  @media screen and (max-width: 479px) {
+    padding: 0;
+  }
+}

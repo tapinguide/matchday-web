@@ -62,8 +62,8 @@ export default class Goal extends React.Component {
             )
         }
         return (
-            <div className="card">
-                <div className="cardheader green">
+            <div className="event-card">
+                <div className="event-card-header green">
                     <div className="actionicon">
                         <div className="goal" style={goalStyle}></div>
                     </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './css/footer.css';
 
 import appStoreLogo from './images/app-store.png';
 import googlePlayLogo from './images/google-play.png';

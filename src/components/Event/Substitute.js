@@ -4,13 +4,13 @@ import subOff from './images/suboff.svg';
 import sub from './images/sub.svg';
 
 class Substitute extends React.Component {
- 
+
   render() {
     var event = this.props.event;
     var minute = parseInt(event.minute, 10) + parseInt(event.extraMinute, 10);
     var player = event.player;
     var subPlayer = event.assist;
-    var clubCrestUrl = event.club.crest;    
+    var clubCrestUrl = event.club.crest;
     var clubCrestStyle = {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }
@@ -81,8 +81,8 @@ class Substitute extends React.Component {
             )
         }
     return (
-        <div className="card">
-            <div className="cardheader">
+        <div className="event-card">
+            <div className="event-card-header">
                 <div className="actionicon">
                     <div className="sub" style={subStyle}></div>
                 </div>

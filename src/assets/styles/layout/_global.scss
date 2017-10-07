@@ -1,0 +1,86 @@
+#root, html, body, .app, .screen {
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  // background-color: $background;
+  // color: $type;
+  // font-family: $font-stack;
+  // font-size: $base;
+
+  // // Primary Mobile - Tablet & Below
+  // @media screen and (max-width: $tablet){
+  //   font-size: $tablet-base;
+  // } // End Tablet & Below
+
+  // // Secondary Mobile - Phone & Below
+  // @media screen and (max-width: $phone){
+  //   font-size: $phone-base;
+  // } // End Phone & Below
+} // End body
+
+// Section
+@mixin section {
+  @include full-box;
+  background-color: $background;
+  padding: $space;
+}
+
+section {
+  @include section;
+}
+
+p {
+  // font-family: $font;
+  font-size: 1em;
+  line-height: 160%;
+  margin-bottom: $minor-space;
+} // End p
+
+.note {
+  // font-size: 0.875em;
+}
+
+strong {
+  // font-family: $font-medium;
+
+  // em {
+  //   font-family: $font-bold-italic;
+  // }
+}
+
+em {
+  // font-family: $font-italic;
+
+  // strong {
+  //   font-family: $font-bold-italic;
+  // }
+}
+
+hr {
+  // @include full-box(table);
+  // background-color: $border-color;
+  // height: 1px;
+  // margin-bottom: $space;
+}
+
+a {
+  color: $brand-alt;
+  text-decoration: none;
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+  display: flex;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  @media screen and (max-width: 479px) {
+    padding-top: 0px;
+  }
+}

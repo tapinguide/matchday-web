@@ -7,11 +7,13 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "pui-react-expander": "^8.3.3",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.3",
+
     "react-color": "^2.12.0",
     "react-dom": "^16.0.0",
     "react-flip-move": "^2.9.14",
@@ -23,8 +25,11 @@
     "reactcss": "^1.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass-chokidar src/assets/styles/styles.scss -o src/assets/styles/ --output-style compressed",
+    "watch-css": "npm run build-css && node-sass-chokidar src/assets/styles/styles.scss -o src/assets/styles/ --watch --recursive --output-style compressed",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

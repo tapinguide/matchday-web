@@ -1,0 +1,149 @@
+.container-about {
+  .mobile-header {
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+    }
+  }
+}
+.about {
+  @include better-box(flex);
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  width: 100%;
+  padding:80px 84px 44px 115px;
+  background-color: $background;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
+
+  @media screen and (max-width: 767px) {
+    padding: 20px;
+  }
+
+  .about-us {
+    color: $black;
+    font-family: Poppins;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 200%;
+    padding-bottom: 32px;
+
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+      line-height: 26px;
+    }
+
+    p {
+      line-height: 130%;
+    }
+
+    .about-us-header{
+      display:none;
+
+      @media screen and (max-width: 767px) {
+        display: block;
+        color: $black;
+        font-family: Poppins;
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -1pt;
+        line-height: 120%;
+        padding-bottom: 6pt;
+      }
+    } // End .about-us-header
+  } // End .about-us
+
+
+  .contact {
+    height: 38px;
+    width: 572px;
+    color: #444444;
+    font-family: Poppins;
+    font-size: 13px;
+    line-height: 19px;
+    padding-bottom: 0px;
+  }
+
+  .contact-link{
+      color: #00c6e7;
+  }
+
+
+  .line {
+    box-sizing: border-box;
+    height: 3px;
+    width: 100%;
+    border-bottom: 1px solid #CFCCCC;
+    padding-top: 40px;
+  }
+
+  .tapin-logo{
+    padding-top:50px;
+    padding-bottom:10px;
+  }
+
+  .detail{
+    color: #444444;
+    font-family: Poppins;
+    font-size: 13px;
+    line-height: 19px;
+    padding-bottom: 20px;
+  }
+
+  .people{
+    display: table;
+    width: 100%;
+    table-layout: fixed;    /* For cells of equal size */
+  }
+
+  .person{
+    display: table-cell;
+    padding:5px;
+
+    @media screen and (max-width: 479px) {
+      display:block;
+      width:100%;
+      padding-bottom: 18pt;
+    }
+
+    .text{
+      max-width:216px;
+      font-family: Poppins;
+      font-size: 13px;
+      line-height: 19px;
+      padding-top: 10px;
+      text-align: left;
+
+      @media screen and (max-width: 479px) {
+        max-width: 100%;
+      }
+    } // End .person .text
+
+    .image img{
+      width: 100%;
+
+      @media screen and (max-width: 479px) {
+        width:100%;
+      }
+    } // End .person .image img
+  } // End .person
+
+  .person-extra{
+    font-family: Poppins;
+    font-size: 13px;
+    line-height: 19px;
+    padding-top: 30px;
+    text-align: left;
+
+    @media screen and (max-width: 479px) {
+      padding-top: 0px;
+    }
+  }
+
+  .medium{
+    color: #444444;
+    font-family: Poppins;
+    font-size: 13px;
+    line-height: 19px;
+    padding-top: 30px;
+  }
+} // End .about
