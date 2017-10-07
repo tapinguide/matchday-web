@@ -15,19 +15,18 @@ import './css/matches.css';
 var Loader = require('react-loader');
 var axios = require("axios");
 
-//var domain = "https://api.tapinguide.demo.nordicdev.io";
-var domain = "https://api.tapinguide.com"
+var domain = "https://api.tapinguide.com";
 
-var matchesUrl = domain + "/api/activematches/?format=json";
-var linksUrl = domain + "/api/links/?format=json";
-var contextBlurbUrl = domain + "/api/contextblurb/?format=json";
+var matchesUrl = domain + "/activematches/?format=json";
+var readWatchUrl = domain + "/mustreadwatch/?format=json";
+var contextBlurbUrl = domain + "/contextblurb/?format=json";
 
 export default class Matches extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       matches: [],
-      links: [],
+      readWatch: [],
       contextBlurb: '',
       loaded: false,
       matchDateRange: ''
@@ -51,11 +50,11 @@ export default class Matches extends React.Component {
     var _this = this;
     axios.all([
       this.getMatches(),
-      this.getLinks(),
+      this.getReadWatch(),
       this.getContextBlurb()
-      ]).then(axios.spread(function (matchesResult, linksResult, contextBlurbResult) {
+      ]).then(axios.spread(function (matchesResult, readWatchResult, contextBlurbResult) {
           var matches = matchesResult.data;
-          var links = linksResult.data;
+          var readWatch = readWatchResult.data;
           var contextBlurb = contextBlurbResult.data[0].text;
           var notCompleted = [];
           var completed = [];
@@ -81,7 +80,7 @@ export default class Matches extends React.Component {
 
            _this.setState({
             matches: notCompleted.concat(completed),
-            links: links,
+            readWatch: readWatch,
             contextBlurb: contextBlurb,
             loaded: true
           });
@@ -95,8 +94,8 @@ export default class Matches extends React.Component {
     return axios.get(matchesUrl)
   }
 
-  getLinks(){
-    return axios.get(linksUrl)
+  getReadWatch(){
+    return axios.get(readWatchUrl)
   }
 
   getContextBlurb(){
@@ -136,23 +135,17 @@ export default class Matches extends React.Component {
         columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
       });
 
-      var links = this.state.links;
-      var mustRead;
-      var mustWatch;
+      var readWatch = this.state.readWatch;
+      var mustReadLeft;
+      var mustReadRight;
 
-      for(var i = 0, numResults = links.length; i < numResults; i++){
-          if(links[i].shortCode === 'READ'){
-            mustRead = links[i];
-          }
-          else if(links[i].shortCode === 'WATCH')
-          {
-            mustWatch = links[i];
-          }
-      }
-
-      columnLeft.push(<MustReadWatch link={mustRead} header="Must Read" additionalClass="must-read" icon={mustReadIcon} key="mustRead" />);
-      columnLeft.push(<MustReadWatch link={mustWatch} header="Must Watch" additionalClass="must-watch" icon={mustWatchIcon} key="mustWatch"/>);
-      columnRight.push(<MustReadWatch link={mustWatch} header="Must Watch" additionalClass="must-watch" icon={mustWatchIcon} key="mustWatch"/>);
+     mustReadLeft = readWatch[0];
+         
+      mustReadRight = readWatch[1];
+         
+      columnLeft.push(<MustReadWatch link={mustReadLeft} key="mustRead" additionalClass="must-read" />);
+      columnLeft.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
+      columnRight.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
     }
     var bigtext = "Essential Matches";
     return (

@@ -1,19 +1,28 @@
 import React from 'react';
 import renderHTML from 'react-render-html';
 import './css/mustreadwatch.css';
+import mustReadIcon from './images/mustread.png'
+import mustWatchIcon from './images/mustwatch.png'
 
 export default class MustReadWatch extends React.Component {
     openWindow(url){
         window.open(url,'_blank');
     }
     render() {
-        var link = this.props.link;
-        var header = this.props.header;
-        var icon = this.props.icon;
+        var mustReadLink = this.props.link;
+        var header = mustReadLink.header;
+        var icon;
+        if(mustReadLink.mustType === 'read'){
+            icon = mustReadIcon;
+        }
+        else{
+            icon = mustWatchIcon;
+        }
+
         var additionalClass = this.props.additionalClass;
         var content = (
             <div className={"match-container " + additionalClass}>
-                <div className="match w-clearfix has-expander link" onClick={() => this.openWindow(link.url)}>
+                <div className="match w-clearfix has-expander link" onClick={() => this.openWindow(mustReadLink.url)}>
                     <div className="contentcontainer w-clearfix must-read">
                         <div className="header">
                             {header}
@@ -23,7 +32,7 @@ export default class MustReadWatch extends React.Component {
                                 <img alt={header} src={icon} />
                             </div>
                             <div className="text">
-                                {renderHTML(link.text)}
+                                {renderHTML(mustReadLink.text)}
                             </div>
                         </div>
                     </div>
