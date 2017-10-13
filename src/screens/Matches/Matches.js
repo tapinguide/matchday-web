@@ -10,19 +10,12 @@ import MustReadWatch from '../../components/MustReadWatch/MustReadWatch';
 
 // Assets
 import logo from '../../assets/images/tapin-logo.png';
-import mustReadIcon from '../../components/MustReadWatch/images/mustread.png'
-import mustWatchIcon from '../../components/MustReadWatch/images/mustwatch.png'
 
 var Loader = require('react-loader');
 var axios = require("axios");
 
-<<<<<<< HEAD:src/components/Match/Matches.js
-var domain = "https://api.tapinguide.com";
-=======
 // Matches API Configuration
-//var domain = "https://api.tapinguide.demo.nordicdev.io";
-var domain = "https://api.tapinguide.com"
->>>>>>> 4b1c0ce7142447378b21371782f92b675da49b90:src/screens/Matches/Matches.js
+var domain = "https://api.tapinguide.com/"
 
 var matchesUrl = domain + "/activematches/?format=json";
 var readWatchUrl = domain + "/mustreadwatch/?format=json";
@@ -143,16 +136,17 @@ export default class Matches extends React.Component {
       });
 
       var readWatch = this.state.readWatch;
+      if(readWatch.length > 0){
       var mustReadLeft;
       var mustReadRight;
 
-     mustReadLeft = readWatch[0];
-         
+      mustReadLeft = readWatch[0];
       mustReadRight = readWatch[1];
          
       columnLeft.push(<MustReadWatch link={mustReadLeft} key="mustRead" additionalClass="must-read" />);
       columnLeft.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
       columnRight.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
+      }
     }
     var bigtext = "Essential Matches";
     return (
