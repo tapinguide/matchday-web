@@ -53,9 +53,22 @@ export default class MatchRow extends React.Component {
     var visitorClubShortName = match.visitorClub.shortName;
     var highlightsUrl = match.highlightsUrl;
 
-    var matchDate = moment.utc(match.matchTime).local().format('ddd M/D h:mma').toUpperCase();
-    var narrative = match.preMatchDetails;
+    var todaysDate = moment().format('MM/DD/YYYY');
+    var tomorrowsDate = moment().add(1, 'days').format('MM/DD/YYYY');
 
+    var matchDate = '';
+    var localMatchDate = moment.utc(match.matchTime).local();
+    if(localMatchDate.format('MM/DD/YYYY') === todaysDate){
+      matchDate = 'TODAY ' + localMatchDate.format('h:mma').toUpperCase();
+    }
+    else if(localMatchDate.format('MM/DD/YYYY') === tomorrowsDate){
+      matchDate = 'TOMORROW ' + localMatchDate.format('h:mma').toUpperCase();
+    }
+    else{
+      matchDate = localMatchDate.format('ddd M/D h:mma').toUpperCase();
+    }
+
+    var narrative = match.preMatchDetails;
     if(match.inMatchDetails){
       narrative = match.inMatchDetails;
     }
