@@ -1,9 +1,10 @@
 import React from 'react';
-import goal from './images/goal.svg'
+import missedPK from './images/missedPK.svg'
 
-export default class Goal extends React.Component {
+export default class MissedPK extends React.Component {
 
     render() {
+        console.log('MISSED PEN GOT THERE')
         var event = this.props.event;
         var minute = parseInt(event.minute, 10) + parseInt(event.extraMinute, 10);
         var player = event.player;
@@ -11,19 +12,24 @@ export default class Goal extends React.Component {
         var clubCrestStyle = {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }
-        var goalStyle = {
-           backgroundImage: "url(" + goal + ")"
+        var missedPkStyle = {
+           backgroundImage: "url(" + missedPK + ")"
         }
 
         var homeTeamShortName = event.match.homeClub.shortName;
         var awayTeamShortName = event.match.visitorClub.shortName;
+        var homeTeamName = event.match.homeClub.name;
+        var awayTeamName = event.match.visitorClub.name;
         var homeTeamSubScore = 0;
         var awayTeamSubScore = 0;
-        var result;
-        if (event.eventType === 'goal') {
-            result = event.result.replace('[','').replace(']','').split('-');
-            homeTeamSubScore = result[0];
-            awayTeamSubScore = result[1];
+        if (event.eventType === 'pen miss') {
+            if (event.eventTeamName === homeTeamName) {
+                homeTeamSubScore = event.match.homeClubScore - 1;
+                awayTeamSubScore = event.match.visitorClubScore;
+            } else if (event.eventTeamName === awayTeamName){
+                homeTeamSubScore = event.match.homeClubScore;
+                awayTeamSubScore = event.match.visitorClubScore - 1;
+            }
         }
         var cardSide;
         if(event.eventTeamName === event.match.homeClub.name){
@@ -65,9 +71,9 @@ export default class Goal extends React.Component {
             <div className="event-card">
                 <div className="event-card-header green">
                     <div className="actionicon">
-                        <div className="goal" style={goalStyle}></div>
+                        <div className="goal" style={missedPkStyle}></div>
                     </div>
-                    <div className="headertitle">Goal</div>
+                    <div className="headertitle">Missed Penalty Kick</div>
                     <div className="gametime">{minute}'</div>
                 </div>
                 {cardSide}

@@ -159,7 +159,7 @@
     .goaltext {
       font-family: Poppins, sans-serif;
       font-size: 13px;
-      align-self: center;
+      margin-left: auto;
     } // End .goaltext
 
     .subon {
@@ -189,6 +189,12 @@
       &.home {
         display: flex;
       }
+
+      &.goal {
+        .playernamecard {
+          margin-bottom: 6px;
+        }
+      }
     } // End .hometextaction
 
     .awaytextaction {
@@ -203,6 +209,10 @@
       &.awaygoal {
         display: flex;
         flex-direction: column;
+
+        .playernamecardaway {
+          margin-bottom: 6px;
+        }
       }
     } // End .awaytextaction
   } // End .incard
