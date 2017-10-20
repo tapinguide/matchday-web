@@ -101,7 +101,8 @@ export default class MoreInfo extends React.Component {
           || event.eventType === "yellowred"
           || event.eventType === "redcard"
           || event.eventType === "subst"
-          || event.eventType === "goal")
+          || event.eventType === "goal"
+          || event.eventType === "pen miss")
         {
           if(index > 0){
             timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
