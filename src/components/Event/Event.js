@@ -1,22 +1,20 @@
 import React from 'react';
-import YellowCard from './YellowCard';
-import RedCard from './RedCard';
-import Goal from './Goal';
+import EventCard from './EventCard';
+// import Goal from './Goal';
 import Substitute from './Substitute';
 import MissedPK from './MissedPK';
 
 class Event extends React.Component {
 
     getEventType(event, index){
-        // console.log('event type: ', event.eventType)
-        if(event.eventType === "yellowcard" || event.eventType === "yellowred"){
-            return <YellowCard event={event} />;
+        if(event.eventType === "yellowcard" || event.eventType === "yellowred" ){
+            return <EventCard event={event} />;
         }
         else if(event.eventType === "redcard"){
-             return <RedCard event={event} />;
+             return <EventCard event={event} />;
         }
         else if(event.eventType === "goal"){
-             return <Goal event={event} />;
+             return <EventCard event={event} />;
         }
         else if(event.eventType === "subst"){
              return <Substitute event={event} />;
@@ -29,6 +27,7 @@ class Event extends React.Component {
 
         }
     }
+
     render() {
         var eventType = this.getEventType(this.props.event, this.props.index);
         return (

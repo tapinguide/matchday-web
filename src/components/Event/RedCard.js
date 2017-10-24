@@ -1,5 +1,5 @@
 import React from 'react';
-import card from './images/card.svg'
+// import card from './images/card.svg'
 class RedCard extends React.Component {
 
     render() {
@@ -11,7 +11,7 @@ class RedCard extends React.Component {
             backgroundImage: 'url(' + clubCrestUrl + ')'
         }
         var cardStyle = {
-           backgroundImage: "url(" + card + ")"
+           // backgroundImage: "url()"
         }
         var homeTeam = event.match.homeClub.name;
         var cardSide;
@@ -48,7 +48,7 @@ class RedCard extends React.Component {
             <div className="event-card">
                 <div className="event-card-header red">
                     <div className="actionicon">
-                        <div className="redcard" style={cardStyle}></div>
+                        <div className="redcard"></div>
                     </div>
                     <div className="headertitle">Red Card</div>
                     <div className="gametime">{minute}'</div>
