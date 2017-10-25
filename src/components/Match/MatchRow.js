@@ -78,11 +78,13 @@ export default class MatchRow extends React.Component {
 
     var matchStatusDescription = match.status.description;
 
+    let ftPens = false;
     if(matchStatusDescription === "Pen.")
     {
       homeClubScore = homeClubScore + ' (' + homeClubPenalties + ')';
       visitorClubScore = visitorClubScore + ' (' + visitorClubPenalties + ')';
       matchStatusDescription = "FT (P)";
+      ftPens = true;
     }
     else if(matchStatusDescription === "In Progress"){
       matchStatusDescription = match.timer + "'";
@@ -163,7 +165,7 @@ export default class MatchRow extends React.Component {
                 <div className="contentcontainer completed">
                    <div className="innercontainer">
                   <div className="livescore">
-                    <div className="scoreformatting">{homeClubScore}</div>
+                    <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>{homeClubScore}</div>
                     <div className="homecrest scoreformatting">
                       <img src={homeClubCrestUrl} alt={homeClubShortName} />
                       <div className="shortname">
@@ -179,7 +181,7 @@ export default class MatchRow extends React.Component {
                         {visitorClubShortName}
                       </div>
                     </div>
-                    <div className="scoreformatting">{visitorClubScore}</div>
+                    <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>{visitorClubScore}</div>
                   </div>
                   <div className="livenarrative livenarrativecomplete narrative">
                     <div className="match-highlights-link-container">

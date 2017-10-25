@@ -319,6 +319,10 @@
     font-size: 32px;
     font-weight: 700;
     text-align: center;
+
+    &.pens {
+      font-size: 23px;
+    }
   }
   .scoreformatting.scoretime {
     display: inline-block;
