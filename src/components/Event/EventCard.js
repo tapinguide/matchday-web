@@ -50,6 +50,12 @@ class EventCard extends React.Component {
     } else if (cardType === "goal") {
       return 'Goal'
     }
+    else if (cardType === "subst") {
+      return 'Substitute'
+    }
+    else if (cardType === "pen miss") {
+      return 'Missed Penalty Kick'
+    }
   }
 
   renderClubCrest(clubCrestUrl) {
@@ -79,6 +85,56 @@ class EventCard extends React.Component {
         </div>
       )
     }
+
+    if (cardType === "pen miss") {
+      let { homeClub, visitorClub, homeClubScore, visitorClubScore, eventTeamName } = event.match
+
+      var homeTeamName = homeClub.name;
+      var awayTeamName = visitorClub.name;
+      var homeTeamSubScore = 0;
+      var awayTeamSubScore = 0;
+
+      if (eventTeamName === homeTeamName) {
+          homeTeamSubScore = homeClubScore - 1;
+          awayTeamSubScore = visitorClubScore;
+      } else if (eventTeamName === awayTeamName){
+          homeTeamSubScore = homeClubScore;
+          awayTeamSubScore = visitorClubScore - 1;
+      }
+
+      return (
+        <div className="goal-text">
+          {homeClub.shortName} ({homeTeamSubScore}) {visitorClub.shortName} ({awayTeamSubScore})
+        </div>
+      )
+    }
+  }
+
+  renderPlayerNames = (cardType, playerOn, playerOff) => {
+    if (cardType === 'goal' || typeof playerOff === 'undefined') {
+      return (
+        <div className="player-name-card">
+          {playerOn}
+        </div>
+      )
+    } else {
+      return (
+        <div className="sub-details">
+          <div className="sub-details-indicators">
+            <div className="sub-arrow sub-arrow-on"></div>
+            <div className="sub-arrow sub-arrow-off"></div>
+          </div>
+          <div className="sub-details-players">
+            <div className="player-name-card">
+              {playerOn}
+            </div>
+            <div className="player-name-card">
+              {playerOff}
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -105,9 +161,7 @@ class EventCard extends React.Component {
               style={this.renderClubCrest(event.club.crest)}
             />
             <div className="incard-content-text-action">
-              <div className="player-name-card">
-                {event.player}
-              </div>
+              {this.renderPlayerNames(cardType, event.player, event.assist)}
               {this.renderGoalSummary(cardType, event)}
             </div>
           </div>

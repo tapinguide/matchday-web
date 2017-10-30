@@ -43,7 +43,51 @@
         background-image: url('../images/event-card/yellow-card.svg');
       }
     }
-  } // End .event-card.yellow
+  } // End .event-card.redcard
+
+  &.subst {
+    .event-card-header {
+
+      .action-icon {
+        background-image: url('../images/event-card/sub.svg');
+      }
+    }
+
+    .sub-details {
+      @include better-box(flex);
+
+      &-indicators {
+        margin-right: 10px;
+
+        .sub-arrow {
+          position: relative;
+          width: 15px;
+          height: 15px;
+          padding-top: 0;
+          background-position: 50% 50%;
+          background-size: auto;
+          background-repeat: no-repeat;
+
+          &-on {
+            background-image: url('../images/event-card/subon.svg');
+            margin-bottom: 4px;
+          }
+
+          &-off {
+            background-image: url('../images/event-card/suboff.svg');
+          }
+        }
+      }
+
+      &-players {
+        .player-name-card {
+          &:first-of-type {
+            margin-bottom: 4px;
+          }
+        }
+      }
+    }
+  } // End .event-card.subst
 
   .event-card-header {
     height: 2em;
@@ -139,6 +183,15 @@
         text-align: right;
 
         .incard-crest {
+          margin-left: 10px;
+          margin-right: 0;
+        }
+      }
+
+      .sub-details {
+        flex-direction: row-reverse;
+
+        &-indicators {
           margin-left: 10px;
           margin-right: 0;
         }

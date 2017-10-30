@@ -4,7 +4,7 @@ import shapegreendown from './images/shapegreendown.svg';
 import shapegreenup from './images/shapegreenup.svg';
 import pitchIcon from './images/pitch@2x.png';
 import tvIcon from './images/TV@2x.png';
-import Event from '../Event/Event';
+import EventCard from '../Event/EventCard';
 
 export default class MoreInfo extends React.Component {
   getBackgroundImage(value){
@@ -105,11 +105,11 @@ export default class MoreInfo extends React.Component {
           || event.eventType === "pen miss")
         {
           if(index > 0){
-            timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><Event event={event} key={event.id} /></div>);
+            timelineEvents.push(<div key={index + '-' + event.id}><div className="timeline" key={event.id + index}></div><EventCard event={event} key={event.id} /></div>);
           }
           else
           {
-            timelineEvents.push(<Event event={event} key={event.id} />);
+            timelineEvents.push(<EventCard event={event} key={event.id} />);
           }
         }
       });
