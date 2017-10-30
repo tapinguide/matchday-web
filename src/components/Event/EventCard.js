@@ -111,13 +111,7 @@ class EventCard extends React.Component {
   }
 
   renderPlayerNames = (cardType, playerOn, playerOff) => {
-    if (cardType === 'goal' || typeof playerOff === 'undefined') {
-      return (
-        <div className="player-name-card">
-          {playerOn}
-        </div>
-      )
-    } else {
+    if (cardType === 'subst') {
       return (
         <div className="sub-details">
           <div className="sub-details-indicators">
@@ -132,6 +126,12 @@ class EventCard extends React.Component {
               {playerOff}
             </div>
           </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="player-name-card">
+          {playerOn}
         </div>
       )
     }
