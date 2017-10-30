@@ -18,8 +18,13 @@ var axios = require("axios");
 var domain = "https://api.tapinguide.com/"
 
 var matchesUrl = domain + "/activematches/?format=json";
+// Demo API for development:
+// var matchesUrl = "https://api.tapinguide.demo.nordicdev.io/api/activematches/?format=json"
+
 var readWatchUrl = domain + "/mustreadwatch/?format=json";
 var contextBlurbUrl = domain + "/contextblurb/?format=json";
+
+
 
 export default class Matches extends React.Component {
   constructor(props) {
@@ -142,7 +147,7 @@ export default class Matches extends React.Component {
 
       mustReadLeft = readWatch[0];
       mustReadRight = readWatch[1];
-         
+
       columnLeft.push(<MustReadWatch link={mustReadLeft} key="mustRead" additionalClass="must-read" />);
       columnLeft.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
       columnRight.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
