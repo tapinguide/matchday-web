@@ -1,11 +1,9 @@
 {
-  "main.css": "static/css/main.91ae9073.css",
-  "main.css.map": "static/css/main.91ae9073.css.map",
-  "main.js": "static/js/main.84981200.js",
-  "main.js.map": "static/js/main.84981200.js.map",
-  "static/media/Soccer_Field_Transparant-01.svg": "static/media/Soccer_Field_Transparant-01.a3ffcb10.svg",
+  "main.css": "static/css/main.0094d9ff.css",
+  "main.css.map": "static/css/main.0094d9ff.css.map",
+  "main.js": "static/js/main.550ac95b.js",
+  "main.js.map": "static/js/main.550ac95b.js.map",
   "static/media/app-store.png": "static/media/app-store.d70aa0ed.png",
-  "static/media/card.svg": "static/media/card.c9cf64ff.svg",
   "static/media/clint.jpg": "static/media/clint.7efeafae.jpg",
   "static/media/curt.jpg": "static/media/curt.e9c672ad.jpg",
   "static/media/facebook-logo.svg": "static/media/facebook-logo.400a297e.svg",
@@ -21,5 +19,6 @@
   "static/media/tapin-logo-white.png": "static/media/tapin-logo-white.69aee42d.png",
   "static/media/tapin-logoV2B-11.svg": "static/media/tapin-logoV2B-11.92edf04a.svg",
   "static/media/twitter-logo.svg": "static/media/twitter-logo.5697d3e3.svg",
-  "static/media/yellowred.svg": "static/media/yellowred.aed2ed37.svg"
+  "static/media/yellow-card.svg": "static/media/yellow-card.c9cf64ff.svg",
+  "static/media/yellow-red.svg": "static/media/yellow-red.aed2ed37.svg"
 }

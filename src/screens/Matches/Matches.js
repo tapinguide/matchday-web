@@ -118,7 +118,7 @@ export default class Matches extends React.Component {
     var lastMatchDate = moment.utc(sortedMatches[sortedMatches.length - 1].matchTime).local();
 
     //check if the matches are in the same month; else display different months
-    if(firstMatchDate.month === lastMatchDate.month){
+    if(firstMatchDate.format('M') === lastMatchDate.format('M')){
       matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('D, YYYY').toUpperCase();
     }
     else{
