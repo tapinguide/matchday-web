@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import renderHTML from 'react-render-html';
 
 // Components
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import MatchRow from '../../components/Match/MatchRow';
-import MustReadWatch from '../../components/MustReadWatch/MustReadWatch';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+import MatchRow from '../components/Match/MatchRow';
+import MustReadWatch from '../components/MustReadWatch/MustReadWatch';
 
 // Assets
-import logo from '../../assets/images/tapin-logo.png';
+import logo from '../assets/images/tapin-logo.png';
 
 var Loader = require('react-loader');
 var axios = require("axios");
 
 // Matches API Configuration
-var domain = "https://api.tapinguide.com/"
+const domain = "https://api.tapinguide.com/"
 
-var matchesUrl = domain + "/activematches/?format=json";
+const matchesUrl = domain + "/activematches/?format=json";
 // Demo API for development:
 // var matchesUrl = "https://api.tapinguide.demo.nordicdev.io/api/activematches/?format=json"
 
-var readWatchUrl = domain + "/mustreadwatch/?format=json";
-var contextBlurbUrl = domain + "/contextblurb/?format=json";
+const readWatchUrl = domain + "/mustreadwatch/?format=json";
+const contextBlurbUrl = domain + "/contextblurb/?format=json";
 
 
 
-export default class Matches extends React.Component {
+export default class Matches extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -92,7 +92,6 @@ export default class Matches extends React.Component {
 
           _this.setMatchDateRange();
         }));
-
   }
 
   getMatches(){
@@ -162,7 +161,7 @@ export default class Matches extends React.Component {
                   <img alt="Tapin Guide Logo" src={logo} />
                 </div>
                 <div className="bigtext">
-                  <span>Essential Matches</span>
+                  <span>{bigtext}</span>
                 </div>
                 <div className="dateRangeText">
                   <span>{this.state.matchDateRange}</span>
@@ -171,7 +170,11 @@ export default class Matches extends React.Component {
                   <span>{renderHTML(this.state.contextBlurb)}</span>
                 </div>
               </div>
-              <Header bigtext={bigtext} smalltext={this.state.matchDateRange} contextblurb={this.state.contextBlurb} />
+              <Header
+                bigtext={bigtext}
+                smalltext={this.state.matchDateRange}
+                contextblurb={this.state.contextBlurb}
+              />
               <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
                 <div className="matches">
                   <div className="matches-column column-left">

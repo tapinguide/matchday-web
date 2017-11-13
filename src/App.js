@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 import './assets/styles/styles.css';
 
 // Screens
-import Matches from './screens/Matches/Matches';
+import Matches from './screens/Matches';
 import Wallpaper from './screens/Wallpaper/Wallpaper';
 import About from './screens/About/About';
 import Contact from './screens/Contact';
