@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
@@ -6,7 +6,7 @@ import MoreInfo from './MoreInfo';
 import seconds from './images/seconds.gif';
 import renderHTML from 'react-render-html';
 
-export default class MatchRow extends React.Component {
+export default class MatchRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +31,23 @@ export default class MatchRow extends React.Component {
       else{
           return "match has-expander expander-closed " + optionalClass;
       }
+  }
+
+  getMatchType = () => {
+    const { match } = this.props;
+
+    if(match.status.description === "Scheduled" || match.status.description === "Post."){
+      // match is scheduled: 'matchscheduled'
+    } else if (match.status.description === "FT"
+      || match.status.description === "AET"
+      || match.status.description === "Pen."
+      || match.status.description === "Awarded"
+      || match.status.description === "Cancl."){
+      //match is complete: 'matchcomplete'
+    } else if (match.status.description === "In Progress"
+      || match.status.description === "HT" ) {
+      // match is in progress: '' (returns no special class)
+    }
   }
   render() {
     let { expanded } = this.state;
@@ -299,6 +316,62 @@ export default class MatchRow extends React.Component {
               </div>
             </div>
        )
+    } else {
+      matchRow = (
+        <div
+          ref={ref}
+          className={`match has-expander${expanded ? ' expander-open' : ' expander-closed'}${this.getMatchType()}`}
+          className={this.getClass(expanded, 'matchscheduled')}
+          onClick={() => this.expandCollapse(expanded)}
+        >
+          <div className="numberbg">
+            <div className="numberplace">
+              {matchIndex}
+            </div>
+          </div>
+          <div className="contentcontainer scheduled">
+            <div className="innercontainer">
+
+
+
+
+              <div className="crestcontainer">
+                <div className="homecrest">
+                  <img src={homeClubCrestUrl} alt={homeClubShortName} />
+                </div>
+                <div className="shortname">
+                  {homeClubShortName}
+                </div>
+                <div className="vs"></div>
+                <div className="awaycrest">
+                  <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+                </div>
+                <div className="shortname">
+                  {visitorClubShortName}
+                </div>
+              </div>
+              <div className="infocontainer">
+                <div className="datetime">
+                  {matchDate}
+                </div>
+                <div className="narrative">
+                  {renderHTML(narrative)}
+                </div>
+              </div>
+
+
+
+
+            </div>
+            <MoreInfo
+              events={sortedEvents}
+              expandedState={expanded}
+              tvDetails={tvDetails}
+              venue={venue}
+            />
+          </div>
+        </div>
+      )
     }
 
     return (
