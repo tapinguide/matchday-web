@@ -166,10 +166,24 @@ export default class MatchRow extends Component {
             {visitorClubShortName}
           </div>
         </div>
-        <div className="infocontainer">
+
+
+
+
+
+        <div className="info-container">
+          {/*
+            this.renderDateTime()
+            this.renderHighlightsButton()
+          */}
           <div className="datetime">
             {matchDate}
           </div>
+
+
+
+
+
           <div className="narrative">
             {renderHTML(narrative)}
           </div>
@@ -212,11 +226,18 @@ export default class MatchRow extends Component {
             {visitorClubScore}
           </div>
         </div>
-        <div className="livenarrative livenarrativecomplete narrative">
+
+
+
+        <div className="info-container">
           <div className="match-highlights-link-container">
             {highlightsLink}
           </div>
-          <div className="match-summary">
+
+
+
+
+          <div className="narrative">
             {renderHTML(narrative)}
           </div>
         </div>
@@ -271,7 +292,7 @@ export default class MatchRow extends Component {
               {visitorClubShortName}
             </div>
           </div>
-          <div className="infocontainer">
+          <div className="info-container">
             <div className="datetime">
               {matchDate}
             </div>
