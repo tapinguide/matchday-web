@@ -7,15 +7,41 @@ import seconds from './images/seconds.gif';
 import renderHTML from 'react-render-html';
 
 export default class MatchRow extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expanded: false
-    };
+
+  state = {
+    expanded: false,
+    matchType: null
+  }
+
+  componentDidMount() {
+    this.setMatchType();
+  }
+
+  setMatchType = () => {
+    const { match } = this.props;
+    let matchType = '';
+
+    if(match.status.description === "Scheduled" || match.status.description === "Post."){
+      matchType = 'matchscheduled';
+    } else if (match.status.description === "FT"
+      || match.status.description === "AET"
+      || match.status.description === "Pen."
+      || match.status.description === "Awarded"
+      || match.status.description === "Cancl."){
+      matchType = 'matchcomplete'
+    }
+
+    this.setState(state => ({
+      ...state,
+      matchType
+    }))
   }
 
   expandCollapse(value) {
-    this.setState({expanded: !value});
+    this.setState(state => ({
+      ...state,
+      expanded: !value
+    }))
   }
 
   openHighlights = (event, highlightsUrl) => {
@@ -33,22 +59,8 @@ export default class MatchRow extends Component {
       }
   }
 
-  getMatchType = () => {
-    const { match } = this.props;
 
-    if(match.status.description === "Scheduled" || match.status.description === "Post."){
-      // match is scheduled: 'matchscheduled'
-    } else if (match.status.description === "FT"
-      || match.status.description === "AET"
-      || match.status.description === "Pen."
-      || match.status.description === "Awarded"
-      || match.status.description === "Cancl."){
-      //match is complete: 'matchcomplete'
-    } else if (match.status.description === "In Progress"
-      || match.status.description === "HT" ) {
-      // match is in progress: '' (returns no special class)
-    }
-  }
+
   render() {
     let { expanded } = this.state;
 
@@ -138,58 +150,31 @@ export default class MatchRow extends Component {
 
     if(match.status.description === "Scheduled" || match.status.description === "Post."){
       matchRow = (
-        <div
-          ref={ref}
-          className={this.getClass(expanded, 'matchscheduled')}
-          onClick={() => this.expandCollapse(expanded)}
-        >
-          <div className="numberbg">
-            <div className="numberplace">
-              {matchIndex}
-            </div>
+      <div>
+        <div className="crestcontainer">
+          <div className="homecrest">
+            <img src={homeClubCrestUrl} alt={homeClubShortName} />
           </div>
-          <div className="contentcontainer scheduled">
-            <div className="innercontainer">
-
-
-
-
-              <div className="crestcontainer">
-                <div className="homecrest">
-                  <img src={homeClubCrestUrl} alt={homeClubShortName} />
-                </div>
-                <div className="shortname">
-                  {homeClubShortName}
-                </div>
-                <div className="vs"></div>
-                <div className="awaycrest">
-                  <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
-                </div>
-                <div className="shortname">
-                  {visitorClubShortName}
-                </div>
-              </div>
-              <div className="infocontainer">
-                <div className="datetime">
-                  {matchDate}
-                </div>
-                <div className="narrative">
-                  {renderHTML(narrative)}
-                </div>
-              </div>
-
-
-
-
-            </div>
-            <MoreInfo
-              events={sortedEvents}
-              expandedState={expanded}
-              tvDetails={tvDetails}
-              venue={venue}
-            />
+          <div className="shortname">
+            {homeClubShortName}
+          </div>
+          <div className="vs"></div>
+          <div className="awaycrest">
+            <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+          </div>
+          <div className="shortname">
+            {visitorClubShortName}
           </div>
         </div>
+        <div className="infocontainer">
+          <div className="datetime">
+            {matchDate}
+          </div>
+          <div className="narrative">
+            {renderHTML(narrative)}
+          </div>
+        </div>
+      </div>
       )
     }
     else if (match.status.description === "FT"
@@ -198,177 +183,101 @@ export default class MatchRow extends Component {
       || match.status.description === "Awarded"
       || match.status.description === "Cancl."){
       matchRow = (
-        <div
-          ref={ref}
-          className={this.getClass(expanded, 'matchcomplete')}
-          onClick={() => this.expandCollapse(expanded)}
-        >
-          <div className="numberbg">
-            <div className="numberplace">
-              {matchIndex}
+      <div>
+        <div className="livescore">
+          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
+            {homeClubScore}
+          </div>
+          <div className="homecrest scoreformatting">
+            <img src={homeClubCrestUrl} alt={homeClubShortName} />
+            <div className="shortname">
+              {homeClubShortName}
             </div>
           </div>
-          <div className="contentcontainer completed">
-            <div className="innercontainer">
-
-
-
-
-              <div className="livescore">
-                <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
-                  {homeClubScore}
-                </div>
-                <div className="homecrest scoreformatting">
-                  <img src={homeClubCrestUrl} alt={homeClubShortName} />
-                  <div className="shortname">
-                    {homeClubShortName}
-                  </div>
-                </div>
-                <div className="scoreformatting scoretime">
-                  <div>
-                    {matchStatusDescription}
-                  </div>
-                </div>
-                <div className="awaycrest scoreformatting">
-                  <img
-                    src={visitorClubCrestUrl}
-                    alt={visitorClubShortName}
-                  />
-                  <div className="shortname">
-                    {visitorClubShortName}
-                  </div>
-                </div>
-                <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
-                  {visitorClubScore}
-                </div>
-              </div>
-              <div className="livenarrative livenarrativecomplete narrative">
-                <div className="match-highlights-link-container">
-                  {highlightsLink}
-                </div>
-                <div className="match-summary">
-                  {renderHTML(narrative)}
-                </div>
-              </div>
-
-
-
-
+          <div className="scoreformatting scoretime">
+            <div>
+              {matchStatusDescription}
             </div>
-            <MoreInfo
-              events={sortedEvents}
-              expandedState={expanded}
-              tvDetails={tvDetails}
-              venue={venue}
+          </div>
+          <div className="awaycrest scoreformatting">
+            <img
+              src={visitorClubCrestUrl}
+              alt={visitorClubShortName}
             />
+            <div className="shortname">
+              {visitorClubShortName}
+            </div>
+          </div>
+          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
+            {visitorClubScore}
           </div>
         </div>
+        <div className="livenarrative livenarrativecomplete narrative">
+          <div className="match-highlights-link-container">
+            {highlightsLink}
+          </div>
+          <div className="match-summary">
+            {renderHTML(narrative)}
+          </div>
+        </div>
+      </div>
       )
     }
     else if (match.status.description === "In Progress"|| match.status.description === "HT" ) {
        matchRow = (
-            <div
-              ref={ref}
-              className={this.getClass(expanded, '')}
-              onClick={() => this.expandCollapse(expanded)}
-            >
-              <div className="numberbg">
-                <div className="numberplace">{matchIndex}</div>
-              </div>
-              <div className="contentcontainer inprogress">
-                <div className="innercontainer">
-
-
-                  <div className="livescore">
-                    <div className="scoreformatting">{homeClubScore}</div>
-                    <div className="homecrest scoreformatting">
-                      <img src={homeClubCrestUrl} alt={homeClubShortName} />
-                      <div className="shortname">
-                        {homeClubShortName}
-                      </div>
-                    </div>
-                    <div className="scoreformatting scoretime in-progress">
-                      <div>{matchStatusDescription}</div>
-                      <div className="seconds">
-                        <img src={seconds} alt="" />
-                      </div>
-                    </div>
-                    <div className="awaycrest scoreformatting">
-                      <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
-                      <div className="shortname">
-                        {visitorClubShortName}
-                      </div>
-                    </div>
-                    <div className="scoreformatting">{visitorClubScore}</div>
-                  </div>
-                  <div className="livenarrative narrative">
-                    {renderHTML(narrative)}
-                  </div>
-
-
-                </div>
-                <MoreInfo
-                  events={sortedEvents}
-                  expandedState={expanded}
-                  tvDetails={tvDetails}
-                  venue={venue}
-                />
+        <div>
+          <div className="livescore">
+            <div className="scoreformatting">{homeClubScore}</div>
+            <div className="homecrest scoreformatting">
+              <img src={homeClubCrestUrl} alt={homeClubShortName} />
+              <div className="shortname">
+                {homeClubShortName}
               </div>
             </div>
+            <div className="scoreformatting scoretime in-progress">
+              <div>{matchStatusDescription}</div>
+              <div className="seconds">
+                <img src={seconds} alt="" />
+              </div>
+            </div>
+            <div className="awaycrest scoreformatting">
+              <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+              <div className="shortname">
+                {visitorClubShortName}
+              </div>
+            </div>
+            <div className="scoreformatting">{visitorClubScore}</div>
+          </div>
+          <div className="livenarrative narrative">
+            {renderHTML(narrative)}
+          </div>
+        </div>
        )
     } else {
       matchRow = (
-        <div
-          ref={ref}
-          className={`match has-expander${expanded ? ' expander-open' : ' expander-closed'}${this.getMatchType()}`}
-          className={this.getClass(expanded, 'matchscheduled')}
-          onClick={() => this.expandCollapse(expanded)}
-        >
-          <div className="numberbg">
-            <div className="numberplace">
-              {matchIndex}
+        <div>
+          <div className="crestcontainer">
+            <div className="homecrest">
+              <img src={homeClubCrestUrl} alt={homeClubShortName} />
+            </div>
+            <div className="shortname">
+              {homeClubShortName}
+            </div>
+            <div className="vs"></div>
+            <div className="awaycrest">
+              <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
+            </div>
+            <div className="shortname">
+              {visitorClubShortName}
             </div>
           </div>
-          <div className="contentcontainer scheduled">
-            <div className="innercontainer">
-
-
-
-
-              <div className="crestcontainer">
-                <div className="homecrest">
-                  <img src={homeClubCrestUrl} alt={homeClubShortName} />
-                </div>
-                <div className="shortname">
-                  {homeClubShortName}
-                </div>
-                <div className="vs"></div>
-                <div className="awaycrest">
-                  <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
-                </div>
-                <div className="shortname">
-                  {visitorClubShortName}
-                </div>
-              </div>
-              <div className="infocontainer">
-                <div className="datetime">
-                  {matchDate}
-                </div>
-                <div className="narrative">
-                  {renderHTML(narrative)}
-                </div>
-              </div>
-
-
-
-
+          <div className="infocontainer">
+            <div className="datetime">
+              {matchDate}
             </div>
-            <MoreInfo
-              events={sortedEvents}
-              expandedState={expanded}
-              tvDetails={tvDetails}
-              venue={venue}
-            />
+            <div className="narrative">
+              {renderHTML(narrative)}
+            </div>
           </div>
         </div>
       )
@@ -376,7 +285,30 @@ export default class MatchRow extends Component {
 
     return (
       <div className="match-container">
-        {matchRow}
+        <div
+          ref={ref}
+          className={
+            `match has-expander${expanded ? ' expander-open' : ' expander-closed'} ${this.state.matchType}`
+          }
+          onClick={() => this.expandCollapse(expanded)}
+        >
+          <div className="numberbg">
+            <div className="numberplace">
+              {matchIndex}
+            </div>
+          </div>
+          <div className="contentcontainer">
+            <div className="innercontainer">
+              {matchRow}
+            </div>
+            <MoreInfo
+              events={sortedEvents}
+              expandedState={expanded}
+              tvDetails={tvDetails}
+              venue={venue}
+            />
+          </div>
+        </div>
       </div>
     );
   }
