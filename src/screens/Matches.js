@@ -5,7 +5,7 @@ import renderHTML from 'react-render-html';
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import MatchRow from '../components/Match/MatchRow';
+import Match from '../components/Match/Match';
 import MustReadWatch from '../components/MustReadWatch/MustReadWatch';
 
 // Assets
@@ -135,8 +135,8 @@ export default class Matches extends Component {
       var columnRight = [];
       this.state.matches.forEach((match, i) => {
         // Add all matches to left column
-        columnLeft.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
-        columnRight.push(<MatchRow minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
+        columnLeft.push(<Match minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
+        columnRight.push(<Match minHeight={this.state.minHeight} setMinHeight={this.setMinHeight} match={match} key={match.id} matchIndex={i} />);
       });
 
       var readWatch = this.state.readWatch;

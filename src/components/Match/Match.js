@@ -6,7 +6,7 @@ import MoreInfo from './MoreInfo';
 import seconds from './images/seconds.gif';
 import renderHTML from 'react-render-html';
 
-export default class MatchRow extends Component {
+export default class Match extends Component {
 
   state = {
     expanded: false,
@@ -70,24 +70,24 @@ export default class MatchRow extends Component {
 
     if (matchType === 'matchscheduled') {
       return (
-        <div className="crestcontainer">
-          <div className="homecrest">
+        <div className="crest-container">
+          <div className="team-crest">
             <img
               src={match.homeClub.crest}
               alt={match.homeClub.shortName}
             />
           </div>
-          <div className="shortname">
+          <div className="short-name">
             {match.homeClub.shortName}
           </div>
           <div className="vs"></div>
-          <div className="awaycrest">
+          <div className="team-crest">
             <img
               src={match.visitorClub.crest}
               alt={match.visitorClub.shortName}
             />
           </div>
-          <div className="shortname">
+          <div className="short-name">
             {match.visitorClub.shortName}
           </div>
         </div>
@@ -117,7 +117,7 @@ export default class MatchRow extends Component {
       }
 
       return (
-        <div className="datetime">
+        <div className="date-time">
           {matchDate}
         </div>
       )
@@ -171,36 +171,36 @@ export default class MatchRow extends Component {
       }
 
       return (
-        <div className="livescore">
-          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
+        <div className="live-score">
+          <div className={`score-formatting${ftPens ? ' pens' : ''}`}>
             {homeClubScore}
           </div>
-          <div className="homecrest scoreformatting">
+          <div className="team-crest score-formatting">
             <img
               src={homeClub.crest}
               alt={homeClub.shortName}
             />
-            <div className="shortname">
+            <div className="short-name">
               {homeClub.shortName}
             </div>
           </div>
 
-          <div className="scoreformatting scoretime">
+          <div className="score-formatting scoretime">
             <div>
               {matchStatusDescription}
             </div>
             {this.renderSeconds()}
           </div>
-          <div className="awaycrest scoreformatting">
+          <div className="team-crest score-formatting">
             <img
               src={match.visitorClub.crest}
               alt={match.visitorClub.shortName}
             />
-            <div className="shortname">
+            <div className="short-name">
               {match.visitorClub.shortName}
             </div>
           </div>
-          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
+          <div className={`score-formatting${ftPens ? ' pens' : ''}`}>
             {visitorClubScore}
           </div>
         </div>
@@ -217,26 +217,22 @@ export default class MatchRow extends Component {
 
       let highlightsUrl = match.highlightsUrl
 
-      let highlightsLink = null;
       if (highlightsUrl != null) {
-        highlightsLink =
-          <Link
-            to={highlightsUrl}
-            target="_blank"
-            onClick={(event) => this.openHighlights(event, highlightsUrl)}
-            className="highlights-link"
-          >
-          <div className="highlights-link-icon"></div>
-          Highlights
-        </Link>;
-      }
-
-      return (
-        <div className="match-highlights-link-container">
-          {highlightsLink}
-        </div>
-      )
-    }
+        return (
+          <div className="match-highlights-link-container">
+            <Link
+              to={highlightsUrl}
+              target="_blank"
+              onClick={(event) => this.openHighlights(event, highlightsUrl)}
+              className="highlights-link"
+            >
+              <div className="highlights-link-icon"></div>
+              Highlights
+            </Link>
+          </div>
+        )
+      } // End if highlightsUrl !=null
+    } // End if match is complete
   }
 
   renderNarrative() {
@@ -281,13 +277,13 @@ export default class MatchRow extends Component {
           }
           onClick={() => this.expandCollapse(expanded)}
         >
-          <div className="numberbg">
-            <div className="numberplace">
+          <div className="number-bg">
+            <div className="number-place">
               {matchIndex + 1}
             </div>
           </div>
-          <div className="contentcontainer">
-            <div className="innercontainer">
+          <div className="content-container">
+            <div className="inner-container">
               {this.renderTeamPreview()}
               {this.renderLiveScore()}
               <div className="info-container">
