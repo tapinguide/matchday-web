@@ -20,15 +20,30 @@ export default class MatchRow extends Component {
   setMatchType = () => {
     const { match } = this.props;
     let matchType = '';
+    let { description } = match.status;
 
-    if(match.status.description === "Scheduled" || match.status.description === "Post."){
+    if ( // If match is Scheduled
+        description === "Scheduled"
+        || description === "Post."
+      ) {
+
       matchType = 'matchscheduled';
-    } else if (match.status.description === "FT"
-      || match.status.description === "AET"
-      || match.status.description === "Pen."
-      || match.status.description === "Awarded"
-      || match.status.description === "Cancl."){
+
+    } else if ( // If match is over (complete)
+      description === "FT"
+      || description === "AET"
+      || description === "Pen."
+      || description === "Awarded"
+      || description === "Cancl."){
+
       matchType = 'matchcomplete'
+
+    } else if ( // If match is in progress
+        description === "In Progress"
+        || description === "HT"
+      ) {
+      matchType = 'inprogress'
+
     }
 
     this.setState(state => ({
@@ -47,55 +62,187 @@ export default class MatchRow extends Component {
   openHighlights = (event, highlightsUrl) => {
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
-    console.log('clicked: ', highlightsUrl);
   }
 
-  getClass(value, optionalClass){
-      if(value){
-          return "match has-expander expander-open " + optionalClass;
+  renderTeamPreview() {
+    const { match } = this.props;
+    const { matchType } = this.state;
+
+    if (matchType === 'matchscheduled') {
+      return (
+        <div className="crestcontainer">
+          <div className="homecrest">
+            <img
+              src={match.homeClub.crest}
+              alt={match.homeClub.shortName}
+            />
+          </div>
+          <div className="shortname">
+            {match.homeClub.shortName}
+          </div>
+          <div className="vs"></div>
+          <div className="awaycrest">
+            <img
+              src={match.visitorClub.crest}
+              alt={match.visitorClub.shortName}
+            />
+          </div>
+          <div className="shortname">
+            {match.visitorClub.shortName}
+          </div>
+        </div>
+      )
+    }
+  }
+
+  renderDateTime() {
+    const { matchType } = this.state;
+
+    if (matchType === 'matchscheduled') {
+      const { match } = this.props;
+
+      var matchDate = '';
+      var todaysDate = moment().format('MM/DD/YYYY');
+      var tomorrowsDate = moment().add(1, 'days').format('MM/DD/YYYY');
+
+      var localMatchDate = moment.utc(match.matchTime).local();
+      if(localMatchDate.format('MM/DD/YYYY') === todaysDate){
+        matchDate = 'TODAY ' + localMatchDate.format('h:mma').toUpperCase();
+      }
+      else if(localMatchDate.format('MM/DD/YYYY') === tomorrowsDate){
+        matchDate = 'TOMORROW ' + localMatchDate.format('h:mma').toUpperCase();
       }
       else{
-          return "match has-expander expander-closed " + optionalClass;
+        matchDate = localMatchDate.format('ddd M/D h:mma').toUpperCase();
       }
+
+      return (
+        <div className="datetime">
+          {matchDate}
+        </div>
+      )
+    }
   }
 
-
-
-  render() {
-    let { expanded } = this.state;
-
-    var ref = 'match';
-    let matchRow = null;
-    var match = this.props.match;
-    var matchIndex = this.props.matchIndex + 1;
-
-    var homeClubScore = match.homeClubScore;
-    var homeClubPenalties = match.homeClubPenalties;
-    var homeClubCrestUrl = match.homeClub.crest;
-    var homeClubShortName = match.homeClub.shortName;
-
-    var visitorClubScore = match.visitorClubScore;
-    var visitorClubPenalties = match.visitorClubPenalties;
-    var visitorClubCrestUrl = match.visitorClub.crest;
-    var visitorClubShortName = match.visitorClub.shortName;
-    var highlightsUrl = match.highlightsUrl;
-
-    var todaysDate = moment().format('MM/DD/YYYY');
-    var tomorrowsDate = moment().add(1, 'days').format('MM/DD/YYYY');
-
-    var matchDate = '';
-    var localMatchDate = moment.utc(match.matchTime).local();
-    if(localMatchDate.format('MM/DD/YYYY') === todaysDate){
-      matchDate = 'TODAY ' + localMatchDate.format('h:mma').toUpperCase();
+  renderSeconds = () => {
+    if (this.state.matchType === 'inprogress') {
+      return (
+        <div className="seconds">
+          <img src={seconds} alt="" />
+        </div>
+      )
     }
-    else if(localMatchDate.format('MM/DD/YYYY') === tomorrowsDate){
-      matchDate = 'TOMORROW ' + localMatchDate.format('h:mma').toUpperCase();
-    }
-    else{
-      matchDate = localMatchDate.format('ddd M/D h:mma').toUpperCase();
-    }
+  }
 
-    var narrative = match.preMatchDetails;
+  renderLiveScore = () => {
+    const { matchType } = this.state;
+
+    // If the match is in progress or it is complete,
+    // only then return the live score component
+    if (
+      matchType === 'inprogress'
+      || matchType === 'matchcomplete'
+      ) {
+      const { match } = this.props;
+
+      let { homeClubScore,
+            homeClubPenalties,
+            visitorClubScore,
+            visitorClubPenalties,
+            homeClub } = match;
+
+      let ftPens = false;
+      let matchStatusDescription = match.status.description;
+
+      if(matchStatusDescription === "Pen.")
+      {
+        homeClubScore = homeClubScore + ' (' + homeClubPenalties + ')';
+        visitorClubScore = visitorClubScore + ' (' + visitorClubPenalties + ')';
+        matchStatusDescription = "FT (P)";
+        ftPens = true;
+      } else if(matchStatusDescription === "In Progress"){
+        matchStatusDescription = match.timer + "'";
+      }
+      else if(matchStatusDescription === "Cancl."){
+        matchStatusDescription = "Canceled"
+      }
+      else if(matchStatusDescription === "Post."){
+        matchStatusDescription = "Postponed"
+      }
+
+      return (
+        <div className="livescore">
+          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
+            {homeClubScore}
+          </div>
+          <div className="homecrest scoreformatting">
+            <img
+              src={homeClub.crest}
+              alt={homeClub.shortName}
+            />
+            <div className="shortname">
+              {homeClub.shortName}
+            </div>
+          </div>
+
+          <div className="scoreformatting scoretime">
+            <div>
+              {matchStatusDescription}
+            </div>
+            {this.renderSeconds()}
+          </div>
+          <div className="awaycrest scoreformatting">
+            <img
+              src={match.visitorClub.crest}
+              alt={match.visitorClub.shortName}
+            />
+            <div className="shortname">
+              {match.visitorClub.shortName}
+            </div>
+          </div>
+          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
+            {visitorClubScore}
+          </div>
+        </div>
+      )
+    }
+  }
+
+  renderHighlightsButton = () => {
+    const { matchType } = this.state;
+
+    // If the match is complete, try to render the highlights button
+    if ( matchType === 'matchcomplete' ) {
+      const { match } = this.props;
+
+      let highlightsUrl = match.highlightsUrl
+
+      let highlightsLink = null;
+      if (highlightsUrl != null) {
+        highlightsLink =
+          <Link
+            to={highlightsUrl}
+            target="_blank"
+            onClick={(event) => this.openHighlights(event, highlightsUrl)}
+            className="highlights-link"
+          >
+          <div className="highlights-link-icon"></div>
+          Highlights
+        </Link>;
+      }
+
+      return (
+        <div className="match-highlights-link-container">
+          {highlightsLink}
+        </div>
+      )
+    }
+  }
+
+  renderNarrative() {
+    const { match } = this.props;
+
+    let narrative = match.preMatchDetails;
     if(match.inMatchDetails){
       narrative = match.inMatchDetails;
     }
@@ -103,211 +250,32 @@ export default class MatchRow extends Component {
       narrative = match.postMatchDetails
     }
 
-    var matchStatusDescription = match.status.description;
+    return (
+      <div className="narrative">
+        {renderHTML(narrative)}
+      </div>
+    )
+  }
 
-    let ftPens = false;
-    if(matchStatusDescription === "Pen.")
-    {
-      homeClubScore = homeClubScore + ' (' + homeClubPenalties + ')';
-      visitorClubScore = visitorClubScore + ' (' + visitorClubPenalties + ')';
-      matchStatusDescription = "FT (P)";
-      ftPens = true;
-    }
-    else if(matchStatusDescription === "In Progress"){
-      matchStatusDescription = match.timer + "'";
-    }
-    else if(matchStatusDescription === "Cancl."){
-      matchStatusDescription = "Canceled"
-    }
-    else if(matchStatusDescription === "Post."){
-      matchStatusDescription = "Postponed"
-    }
+  render() {
+    let { expanded } = this.state;
+    let { matchIndex, match } = this.props;
 
-    var tvDetails = match.tvDetails;
-    var venue = match.venue;
-    var venueCity = match.venueCity;
+    // Data for MoreInfo component
+    let { tvDetails, venue, venueCity } = match;
 
     if(venue === '' && venueCity !=='' ){
       venue = venueCity;
     }
-    var sortedEvents = match.events.sort((a,b) => {
+
+    let sortedEvents = match.events.sort((a,b) => {
       return a.id - b.id
     }).reverse();
-
-    let highlightsLink = null;
-    if (highlightsUrl != null) {
-      highlightsLink =
-        <Link
-          to={highlightsUrl}
-          target="_blank"
-          onClick={(event) => this.openHighlights(event, highlightsUrl)}
-          className="highlights-link"
-        >
-        <div className="highlights-link-icon"></div>
-        Highlights
-      </Link>;
-    }
-
-    if(match.status.description === "Scheduled" || match.status.description === "Post."){
-      matchRow = (
-      <div>
-        <div className="crestcontainer">
-          <div className="homecrest">
-            <img src={homeClubCrestUrl} alt={homeClubShortName} />
-          </div>
-          <div className="shortname">
-            {homeClubShortName}
-          </div>
-          <div className="vs"></div>
-          <div className="awaycrest">
-            <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
-          </div>
-          <div className="shortname">
-            {visitorClubShortName}
-          </div>
-        </div>
-
-
-
-
-
-        <div className="info-container">
-          {/*
-            this.renderDateTime()
-            this.renderHighlightsButton()
-          */}
-          <div className="datetime">
-            {matchDate}
-          </div>
-
-
-
-
-
-          <div className="narrative">
-            {renderHTML(narrative)}
-          </div>
-        </div>
-      </div>
-      )
-    }
-    else if (match.status.description === "FT"
-      || match.status.description === "AET"
-      || match.status.description === "Pen."
-      || match.status.description === "Awarded"
-      || match.status.description === "Cancl."){
-      matchRow = (
-      <div>
-        <div className="livescore">
-          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
-            {homeClubScore}
-          </div>
-          <div className="homecrest scoreformatting">
-            <img src={homeClubCrestUrl} alt={homeClubShortName} />
-            <div className="shortname">
-              {homeClubShortName}
-            </div>
-          </div>
-          <div className="scoreformatting scoretime">
-            <div>
-              {matchStatusDescription}
-            </div>
-          </div>
-          <div className="awaycrest scoreformatting">
-            <img
-              src={visitorClubCrestUrl}
-              alt={visitorClubShortName}
-            />
-            <div className="shortname">
-              {visitorClubShortName}
-            </div>
-          </div>
-          <div className={`scoreformatting${ftPens ? ' pens' : ''}`}>
-            {visitorClubScore}
-          </div>
-        </div>
-
-
-
-        <div className="info-container">
-          <div className="match-highlights-link-container">
-            {highlightsLink}
-          </div>
-
-
-
-
-          <div className="narrative">
-            {renderHTML(narrative)}
-          </div>
-        </div>
-      </div>
-      )
-    }
-    else if (match.status.description === "In Progress"|| match.status.description === "HT" ) {
-       matchRow = (
-        <div>
-          <div className="livescore">
-            <div className="scoreformatting">{homeClubScore}</div>
-            <div className="homecrest scoreformatting">
-              <img src={homeClubCrestUrl} alt={homeClubShortName} />
-              <div className="shortname">
-                {homeClubShortName}
-              </div>
-            </div>
-            <div className="scoreformatting scoretime in-progress">
-              <div>{matchStatusDescription}</div>
-              <div className="seconds">
-                <img src={seconds} alt="" />
-              </div>
-            </div>
-            <div className="awaycrest scoreformatting">
-              <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
-              <div className="shortname">
-                {visitorClubShortName}
-              </div>
-            </div>
-            <div className="scoreformatting">{visitorClubScore}</div>
-          </div>
-          <div className="livenarrative narrative">
-            {renderHTML(narrative)}
-          </div>
-        </div>
-       )
-    } else {
-      matchRow = (
-        <div>
-          <div className="crestcontainer">
-            <div className="homecrest">
-              <img src={homeClubCrestUrl} alt={homeClubShortName} />
-            </div>
-            <div className="shortname">
-              {homeClubShortName}
-            </div>
-            <div className="vs"></div>
-            <div className="awaycrest">
-              <img src={visitorClubCrestUrl} alt={visitorClubShortName} />
-            </div>
-            <div className="shortname">
-              {visitorClubShortName}
-            </div>
-          </div>
-          <div className="info-container">
-            <div className="datetime">
-              {matchDate}
-            </div>
-            <div className="narrative">
-              {renderHTML(narrative)}
-            </div>
-          </div>
-        </div>
-      )
-    }
 
     return (
       <div className="match-container">
         <div
-          ref={ref}
+          ref={'match'}
           className={
             `match has-expander${expanded ? ' expander-open' : ' expander-closed'} ${this.state.matchType}`
           }
@@ -315,12 +283,18 @@ export default class MatchRow extends Component {
         >
           <div className="numberbg">
             <div className="numberplace">
-              {matchIndex}
+              {matchIndex + 1}
             </div>
           </div>
           <div className="contentcontainer">
             <div className="innercontainer">
-              {matchRow}
+              {this.renderTeamPreview()}
+              {this.renderLiveScore()}
+              <div className="info-container">
+                {this.renderDateTime()}
+                {this.renderHighlightsButton()}
+                {this.renderNarrative()}
+              </div>
             </div>
             <MoreInfo
               events={sortedEvents}
