@@ -91,7 +91,7 @@ export default class MoreInfo extends React.Component {
   getTimelineEvents(events){
     if(events.length === 0)
     {
-      return <div className="livematchdata">Live match data to come </div>;
+      return <div className="live-match-data">Live match data to come </div>;
     }
     else
     {

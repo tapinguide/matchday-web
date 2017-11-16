@@ -1,279 +1,298 @@
-.match {
-  max-width: 479px;
-  padding-bottom: 0;
-  border-right: 0 none #e7e7e7;
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
-  border-left: 0 none #e7e7e7;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #fff;
-  -webkit-transition: max-height 3.5s ease-in-out;
-  transition: max-height 3.5s ease-in-out;
-
-  @media screen and (max-width: 767px) {
-    border-bottom: 1px solid #e7e7e7;
-    border-left: 0 none #e7e7e7;
-    border-right: 0 none #e7e7e7;
+.match-container {
+  .match {
+    max-width: 479px;
     padding-bottom: 0;
-  }
+    border-right: 0 none $border-color;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
+    border-left: 0 none $border-color;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $background;
+    -webkit-transition: max-height 3.5s ease-in-out;
+    transition: max-height 3.5s ease-in-out;
 
-  &.has-expander {
-    cursor: pointer;
-    padding-bottom: 5px;
-    transition: all 0.2s;
+    @media screen and (max-width: 767px) {
+      border-bottom: 1px solid $border-color;
+      border-left: 0 none $border-color;
+      border-right: 0 none $border-color;
+      padding-bottom: 0;
+    }
 
-    &:hover {
-      background-color: #fff;
+    &.has-expander {
+      cursor: pointer;
+      padding-bottom: 5px;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $background;
+        box-shadow: 0px 26px 21px -10px rgba(0,0,0,.18);
+        transform: translateY(-2px);
+
+        @media screen and (max-width: 479px) {
+          background-color: $background;
+          box-shadow: none;
+          transform: none;
+        }
+      } // End match.has-expander:hover
+    } // End .match.has-expander
+
+    &.expander-open {
+      background-color: $background;
       box-shadow: 0px 26px 21px -10px rgba(0,0,0,.18);
       transform: translateY(-2px);
 
       @media screen and (max-width: 479px) {
-        background-color: #fff;
         box-shadow: none;
         transform: none;
       }
-    } // End match.has-expander:hover
-  } // End .match.has-expander
+    }
 
-  &.expander-open {
-    background-color: #fff;
-    box-shadow: 0px 26px 21px -10px rgba(0,0,0,.18);
-    transform: translateY(-2px);
+    &.matchscheduled {
+      .inner-container {
+        display: flex;
 
-    @media screen and (max-width: 479px) {
-      background-color: #fff;
+        .crest-container {
+          margin-right: 3rem;
+        }
+      }
+    }
+
+    &.matchcomplete {
+      background-color: #f5f5f5;
       box-shadow: none;
-      transform: none;
-    }
-  }
 
-  &.matchcomplete {
-    background-color: #f5f5f5;
-    box-shadow: none;
-  }
-
-  .shortname{
-    color: #757575;
-    font-family: Poppins;
-    font-size: 11px;
-    letter-spacing: 1px;
-    line-height: 18px;
-    text-align: center;
-    padding-top: 5px;
-    font-weight: 400;
-  }
-
-  .numberbg {
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: 42px;
-    background-image: url('../images/match/match-number-gradient-triangle.png');
-    height: 45px;
-  }
-
-  .numberplace {
-    position: relative;
-    padding-left: 7px;
-    padding-top: 5px;
-    font-family: Poppins,sans-serif;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-  }
-}
-
-
-
-
-  // .crest {
-  //   height: 40px;
-  //   width: 40px;
-  //   background-size: contain;
-  //   background-repeat: no-repeat;
-
-  //   img {
-  //     height: 100%;
-  //     width: 100%;
-  //   }
-  // }
-
-  .homecrest, {
-    position: static;
-    left: 40px;
-    top: -20px;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    &.incard {
-      margin: 15px auto 8px;
-      padding-top: 0px;
-    }
-
-    img{
-      width:40px;
-      height:40px;
-    }
-  }
-
-  .crestcontainer {
-    position: relative;
-    left: 4%;
-    top: -14px;
-    width: 40px;
-    float: left;
-  }
-
-  .vs {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    font-family: Poppins, sans-serif;
-    font-size: 10px;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-
-  .awaycrest {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    img{
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  .infocontainer {
-    position: relative;
-    left: 12%;
-    top: -14px;
-    width: 79%;
-    height: auto;
-    padding-right: 26px;
-    float: left;
-  }
-
-  .datetime {
-    font-family: Poppins, sans-serif;
-    color: #000;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2px;
-  }
-
-  .narrative {
-    font-family: Poppins, sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 19px;
-    overflow: hidden;
-    padding-top: 12px;
-    position: relative;
-
-    @media screen and (max-width: 767px) {
-      height: 100% !important;
-    }
-
-    &.livenarrative {
-      margin-bottom: 16px;
-
-      &.livenarrativecomplete {
-        color: #7E7E7E;
+      .info-container {
         display: flex;
         flex-direction: row;
-
-        .match-highlights-link-container {
-          margin-right: 20px;
-          margin-left: 2px;
-          padding-bottom: 14px;
-
-          .highlights-link {
-            border: 1px solid #D8D8D8;
-            color: #080808;
-            cursor: pointer;
-            display: block;
-            font-size: 10px;
-            font-weight: 400;
-            margin-top: 4px;
-            padding: 18px 10px 10px;
-            transition: all 0.2s;
-
-            &:hover {
-              transform: translateY(-2px);
-              box-shadow: rgba(0, 0, 0, 0.18) 0px 14px 20px -11px;
-            }
-
-            &:focus {
-              text-decoration: none;
-            }
-          } // End .highlights-link
-        } // End .match-highlights-link-container
       }
-    } // End .narrative
-  }
-
-  .innercontainer{
-     height: 200px;
-
-     @media screen and (max-width: 479px) {
-       height: 100%;
-     }
-  }
-
-  .scheduled .innercontainer{
-    height:  200px;
-  }
-
-  .highlights-link {
-
-    &:hover {
-      color: #080808;
-      text-decoration: none;
     }
 
-    .highlights-link-icon {
-      -webkit-transition: all 317ms ease;
-      background-image: -o-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
-      background-image: -webkit-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
-      background-image: linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
-      border-radius: 4px;
-      height: 20px;
-      margin: 0 auto 12px;
+    .content-container {
+      width: 86%;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: left;
+
+      .inner-container{
+         height: 200px;
+
+         @media screen and (max-width: 479px) {
+           height: 100%;
+         }
+
+        .info-container {
+          .date-time {
+            font-family: Poppins, sans-serif;
+            color: #000;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+          } // End .date-time
+
+          .narrative {
+            font-family: Poppins, sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 19px;
+            overflow: hidden;
+            position: relative;
+
+            @media screen and (max-width: 767px) {
+              height: 100% !important;
+            }
+
+            &.livenarrative {
+              margin-bottom: 16px;
+
+              &.livenarrativecomplete {
+                color: #7E7E7E;
+                display: flex;
+                flex-direction: row;
+              }
+            }
+          } // End .narrative
+        } // End .info-container
+      } // End .inner-container
+    } // End .content-container
+
+    .short-name{
+      color: $gray1;
+      font-family: Poppins;
+      font-size: 11px;
+      letter-spacing: 1px;
+      line-height: 18px;
+      text-align: center;
+      padding-top: 5px;
+      font-weight: 400;
+    }
+
+    .number-bg {
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 42px;
+      background-image: url('../images/match/match-number-gradient-triangle.png');
+      height: 45px;
+    }
+
+    .number-place {
       position: relative;
-      width: 26px;
+      padding-left: 7px;
+      padding-top: 5px;
+      font-family: Poppins,sans-serif;
+      color: $background;
+      font-size: 16px;
+      font-weight: 600;
+    }
 
-      &:after {
-        background-image: url('../images/match/video-camera.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        content: '';
-        height: 100%;
-        left: 50%;
-        position: absolute;
-        transform: translateX(-50%);
-        width: 54%;
-      } // End .highlights-link-icon:after
-    } // End .highlights-link-icon
-  } // End .highlights-link
+    .live-score {
+      position: relative;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      align-items: center;
+      border-style: none;
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 25px;
+      margin-left: auto;
+      margin-right: auto;
+      top: -13px;
+      width: 84%;
 
-  .match-summary {
-    line-height: 20px;
-  }
+      .score-formatting {
+        display: inline-block;
+        width: 20%;
+        padding-right: 0px;
+        padding-left: 0px;
+        padding-top: 5px;
+        border: 1px none #000;
+        font-family: Poppins, sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
 
-  .noexpander{
-    margin-top:28px;
-  }
+        &.pens {
+          font-size: 23px;
+        }
 
+        &.scoretime {
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 600;
+
+          &.in-progress {
+            padding-top: 15px;
+          }
+        }
+
+        .seconds img{
+          height: 12px
+        }
+      } // End .score-formatting
+    } // End .live-score
+
+    .team-crest {
+      position: static;
+      left: 40px;
+      top: -20px;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      background-position: 50% 50%;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      &.incard {
+        // margin: 15px auto 8px;
+        // padding-top: 0px;
+      }
+
+      img{
+        width:40px;
+        height:40px;
+      }
+    } // End .home-crest
+
+    .vs {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      font-family: Poppins, sans-serif;
+      font-size: 10px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .match-highlights-link-container {
+      margin-right: 20px;
+      margin-left: 2px;
+      padding-bottom: 14px;
+
+      .highlights-link {
+        border: 1px solid #D8D8D8;
+        color: #080808;
+        cursor: pointer;
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        margin-top: 4px;
+        padding: 18px 10px 10px;
+        transition: all 0.2s;
+
+        &:hover {
+          color: #080808;
+          text-decoration: none;
+          transform: translateY(-2px);
+          box-shadow: rgba(0, 0, 0, 0.18) 0px 14px 20px -11px;
+        }
+
+        &:focus {
+          text-decoration: none;
+        }
+
+        .highlights-link-icon {
+          -webkit-transition: all 317ms ease;
+          background-image: -o-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+          background-image: -webkit-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+          background-image: linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+          border-radius: 4px;
+          height: 20px;
+          margin: 0 auto 12px;
+          position: relative;
+          width: 26px;
+
+          &:after {
+            background-image: url('../images/match/video-camera.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            content: '';
+            height: 100%;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+            width: 54%;
+          } // End .highlights-link-icon:after
+        } // End .highlights-link-icon
+      } // End .highlights-link
+    } // End .match-highlights-link-container
+  } // End .match
+} // End .match-container
+
+
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+  // The following should go into MoreInfo.js's styles
   .expanderclosed {
     position: relative;
     margin-top: 5px;
@@ -310,79 +329,7 @@
     cursor: pointer;
   }
 
-  .clear{
-    position: relative;
-    margin-bottom: 5px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    width: 100%;
-    height: 21px;
-    margin-right: auto;
-    margin-left: auto;
-    clear: left;
-  }
-
-  // .teamnametext {
-  //   font-weight: 600;
-  // }
-  .contentcontainer {
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: left;
-  }
-
-  .livescore {
-    position: relative;
-    top: -13px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    width: 84%;
-    margin-right: auto;
-    margin-left: auto;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    border-style: none;
-    padding-bottom: 10px;
-  }
-
-  .scoreformatting {
-    display: inline-block;
-    width: 20%;
-    padding-right: 0px;
-    padding-left: 0px;
-    padding-top: 5px;
-    border: 1px none #000;
-    font-family: Poppins, sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-
-    &.pens {
-      font-size: 23px;
-    }
-
-    &.scoretime {
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 600;
-
-      &.in-progress {
-        padding-top: 15px;
-      }
-    }
-  } // End .scoreformatting
-
-  .seconds img{
-    height: 12px
-  }
-
-  .livematchdata{
+  .live-match-data{
     color: #868686;
     font-family: 'Poppins', sans-serif;
     font-size: 11px;

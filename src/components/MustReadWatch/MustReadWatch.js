@@ -22,8 +22,8 @@ export default class MustReadWatch extends React.Component {
         var additionalClass = this.props.additionalClass;
         var content = (
             <div className={"match-container " + additionalClass}>
-                <div className="match w-clearfix has-expander link" onClick={() => this.openWindow(mustReadLink.url)}>
-                    <div className="contentcontainer w-clearfix must-read">
+                <div className="match has-expander link" onClick={() => this.openWindow(mustReadLink.url)}>
+                    <div className="content-container must-read">
                         <div className="header">
                             {header}
                         </div>
