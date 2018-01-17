@@ -5,7 +5,7 @@ import './css/privacy.css';
 
 // Components
 import logo from '../../assets/images/tapin-logo.png';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer/Footer';
 
 class Privacy extends Component {

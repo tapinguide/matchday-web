@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Assets
 import appStoreLogo from './images/app-store.png';
 import googlePlayLogo from './images/google-play.png';
 import facebookLogo from './images/facebook-logo.svg';
 import twitterLogo from './images/twitter-logo.svg';
 
+// Components
+import NewsletterSubscribeForm from '../NewsletterSubscribeForm';
+
 class Footer extends Component {
   render() {
     return (
       <footer className="footer">
+        <NewsletterSubscribeForm />
         <div className="footer-nav">
           <nav className="footer-nav-primary">
             <Link

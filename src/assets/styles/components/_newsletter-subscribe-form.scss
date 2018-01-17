@@ -1,0 +1,18 @@
+.newsletter-subscribe-form {
+  &-inner {
+    width: calc(50% - 10px);
+    display: flex;
+    font-family: Poppins, sans-serif;
+    margin-bottom: $space;
+
+    input {
+      padding: $half-space;
+      width: 100%;
+      border: 1px solid $border-color;
+    }
+
+    button {
+      background: $brand;
+    }
+  } // end .newsletter-subscribe-form-inner
+} // End .newsletter-subscribe-form

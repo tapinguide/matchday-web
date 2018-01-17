@@ -3,7 +3,7 @@ import moment from 'moment';
 import renderHTML from 'react-render-html';
 
 // Components
-import Header from '../components/Header/Header';
+import Header from '../components/Header';
 import Footer from '../components/Footer/Footer';
 import Match from '../components/Match/Match';
 import MustReadWatch from '../components/MustReadWatch/MustReadWatch';
