@@ -4,6 +4,9 @@
 import React, { Component } from "react";
 import jsonp from "jsonp";
 
+// Components
+import LoadingBlocks from './Loaders/LoadingBlocks';
+
 const getAjaxUrl = url => url.replace('/post?', '/post-json?')
 
 class NewsletterSubscribeForm extends Component {
@@ -59,6 +62,8 @@ class NewsletterSubscribeForm extends Component {
   } // End onSubmit()
 
   renderForm() {
+    let { status } = this.state;
+
     if (this.state.formIsShown) {
       return(
         <form
@@ -66,7 +71,9 @@ class NewsletterSubscribeForm extends Component {
           method="post"
           noValidate
         >
-          <div className="newsletter-subscribe-form-inner">
+          <div
+            className="newsletter-subscribe-form-inner"
+          >
             <input
               ref={node => (this.input = node)}
               type="email"
@@ -80,7 +87,7 @@ class NewsletterSubscribeForm extends Component {
               onClick={this.onSubmit}
               type="submit"
             >
-              Subscribe
+              {status === 'sending' ? <LoadingBlocks /> : 'Subscribe'}
             </button>
           </div>
         </form>
@@ -99,26 +106,31 @@ class NewsletterSubscribeForm extends Component {
     }))
   }
 
+  renderErrorMessage() {
+    let { msg } = this.state;
+
+    if (msg) {
+      if(msg.includes('already subscribed')) {
+        return 'This email has already been subscribed to our newsletter';
+      } else {
+        return "Oops, there's been an error. Please try again."
+      }
+    }
+  }
+
   renderMessage() {
     let { status } = this.state;
 
-    if (status === "sending") {
-      return(
-        <p className="message message-sending">
-          Sending
-        </p>
-      )
-    } else if (status === "success") {
+    if (status === "success") {
       return (
-        <p className="message message-confirmation">
-          Thanks, from Deb! Make your delinquent debt a thing of the past! Thank you for signing up to our updates!
-        </p>
+        <div className="message message-confirmation">
+          Thanks for subscribing to Tap In!
+        </div>
       )
     } else if (status === "error") {
       return(
         <p className="message message-error">
-          Oops, there's been an error
-          {this.state.msg ? ': ' + this.state.msg : ''}
+          {this.renderErrorMessage()}
         </p>
       )
     }
