@@ -1,18 +1,45 @@
 .newsletter-subscribe-form {
+  width: 100%;
+
   &-inner {
-    width: calc(50% - 10px);
+    width: 100%;
     display: flex;
     font-family: Poppins, sans-serif;
     margin-bottom: $space;
 
+    @media screen and (max-width: $small-phone) {
+      display: block;
+    }
+
     input {
+      border-radius: $border-radius 0  0 $border-radius;
+      border: 1px solid $border-color;
+      border-right: none;
       padding: $half-space;
       width: 100%;
-      border: 1px solid $border-color;
+
+      @media screen and (max-width: $small-phone) {
+        border-radius: $border-radius $border-radius 0 0;
+        border-bottom: none;
+        border-right: 1px solid $border-color;
+      }
     }
 
     button {
       background: $brand;
+      color: $background;
+      padding: 1em;
+      font-weight: bold;
+      border-radius: 0 $border-radius $border-radius 0;
+
+      @media screen and (max-width: $small-phone) {
+        border-radius: 0 0 $border-radius $border-radius;
+        width: 100%;
+      }
+
+      &:hover {
+        background: darken($brand, 8%);
+      }
     }
   } // end .newsletter-subscribe-form-inner
 } // End .newsletter-subscribe-form

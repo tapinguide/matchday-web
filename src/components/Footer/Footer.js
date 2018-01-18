@@ -14,8 +14,8 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <NewsletterSubscribeForm />
-        <div className="footer-nav">
+        <div className="footer-section footer-left">
+          <NewsletterSubscribeForm />
           <nav className="footer-nav-primary">
             <Link
               className="footer-text-link"
@@ -29,8 +29,6 @@ class Footer extends Component {
             >
               About
             </Link>
-          </nav>
-          <nav className="footer-nav-social">
             <Link
               className="footer-nav-social-icon"
               to="https://www.facebook.com/tapindesign"
@@ -47,7 +45,7 @@ class Footer extends Component {
             </Link>
           </nav>
         </div>
-        <div className="footer-app-store-links">
+        <div className="footer-section footer-right">
           <Link
             className="footer-app-store-logo"
             to="https://itunes.apple.com/us/app/tap-in-guide/id1265129819"

@@ -34,6 +34,7 @@ $large-screen: 1280px;
 $tablet: 1024px;
 $big-phone: 767px;
 $phone: 680px;
+$small-phone: 480px;
 
 // Basic Colors
 $black: #000000;
@@ -159,4 +160,4 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 // @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {} // End iPad Only
 
 // iPhone Only
-// @media only screen and (max-device-width: 480px) {} // End iPhone Only
+// @media only screen and (max-device-width: $small-phone) {} // End iPhone Only

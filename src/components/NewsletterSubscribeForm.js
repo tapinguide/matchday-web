@@ -80,7 +80,7 @@ class NewsletterSubscribeForm extends Component {
               onClick={this.onSubmit}
               type="submit"
             >
-              Get Updates
+              Subscribe
             </button>
           </div>
         </form>
