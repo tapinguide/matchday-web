@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import renderHTML from 'react-render-html';
 
-import logo from '../../assets/images/tapin-logo.png';
+import logo from '../assets/images/tapin-logo.png';
 
 export default class Header extends Component {
   render() {

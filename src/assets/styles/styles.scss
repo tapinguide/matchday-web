@@ -34,6 +34,7 @@ $large-screen: 1280px;
 $tablet: 1024px;
 $big-phone: 767px;
 $phone: 680px;
+$small-phone: 480px;
 
 // Basic Colors
 $black: #000000;
@@ -54,7 +55,7 @@ $background-alt: $black;
 $border-color: #EAE9F1;
 $brand: #30EEC6;
 $brand-alt: #00c6e7;
-$error: #85260D;
+$error: $red;
 $form-border: #D6D4E3;
 $type: #201C3A;
 $type-alt: #8F8D9C;
@@ -125,6 +126,8 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 @import "components/footer";
 @import 'components/event';
 @import "components/match";
+@import "components/newsletter-subscribe-form";
+@import "components/loading-blocks";
 // @import 'components/button';
 // @import "components/nav";
 
@@ -158,4 +161,4 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 // @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {} // End iPad Only
 
 // iPhone Only
-// @media only screen and (max-device-width: 480px) {} // End iPhone Only
+// @media only screen and (max-device-width: $small-phone) {} // End iPhone Only

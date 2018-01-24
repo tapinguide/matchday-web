@@ -1,0 +1,77 @@
+.newsletter-subscribe-form {
+  margin-bottom: $space;
+  position: relative;
+  width: 100%;
+
+  &-inner {
+    display: flex;
+    font-family: Poppins, sans-serif;
+    width: 100%;
+
+    @media screen and (max-width: $small-phone) {
+      display: block;
+    }
+
+    input {
+      border-radius: $border-radius 0  0 $border-radius;
+      border-right: none;
+      border: 1px solid $border-color;
+      padding: $half-space;
+      width: 100%;
+
+      @media screen and (max-width: $small-phone) {
+        border-radius: $border-radius $border-radius 0 0;
+        border-bottom: none;
+        border-right: 1px solid $border-color;
+      }
+    }
+
+    button {
+      background: $brand;
+      border-radius: 0 $border-radius $border-radius 0;
+      color: $background;
+      display: flex;
+      font-weight: bold;
+      justify-content: center;
+      min-width: 102px;
+      padding: 1em;
+
+      @media screen and (max-width: $small-phone) {
+        border-radius: 0 0 $border-radius $border-radius;
+        width: 100%;
+      }
+
+      &:hover {
+        background: darken($brand, 8%);
+      }
+
+      .loading-blocks > div {
+        background: $white;
+      }
+    }
+  } // end .newsletter-subscribe-form-inner
+
+  .message {
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+
+    &.message-error {
+      color: $error;
+      margin-top: 0.5em;
+    }
+
+    &.message-confirmation {
+      align-items: center;
+      background-image: -o-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+      background-image: -webkit-linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+      background-image: linear-gradient(131deg, #00F0C5 0%, #00D0F1 100%);
+      border-radius: $border-radius;
+      color: $white;
+      display: flex;
+      height: 45px;
+      justify-content: center;
+      width: 100%;
+
+    }
+  }
+} // End .newsletter-subscribe-form

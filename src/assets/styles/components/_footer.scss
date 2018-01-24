@@ -1,78 +1,79 @@
 .footer {
+  border-top: 1px solid #d9d9d9;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 3em;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3em;
-  margin-bottom: 3em;
+  padding-top: 3em;
   width: calc(100% - 20px);
 
   @media screen and (max-width: $big-phone) {
     flex-direction: column-reverse;
     max-width: 479px;
-    padding: 1em 10px;
-    margin: 0 auto;
+    padding: 1em 0;
+    border-top: none;
+    margin: 1em auto;
   }
 
-  .footer-nav {
-    align-items: center;
-    border-bottom: 1px solid #d9d9d9;
+  .footer-section {
+    width: calc(50% - 10px);
+
+    @media screen and (max-width: $big-phone) {
+      width: 100%;
+    }
+  }
+
+  .footer-left {
     display: flex;
-    margin-bottom: 2em;
-    padding: 0em 0em 2em;
+    flex-direction: column;
 
     @media screen and (max-width: $big-phone) {
       border-bottom: 0px;
-      padding-top: 2em;
+      padding-top: 1em;
       margin-bottom: 0em;
     }
 
     .footer-nav-primary {
+      align-items: center;
       display: flex;
+
+      @media screen and (max-width: $big-phone) {
+        justify-content: center;
+      }
     }
 
-    .footer-nav-social {
-      display: flex;
-      margin-left: auto;
+    .footer-nav-social-icon {
+      display: block;
+      margin-left: 20px;
+      transition: all 0.2s;
 
-      .footer-nav-social-icon {
-        display: block;
-        margin-left: 20px;
-        transition: all 0.2s;
+      &:hover{
+        transform: translateY(-2px);
+      }
 
-        &:hover{
-          transform: translateY(-2px);
-        }
-
-        img{
-          width: 30px;
-        }
+      img{
+        width: 30px;
       }
     }
   } // End .footer-nav
 
-  .footer-app-store-links {
+  .footer-right {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
-
-    @media screen and (max-width: $big-phone) {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0 0;
-      flex-wrap: wrap;
-    }
 
     .footer-app-store-logo {
       display: inline-block;
+      width: 48%;
 
       @media screen and (max-width: $big-phone) {
         margin-bottom: 10px;
-        min-width: 200px;
-        padding: 2%;
-        width: 46%;
+        width: 48%;
       }
 
       img {
-        max-width: 150px;
         margin-right: 20px;
         width: 100%;
 
@@ -89,7 +90,7 @@
     color: #28323F;
     display: inline-block;
     font-family: Poppins;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     margin-right: 1em;
     transition: all 0.2s;
