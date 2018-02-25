@@ -6,6 +6,7 @@ import './assets/styles/styles.css';
 
 // Screens
 import Matches from './screens/Matches';
+import Tables from './screens/Tables';
 import Wallpaper from './screens/Wallpaper/Wallpaper';
 import About from './screens/About/About';
 import Contact from './screens/Contact';
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' component={Matches}/>
+        <Route exact path='/tables' component={Tables}/>
         <Route path='/wallpaper' component={Wallpaper}/>
         <Route path='/about' component={About}/>
         <Route path='/contact' component={Contact}/>

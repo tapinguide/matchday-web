@@ -75,7 +75,7 @@ $micro-space: 0.750rem;
 $nano-space: $micro-space / 2;
 
 // Fonts
-$font: "roboto_regular";
+$font: Poppins;
 $font-light: "roboto_light";
 $font-medium: "roboto_medium";
 $font-bold: "roboto_bold";
@@ -83,7 +83,7 @@ $font-bold-italic: "roboto_bold_italic";
 $font-italic: "roboto_italic";
 $font-alt: "";
 $font-alt-bold: "";
-$font-stack: $font, "Georgia", "Times New Roman", serif;
+$font-stack: $font, "Arial", sans-serif;
 $social: "";
 
 // Misc
@@ -94,13 +94,14 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 // Base Imports
 @import "base/utilities";
 @import "base/resets";
-// @import "base/generics";
+@import "base/generics";
 // @import "base/modbox";
 // @import "base/fonts";
 
 // LAYOUT - Global Structure
 // ----------------------------------------------------------------------------------------------------
 @import "layout/global";
+@import "layout/wrapper";
 
 // Footer Structure
 
@@ -126,6 +127,7 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 @import "components/footer";
 @import 'components/event';
 @import "components/match";
+@import "components/table";
 @import "components/newsletter-subscribe-form";
 @import "components/loading-blocks";
 // @import 'components/button';
@@ -134,6 +136,7 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 // SCREENS
 // ----------------------------------------------------------------------------------------------------
 @import 'screens/matches';
+@import 'screens/tables';
 @import 'screens/about';
 
 // TO REMOVE

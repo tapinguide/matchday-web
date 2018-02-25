@@ -154,41 +154,38 @@ export default class Matches extends Component {
     }
     var bigtext = "Essential Matches";
     return (
-          <div className="container-fluid container-fluid-matches">
-            <div className="wrapper wrapper-matches">
-              <div className="info desktop-header">
-                <div className="header-logo">
-                  <img alt="Tapin Guide Logo" src={logo} />
-                </div>
-                <div className="bigtext">
-                  <span>{bigtext}</span>
-                </div>
-                <div className="dateRangeText">
-                  <span>{this.state.matchDateRange}</span>
-                </div>
-                <div className="contextblurb">
-                  <span>{renderHTML(this.state.contextBlurb)}</span>
-                </div>
-              </div>
-              <Header
-                bigtext={bigtext}
-                smalltext={this.state.matchDateRange}
-                contextblurb={this.state.contextBlurb}
-              />
-              <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
-                <div className="matches">
-                  <div className="matches-column column-left">
-                     {columnLeft}
-                  </div>
-                  <div className="matches-column column-right">
-                    {columnRight}
-                  </div>
-                  <Footer />
-                </div>
-              </Loader>
-
-            </div>
+      <div className="wrapper wrapper-matches">
+        <div className="info desktop-header">
+          <div className="header-logo">
+            <img alt="Tapin Guide Logo" src={logo} />
           </div>
+          <div className="bigtext">
+            <span>{bigtext}</span>
+          </div>
+          <div className="dateRangeText">
+            <span>{this.state.matchDateRange}</span>
+          </div>
+          <div className="contextblurb">
+            <span>{renderHTML(this.state.contextBlurb)}</span>
+          </div>
+        </div>
+        <Header
+          bigtext={bigtext}
+          smalltext={this.state.matchDateRange}
+          contextblurb={this.state.contextBlurb}
+        />
+        <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
+          <div className="matches">
+            <div className="matches-column column-left">
+               {columnLeft}
+            </div>
+            <div className="matches-column column-right">
+              {columnRight}
+            </div>
+            <Footer />
+          </div>
+        </Loader>
+      </div>
     );
   }
 }

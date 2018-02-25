@@ -172,26 +172,6 @@
   }
 }
 
-.wrapper {
-  @media screen and (max-width: 767px) {
-    -webkit-flex-direction: column;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: column;
-  }
-  &.wrapper-matches {
-    @media screen and (max-width: 1024px) {
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: column;
-      flex-direction: column;
-      max-width: 920px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  } // End .wrapper.wrapper-matches
-} // End .wrapper
-
 .logoname {
   @media screen and (max-width: 1024px) {
     position: absolute;
@@ -211,9 +191,3 @@
     }
   }
 } // End .logoname
-
-.container-fluid.container-fluid-matches {
-  @media screen and (max-width: 479px) {
-    padding: 0;
-  }
-}

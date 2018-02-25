@@ -1,0 +1,26 @@
+.tables-container {
+  width: calc(100% - 220px);
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
+  .tables {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    width: 100%;
+
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+    }
+
+    .tables-column {
+      width: 50%;
+
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  } // End .tables
+} // End .tables-container

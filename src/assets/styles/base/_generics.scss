@@ -1,3 +1,7 @@
+@mixin brand-gradient-horizontal() {
+  background-image: linear-gradient(-153deg, #18EFC6 0%, #18D0EF 100%);
+}
+
 // Curtain
 @mixin curtain($position: fixed) {
   background-color: rgba(invert($background), 0.9);
