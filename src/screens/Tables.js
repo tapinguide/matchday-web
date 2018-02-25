@@ -37,9 +37,13 @@ class Tables extends Component {
       this.getMLSTable(),
       this.getLigaMXTable(),
       ]).then(axios.spread((mlsTableResult, ligaMXTableResult) => {
-         _this.setState({
-          mlsTable: mlsTableResult.data,
-          ligaMXTable: ligaMXTableResult.data,
+
+        let sortedMLS = this.sortTable(mlsTableResult.data)
+        let sortedLigaMx = this.sortTable(ligaMXTableResult.data)
+
+        _this.setState({
+          mlsTable: sortedMLS,
+          ligaMXTable: sortedLigaMx,
           loaded: true,
         });
       }));
@@ -51,6 +55,14 @@ class Tables extends Component {
 
   getLigaMXTable() {
     return axios.get(ligaMXTableURL)
+  }
+
+  sortTable(table) {
+    table.sort(function(a, b) {
+        return b.points - a.points;
+    });
+
+    return table;
   }
 
   render() {
@@ -135,22 +147,22 @@ class Tables extends Component {
                           </div>
                           <div className="row-columns">
                             <div className="columns-column">
-                              26
+                              {row.matchesPlayed}
                             </div>
                             <div className="columns-column">
-                              22
+                              {row.matchesWon}
                             </div>
                             <div className="columns-column">
-                              3
+                              {row.matchesDrew}
                             </div>
                             <div className="columns-column">
-                              1
+                              {row.matchesLost}
                             </div>
                             <div className="columns-column">
-                              +22
+                              {row.goalDifference}
                             </div>
                             <div className="columns-column">
-                              69
+                              {row.points}
                             </div>
                           </div>
                         </div>
@@ -168,6 +180,31 @@ class Tables extends Component {
                   </h3>
                 </div>
                 <ul className="table-list">
+                  <li className="table-row primary">
+                    <div className="table-row-inner">
+                      <div className="row-title" />
+                      <div className="row-columns">
+                        <div className="columns-column">
+                          GP
+                        </div>
+                        <div className="columns-column">
+                          W
+                        </div>
+                        <div className="columns-column">
+                          D
+                        </div>
+                        <div className="columns-column">
+                          L
+                        </div>
+                        <div className="columns-column">
+                          GD
+                        </div>
+                        <div className="columns-column">
+                          PTS
+                        </div>
+                      </div>
+                    </div>
+                  </li>
                   {ligaMXTable.map((row, index) => {
                     return (
                       <li className="table-row" key={'row' + index}>
@@ -177,22 +214,22 @@ class Tables extends Component {
                           </div>
                           <div className="row-columns">
                             <div className="columns-column">
-                              26
+                              {row.matchesPlayed}
                             </div>
                             <div className="columns-column">
-                              22
+                              {row.matchesWon}
                             </div>
                             <div className="columns-column">
-                              3
+                              {row.matchesDrew}
                             </div>
                             <div className="columns-column">
-                              1
+                              {row.matchesLost}
                             </div>
                             <div className="columns-column">
-                              +22
+                              {row.goalDifference}
                             </div>
                             <div className="columns-column">
-                              69
+                              {row.points}
                             </div>
                           </div>
                         </div>
