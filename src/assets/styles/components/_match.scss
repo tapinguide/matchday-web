@@ -5,8 +5,6 @@
     border-left: 0 none $border-color;
     border-right: 0 none $border-color;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
-    margin-left: auto;
-    margin-right: auto;
     max-width: 479px;
     padding-bottom: 0;
     transition: max-height 3.5s ease-in-out;
@@ -69,8 +67,9 @@
 
     .content-container {
       width: 86%;
-      margin-right: auto;
-      margin-left: auto;
+
+      left: 50%;
+      transform: translateX(-50%);
       text-align: left;
 
       .inner-container{

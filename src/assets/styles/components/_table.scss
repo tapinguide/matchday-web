@@ -7,7 +7,6 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 479px;
-  padding-bottom: 0;
 
   @media screen and (max-width: 767px) {
     border-bottom: 1px solid $border-color;
@@ -33,22 +32,43 @@
     padding-left: 0;
 
     .table-row {
+      padding: 8px 11px;
+
       &.primary {
         .row-title {
           font-weight: bold;
         }
       } // End .table-row.primary
 
+      &:nth-child(even) {
+        background: $background-alt-light;
+      }
+
       &-inner {
         display: flex;
 
         .row-title {
+          display: flex;
+          align-items: center;
           min-width: 210px;
           position: relative;
 
-          .club-name {
+          .club-info {
+            display: flex;
+            align-items: center;
             left: 26px;
             position: absolute;
+
+            .club-crest {
+              height: 20px;
+              margin-right: 8px;
+              width: 20px;
+
+              img {
+                height: auto;
+                width: 100%;
+              }
+            }
           }
         } // End .row-title
 

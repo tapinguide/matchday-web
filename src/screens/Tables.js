@@ -143,7 +143,18 @@ class Tables extends Component {
                       <li className="table-row" key={'row' + index}>
                         <div className="table-row-inner">
                           <div className="row-title">
-                            {index + 1}. <span className="club-name">{row.club.name}</span>
+                            <div className="row-number">
+                              {index + 1}.
+                            </div>
+                            <div className="club-info">
+                              <div className="club-crest">
+                                <img
+                                  src={row.club.crest}
+                                  alt={row.club.shortName}
+                                />
+                              </div>
+                              <div className="club-name">{row.club.name}</div>
+                            </div>
                           </div>
                           <div className="row-columns">
                             <div className="columns-column">
