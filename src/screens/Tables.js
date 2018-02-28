@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-import renderHTML from 'react-render-html';
 
 // Packages
 import Loader from 'react-loader';
@@ -9,8 +7,8 @@ import axios from 'axios';
 // Components
 import Header from '../components/Header';
 import Footer from '../components/Footer/Footer';
-import Match from '../components/Match/Match';
-import MustReadWatch from '../components/MustReadWatch/MustReadWatch';
+import Table from '../components/Tables/Table';
+import MLSTable from '../components/Tables/MLSTable';
 
 // Assets
 import logo from '../assets/images/tapin-logo.png';
@@ -25,8 +23,8 @@ const ligaMXTableURL = domain + "/tables/?competition_id=34&format=json";
 
 class Tables extends Component {
   state = {
-    mlsTable: [],
-    ligaMXTable: [],
+    // tables: [{ id: 28 }, { id: 30 }, { id: 29 }, { id: 33 }], //, { id: 34 }],
+    tables: {},
     loaded: false,
     bigtext: "Essential Tables",
   }
@@ -34,32 +32,30 @@ class Tables extends Component {
   componentDidMount() {
     let _this = this;
     axios.all([
-      this.getMLSTable(),
-      this.getLigaMXTable(),
+      this.getTable(33),
+      this.getTable(34),
       ]).then(axios.spread((mlsTableResult, ligaMXTableResult) => {
 
         let sortedMLS = this.sortTable(mlsTableResult.data)
         let sortedLigaMx = this.sortTable(ligaMXTableResult.data)
 
         _this.setState({
-          mlsTable: sortedMLS,
-          ligaMXTable: sortedLigaMx,
+          tables: {
+            ligaMx: sortedLigaMx,
+            mls: sortedMLS
+          },
           loaded: true,
         });
       }));
   }
 
-  getMLSTable(){
-    return axios.get(mlsTableURL)
-  }
-
-  getLigaMXTable() {
-    return axios.get(ligaMXTableURL)
+  getTable(tableId) {
+    return axios.get(`https://api.tapinguide.com/tables/?competition_id=${tableId}&format=json`)
   }
 
   sortTable(table) {
     table.sort(function(a, b) {
-        return b.points - a.points;
+      return a.position - b.position;
     });
 
     return table;
@@ -67,14 +63,10 @@ class Tables extends Component {
 
   render() {
     const {
-      mlsTable,
-      ligaMXTable,
+      tables,
       bigtext,
       loaded
     } = this.state;
-
-    console.log('mlstable: ', mlsTable)
-    console.log('LIGA MX: ', ligaMXTable)
 
     return (
       <div className="wrapper wrapper-tables">
@@ -104,151 +96,10 @@ class Tables extends Component {
         >
           <div className="tables">
             <div className="tables-column column-left">
-              <div className="table">
-                <div className="table-header">
-                  <h3>
-                    Major League Soccer
-                  </h3>
-                </div>
-                <ul className="table-list">
-                  <li className="table-row primary">
-                    <div className="table-row-inner">
-                      <div className="row-title">
-                        Eastern
-                      </div>
-                      <div className="row-columns">
-                        <div className="columns-column">
-                          GP
-                        </div>
-                        <div className="columns-column">
-                          W
-                        </div>
-                        <div className="columns-column">
-                          D
-                        </div>
-                        <div className="columns-column">
-                          L
-                        </div>
-                        <div className="columns-column">
-                          GD
-                        </div>
-                        <div className="columns-column">
-                          PTS
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  {mlsTable.map((row, index) => {
-                    return (
-                      <li className="table-row" key={'row' + index}>
-                        <div className="table-row-inner">
-                          <div className="row-title">
-                            <div className="row-number">
-                              {index + 1}.
-                            </div>
-                            <div className="club-info">
-                              <div className="club-crest">
-                                <img
-                                  src={row.club.crest}
-                                  alt={row.club.shortName}
-                                />
-                              </div>
-                              <div className="club-name">{row.club.name}</div>
-                            </div>
-                          </div>
-                          <div className="row-columns">
-                            <div className="columns-column">
-                              {row.matchesPlayed}
-                            </div>
-                            <div className="columns-column">
-                              {row.matchesWon}
-                            </div>
-                            <div className="columns-column">
-                              {row.matchesDrew}
-                            </div>
-                            <div className="columns-column">
-                              {row.matchesLost}
-                            </div>
-                            <div className="columns-column">
-                              {row.goalDifference}
-                            </div>
-                            <div className="columns-column">
-                              {row.points}
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <MLSTable clubs={tables.mls} />
             </div>
             <div className="tables-column column-right">
-              <div className="table">
-                <div className="table-header">
-                  <h3>
-                    Liga MX
-                  </h3>
-                </div>
-                <ul className="table-list">
-                  <li className="table-row primary">
-                    <div className="table-row-inner">
-                      <div className="row-title" />
-                      <div className="row-columns">
-                        <div className="columns-column">
-                          GP
-                        </div>
-                        <div className="columns-column">
-                          W
-                        </div>
-                        <div className="columns-column">
-                          D
-                        </div>
-                        <div className="columns-column">
-                          L
-                        </div>
-                        <div className="columns-column">
-                          GD
-                        </div>
-                        <div className="columns-column">
-                          PTS
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  {ligaMXTable.map((row, index) => {
-                    return (
-                      <li className="table-row" key={'row' + index}>
-                        <div className="table-row-inner">
-                          <div className="row-title">
-                            {index + 1}. <span className="club-name">{row.club.name}</span>
-                          </div>
-                          <div className="row-columns">
-                            <div className="columns-column">
-                              {row.matchesPlayed}
-                            </div>
-                            <div className="columns-column">
-                              {row.matchesWon}
-                            </div>
-                            <div className="columns-column">
-                              {row.matchesDrew}
-                            </div>
-                            <div className="columns-column">
-                              {row.matchesLost}
-                            </div>
-                            <div className="columns-column">
-                              {row.goalDifference}
-                            </div>
-                            <div className="columns-column">
-                              {row.points}
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+            <Table tableTitle="Liga MX" clubs={tables.ligaMx} />
             </div>
             <Footer />
           </div>
