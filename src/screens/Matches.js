@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import renderHTML from 'react-render-html';
+import axios from 'axios';
 
 // Components
 import Header from '../components/Header';
@@ -12,18 +12,8 @@ import MustReadWatch from '../components/MustReadWatch/MustReadWatch';
 import logo from '../assets/images/tapin-logo.png';
 
 var Loader = require('react-loader');
-var axios = require("axios");
 
-// Matches API Configuration
-const domain = "https://api.tapinguide.com/"
-
-const matchesUrl = domain + "/activematches/?format=json";
-// Demo API for development:
-// var matchesUrl = "https://api.tapinguide.demo.nordicdev.io/api/activematches/?format=json"
-
-const readWatchUrl = domain + "/mustreadwatch/?format=json";
-const contextBlurbUrl = domain + "/contextblurb/?format=json";
-
+const readWatchUrl = "https://api.tapinguide.com/mustreadwatch/?format=json";
 
 
 export default class Matches extends Component {
@@ -34,99 +24,62 @@ export default class Matches extends Component {
       readWatch: [],
       contextBlurb: '',
       loaded: false,
-      matchDateRange: ''
+      matchDateRange: '',
+      parentLoaded: false
     };
   }
 
   componentDidMount() {
+    this.setStateFromProps(this.props);
+
     this.timerID = setInterval(
-      () => this.updateMatches(),
+      () => this.props.updateMatches(),
       5000
     );
-    this.updateMatches();
+    this.props.updateMatches();
+    this.updateReadWatch()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setStateFromProps(nextProps);
+  }
+
+  setStateFromProps(props) {
+    const {
+      matches,
+      contextBlurb,
+      matchDateRange,
+      parentLoaded
+    } = props;
+
+    this.setState({
+      matches,
+      contextBlurb,
+      matchDateRange,
+      parentLoaded
+    })
   }
 
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
 
-  updateMatches() {
-
+  updateReadWatch() {
     var _this = this;
     axios.all([
-      this.getMatches(),
-      this.getReadWatch(),
-      this.getContextBlurb()
-      ]).then(axios.spread(function (matchesResult, readWatchResult, contextBlurbResult) {
-          var matches = matchesResult.data;
-          var readWatch = readWatchResult.data;
-          var contextBlurb = contextBlurbResult.data[0].text;
-          var notCompleted = [];
-          var completed = [];
-          for(var i = 0, numResults = matches.length; i < numResults; i++){
-              if(matches[i].status.description.toLowerCase() === "ft"
-                || matches[i].status.description.toLowerCase() === "aet"
-                || matches[i].status.description.toLowerCase() === "pen."
-                || matches[i].status.description.toLowerCase() === "cancl."){
-                completed.push(matches[i]);
-              }
-              else{
-                notCompleted.push(matches[i]);
-              }
-          }
+      this.getReadWatch()
+      ]).then(axios.spread(function (readWatchResult) {
+        var readWatch = readWatchResult.data;
 
-          notCompleted.sort(function(a,b){
-             return new Date(b.matchTime) - new Date(a.matchTime) || a.id - b.id;
-          }).reverse();
-
-          completed.sort(function(a,b){
-            return new Date(b.matchTime) - new Date(a.matchTime) || a.id - b.id;
-          });
-
-           _this.setState({
-            matches: notCompleted.concat(completed),
-            readWatch: readWatch,
-            contextBlurb: contextBlurb,
-            loaded: true
-          });
-
-          _this.setMatchDateRange();
-        }));
-  }
-
-  getMatches(){
-    return axios.get(matchesUrl)
+         _this.setState({
+          readWatch: readWatch,
+          loaded: true
+        });
+      }));
   }
 
   getReadWatch(){
     return axios.get(readWatchUrl)
-  }
-
-  getContextBlurb(){
-    return axios.get(contextBlurbUrl);
-  }
-
-  setMatchDateRange(){
-    var sortedMatches = JSON.parse(JSON.stringify(this.state.matches));
-    sortedMatches.sort(function(a,b){
-      return new Date(a.matchTime) - new Date(b.matchTime);
-    });
-
-    var matchDateRange = ''
-    var firstMatchDate = moment.utc(sortedMatches[0].matchTime).local();
-    var lastMatchDate = moment.utc(sortedMatches[sortedMatches.length - 1].matchTime).local();
-
-    //check if the matches are in the same month; else display different months
-    if(firstMatchDate.format('M') === lastMatchDate.format('M')){
-      matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('D, YYYY').toUpperCase();
-    }
-    else{
-      matchDateRange = firstMatchDate.format('MMMM D').toUpperCase() + '-' + lastMatchDate.local().format('MMMM D, YYYY').toUpperCase();
-    }
-
-    this.setState({
-      matchDateRange: matchDateRange
-    });
   }
 
   render() {
@@ -174,7 +127,7 @@ export default class Matches extends Component {
           smalltext={this.state.matchDateRange}
           contextblurb={this.state.contextBlurb}
         />
-        <Loader loadedClassName="matches-container" loaded={this.state.loaded} color="#5d5d5d">
+        <Loader loadedClassName="matches-container" loaded={this.state.loaded && this.state.parentLoaded} color="#5d5d5d">
           <div className="matches">
             <div className="matches-column column-left">
                {columnLeft}

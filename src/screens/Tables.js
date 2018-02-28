@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import renderHTML from 'react-render-html';
 
 // Packages
 import Loader from 'react-loader';
@@ -25,10 +26,12 @@ class Tables extends Component {
     tables: {},
     loaded: false,
     bigtext: "Essential Tables",
+    parentLoaded: false
   }
 
   componentDidMount() {
     let _this = this;
+
     axios.all([
       this.getTable(33), // MLS
       this.getTable(34), // Liga MX
@@ -54,6 +57,26 @@ class Tables extends Component {
           loaded: true,
         });
       }));
+
+    this.setStateFromProps(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setStateFromProps(nextProps);
+  }
+
+  setStateFromProps(props) {
+    const {
+      contextBlurb,
+      matchDateRange,
+      parentLoaded
+    } = props;
+
+    this.setState({
+      contextBlurb,
+      matchDateRange,
+      parentLoaded
+    })
   }
 
   getTable(tableId) {
@@ -72,10 +95,12 @@ class Tables extends Component {
     const {
       tables,
       bigtext,
-      loaded
+      loaded,
+      parentLoaded,
+      matchDateRange
     } = this.state;
 
-    console.log('tables: ', tables)
+    const { contextBlurb } = this.props;
 
     return (
       <div className="wrapper wrapper-tables">
@@ -87,21 +112,19 @@ class Tables extends Component {
             <span>{bigtext}</span>
           </div>
           <div className="dateRangeText">
-            <span>{
-              // this.state.matchDateRange
-            }</span>
+            <span>{ matchDateRange }</span>
           </div>
           <div className="contextblurb">
-            <span>{/*renderHTML(this.state.contextBlurb)*/}</span>
+            <span>{renderHTML(contextBlurb)}</span>
           </div>
         </div>
         <Header
           bigtext={bigtext}
-          // contextblurb={this.state.contextBlurb}
+          contextblurb={contextBlurb}
         />
         <Loader
           loadedClassName="tables-container"
-          loaded={loaded} color="#5d5d5d"
+          loaded={loaded && this.props.parentLoaded} color="#5d5d5d"
         >
           <div className="tables">
             <div className="tables-column column-left">
