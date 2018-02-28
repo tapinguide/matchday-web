@@ -16,8 +16,6 @@ import logo from '../assets/images/tapin-logo.png';
 // Tables API Configuration
 const domain = "https://api.tapinguide.com/"
 
-const mlsTableURL = domain + "/tables/?competition_id=33&format=json";
-const ligaMXTableURL = domain + "/tables/?competition_id=34&format=json";
 // Demo API for development:
 // var matchesUrl = "https://api.tapinguide.demo.nordicdev.io/api/activematches/?format=json"
 
@@ -32,17 +30,26 @@ class Tables extends Component {
   componentDidMount() {
     let _this = this;
     axios.all([
-      this.getTable(33),
-      this.getTable(34),
-      ]).then(axios.spread((mlsTableResult, ligaMXTableResult) => {
+      this.getTable(33), // MLS
+      this.getTable(34), // Liga MX
+      this.getTable(28), // EPL
+      this.getTable(30), // La Liga
+      this.getTable(29), // Bundesliga
+      ]).then(axios.spread((mlsTableResult, ligaMXTableResult, eplTableResult, laLigaResult, bundesligaResult) => {
 
         let sortedMLS = this.sortTable(mlsTableResult.data)
         let sortedLigaMx = this.sortTable(ligaMXTableResult.data)
+        let sortedEpl = this.sortTable(eplTableResult.data)
+        let sortedLaLiga = this.sortTable(laLigaResult.data)
+        let sortedBundesliga = this.sortTable(bundesligaResult.data)
 
         _this.setState({
           tables: {
             ligaMx: sortedLigaMx,
-            mls: sortedMLS
+            mls: sortedMLS,
+            epl: sortedEpl,
+            laLiga: sortedLaLiga,
+            bundesliga: sortedBundesliga
           },
           loaded: true,
         });
@@ -67,6 +74,8 @@ class Tables extends Component {
       bigtext,
       loaded
     } = this.state;
+
+    console.log('tables: ', tables)
 
     return (
       <div className="wrapper wrapper-tables">
@@ -96,10 +105,36 @@ class Tables extends Component {
         >
           <div className="tables">
             <div className="tables-column column-left">
-              <MLSTable clubs={tables.mls} />
+              <Table
+                tableTitle="Premier League"
+                clubs={tables.epl}
+                championsLeaguePositions={[1,2,3,4]}
+                europaLeaguePositions={[5]}
+                europaQualificationPositions={[]}
+                relegationQualificationPositions={[]}
+                relegationPositions={[18,19,20]}
+              />
+              <Table
+                tableTitle="Bundesliga"
+                clubs={tables.bundesliga}
+                championsLeaguePositions={[1,2,3,4]}
+                europaLeaguePositions={[5]}
+                europaQualificationPositions={[6]}
+                relegationQualificationPositions={[16]}
+                relegationPositions={[17,18]}
+              />
             </div>
             <div className="tables-column column-right">
-            <Table tableTitle="Liga MX" clubs={tables.ligaMx} />
+              <Table
+                tableTitle="La Liga"
+                clubs={tables.laLiga}
+                championsLeaguePositions={[1,2,3,4]}
+                europaLeaguePositions={[5]}
+                europaQualificationPositions={[6]}
+                relegationQualificationPositions={[]}
+                relegationPositions={[18,19,20]}
+              />
+              <MLSTable clubs={tables.mls} />
             </div>
             <Footer />
           </div>

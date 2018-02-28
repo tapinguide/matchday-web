@@ -6,11 +6,12 @@ import logoCrest from '../../assets/images/logo.png';
 class TableRow extends Component {
   render() {
     const {
-      teamData
+      teamData,
+      indicatorClass
     } = this.props;
 
     return (
-      <li className="table-row">
+      <li className={`table-row${indicatorClass ? ' ' + indicatorClass : ''}`}>
         <div className="table-row-inner">
           <div className="row-title">
             <div className="row-number">

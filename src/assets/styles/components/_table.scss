@@ -4,6 +4,7 @@
   border-right: 0 none $border-color;
   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
   font-family: Poppins, sans-serif;
+  margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   max-width: 479px;
@@ -32,7 +33,12 @@
     padding-left: 0;
 
     .table-row {
+      position: relative;
       padding: 8px 11px;
+
+      &:nth-child(even) {
+        background: $background-alt-light;
+      }
 
       &.primary {
         .row-title {
@@ -40,8 +46,49 @@
         }
       } // End .table-row.primary
 
-      &:nth-child(even) {
-        background: $background-alt-light;
+      &.champions-league,
+      &.europa-league,
+      &.europa-qualification,
+      &.relegation-qualification,
+      &.relegation {
+        &:before {
+          content: '';
+          width: 3px;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &.champions-league {
+        &:before {
+          background: $brand;
+        }
+      }
+
+      &.europa-league {
+        &:before {
+          background: $blue;
+        }
+      }
+
+      &.europa-qualification {
+        &:before {
+          background: $gray1;
+        }
+      }
+
+      &.relegation-qualification {
+        &:before {
+          background: $orange;
+        }
+      }
+
+      &.relegation {
+        &:before {
+          background: $error;
+        }
       }
 
       &-inner {
@@ -90,4 +137,61 @@
       } // End .table-row-inner
     } // End .table-row
   } // End .table-list
+
+  .table-key {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+
+    &-item {
+      font-size: 0.88em;
+      line-height: 0.88em;
+      color: #93989E;
+      white-space: nowrap;
+      margin-right: 1.4em;
+      padding-left: 1.2em;
+      position: relative;
+      margin-bottom: 0.5em;
+
+      &:before {
+        content: '';
+        height: .6em;
+        width: .6em;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      &.champions-league {
+        &:before {
+          background: $brand;
+        }
+      }
+
+      &.europa-league {
+        &:before {
+          background: $blue;
+        }
+      }
+
+      &.europa-qualification {
+        &:before {
+          background: $gray1;
+        }
+      }
+
+      &.relegation-qualification {
+        &:before {
+          background: $orange;
+        }
+      }
+
+      &.relegation {
+        &:before {
+          background: $error;
+        }
+      }
+    }
+  }
 } // End .table
