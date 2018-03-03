@@ -4,6 +4,16 @@ import React, { Component } from 'react';
 import logoCrest from '../../assets/images/logo.png';
 
 class TableRow extends Component {
+  getGoalDifferenceClass(goalDifference) {
+    if (goalDifference === '+0' || goalDifference === '0') {
+      return ''
+    } else if (goalDifference.includes('+')) {
+      return 'gd-positive'
+    } else if (goalDifference.includes('-')) {
+      return 'gd-negative'
+    }
+  }
+
   render() {
     const {
       teamData,
@@ -24,7 +34,14 @@ class TableRow extends Component {
                   alt={teamData.club.shortName}
                 />
               </div>
-              <div className="club-name">{teamData.club.name}</div>
+              <div className="club-name">
+                <span className="club-name-full">
+                  {teamData.club.name}
+                </span>
+                <span className="club-name-short">
+                  {teamData.club.shortName}
+                </span>
+              </div>
             </div>
           </div>
           <div className="row-columns">
@@ -40,7 +57,7 @@ class TableRow extends Component {
             <div className="columns-column">
               {teamData.matchesLost}
             </div>
-            <div className="columns-column">
+            <div className={`columns-column ${this.getGoalDifferenceClass(teamData.goalDifference)}`}>
               {teamData.goalDifference}
             </div>
             <div className="columns-column">

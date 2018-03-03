@@ -41,7 +41,7 @@ class Table extends Component {
     } = this.state;
 
     return (
-      <div className="table">
+      <div className="table mls-table">
         <div className="table-header">
           <h3>
             Major League Soccer
@@ -75,9 +75,11 @@ class Table extends Component {
               </div>
             </div>
           </li>
-          {east.map((row, index) => {
-            return <TeamRow teamData={row} key={row.club.shortName + index}/>;
-          })}
+          <div className="mls-table-conference">
+            {east.map((row, index) => {
+              return <TeamRow teamData={row} key={row.club.shortName + index}/>;
+            })}
+          </div>
           <li className="table-row primary">
             <div className="table-row-inner">
               <div className="row-title">
@@ -105,10 +107,20 @@ class Table extends Component {
               </div>
             </div>
           </li>
-          {west.map((row, index) => {
-            return <TeamRow teamData={row} key={row.club.shortName + index}/>;
-          })}
+          <div className="mls-table-conference">
+            {west.map((row, index) => {
+              return <TeamRow teamData={row} key={row.club.shortName + index}/>;
+            })}
+          </div>
         </ul>
+        <div className="table-key">
+          <div className="table-key-item champions-league">
+            Conference Semi-Finals
+          </div>
+          <div className="table-key-item europa-league">
+            Knockout Round
+          </div>
+        </div>
       </div>
     );
   }

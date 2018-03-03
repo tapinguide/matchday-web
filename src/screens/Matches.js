@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import renderHTML from 'react-render-html';
 import axios from 'axios';
+import Loader from 'react-loader';
 
 // Components
 import Header from '../components/Header';
 import Footer from '../components/Footer/Footer';
 import Match from '../components/Match/Match';
 import MustReadWatch from '../components/MustReadWatch/MustReadWatch';
-
-// Assets
-import logo from '../assets/images/tapin-logo.png';
-
-var Loader = require('react-loader');
 
 const readWatchUrl = "https://api.tapinguide.com/mustreadwatch/?format=json";
 
@@ -105,29 +100,18 @@ export default class Matches extends Component {
       columnRight.push(<MustReadWatch link={mustReadRight} key="mustWatch" additionalClass="must-watch" />);
       }
     }
-    var bigtext = "Essential Matches";
+    var bigText = "Essential Matches";
+
+    const { matchDateRange, contextBlurb, loaded, parentLoaded } = this.state;
+
     return (
       <div className="wrapper wrapper-matches">
-        <div className="info desktop-header">
-          <div className="header-logo">
-            <img alt="Tapin Guide Logo" src={logo} />
-          </div>
-          <div className="bigtext">
-            <span>{bigtext}</span>
-          </div>
-          <div className="dateRangeText">
-            <span>{this.state.matchDateRange}</span>
-          </div>
-          <div className="contextblurb">
-            <span>{renderHTML(this.state.contextBlurb)}</span>
-          </div>
-        </div>
         <Header
-          bigtext={bigtext}
-          smalltext={this.state.matchDateRange}
-          contextblurb={this.state.contextBlurb}
+          bigText={bigText}
+          contextBlurb={contextBlurb}
+          matchDateRange={matchDateRange}
         />
-        <Loader loadedClassName="matches-container" loaded={this.state.loaded && this.state.parentLoaded} color="#5d5d5d">
+        <Loader loadedClassName="matches-container" loaded={loaded && parentLoaded} color="#5d5d5d">
           <div className="matches">
             <div className="matches-column column-left">
                {columnLeft}

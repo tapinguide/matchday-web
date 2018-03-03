@@ -122,7 +122,6 @@ class App extends Component {
       matchDateRange,
       contextBlurb,
       matches,
-      readWatch,
       loaded
     } = this.state;
 
@@ -140,7 +139,6 @@ class App extends Component {
         <Route exact path="/tables" render={(props) => (
           <Tables {...props}
             contextBlurb={ contextBlurb }
-            contextBlurb={contextBlurb}
             matchDateRange={matchDateRange}
             parentLoaded={loaded}
           />

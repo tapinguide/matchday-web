@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import renderHTML from 'react-render-html';
 
 // Packages
 import Loader from 'react-loader';
@@ -11,21 +10,12 @@ import Footer from '../components/Footer/Footer';
 import Table from '../components/Tables/Table';
 import MLSTable from '../components/Tables/MLSTable';
 
-// Assets
-import logo from '../assets/images/tapin-logo.png';
-
-// Tables API Configuration
-const domain = "https://api.tapinguide.com/"
-
-// Demo API for development:
-// var matchesUrl = "https://api.tapinguide.demo.nordicdev.io/api/activematches/?format=json"
-
 class Tables extends Component {
   state = {
     // tables: [{ id: 28 }, { id: 30 }, { id: 29 }, { id: 33 }], //, { id: 34 }],
     tables: {},
     loaded: false,
-    bigtext: "Essential Tables",
+    bigText: "Essential Tables",
     parentLoaded: false
   }
 
@@ -94,9 +84,8 @@ class Tables extends Component {
   render() {
     const {
       tables,
-      bigtext,
+      bigText,
       loaded,
-      parentLoaded,
       matchDateRange
     } = this.state;
 
@@ -104,30 +93,17 @@ class Tables extends Component {
 
     return (
       <div className="wrapper wrapper-tables">
-        <div className="info desktop-header">
-          <div className="header-logo">
-            <img alt="Tap In Guide Logo" src={logo} />
-          </div>
-          <div className="bigtext">
-            <span>{bigtext}</span>
-          </div>
-          <div className="dateRangeText">
-            <span>{ matchDateRange }</span>
-          </div>
-          <div className="contextblurb">
-            <span>{renderHTML(contextBlurb)}</span>
-          </div>
-        </div>
         <Header
-          bigtext={bigtext}
-          contextblurb={contextBlurb}
+          bigText={bigText}
+          contextBlurb={contextBlurb}
+          matchDateRange={matchDateRange}
         />
         <Loader
           loadedClassName="tables-container"
           loaded={loaded && this.props.parentLoaded} color="#5d5d5d"
         >
           <div className="tables">
-            <div className="tables-column column-left">
+            <div className="tables-column tables-column-left">
               <Table
                 tableTitle="Premier League"
                 clubs={tables.epl}
@@ -137,6 +113,7 @@ class Tables extends Component {
                 relegationQualificationPositions={[]}
                 relegationPositions={[18,19,20]}
               />
+              <MLSTable clubs={tables.mls} />
               <Table
                 tableTitle="Bundesliga"
                 clubs={tables.bundesliga}
@@ -146,8 +123,6 @@ class Tables extends Component {
                 relegationQualificationPositions={[16]}
                 relegationPositions={[17,18]}
               />
-            </div>
-            <div className="tables-column column-right">
               <Table
                 tableTitle="La Liga"
                 clubs={tables.laLiga}
@@ -157,7 +132,18 @@ class Tables extends Component {
                 relegationQualificationPositions={[]}
                 relegationPositions={[18,19,20]}
               />
+            </div>
+            <div className="tables-column tables-column-right">
               <MLSTable clubs={tables.mls} />
+              <Table
+                tableTitle="La Liga"
+                clubs={tables.laLiga}
+                championsLeaguePositions={[1,2,3,4]}
+                europaLeaguePositions={[5]}
+                europaQualificationPositions={[6]}
+                relegationQualificationPositions={[]}
+                relegationPositions={[18,19,20]}
+              />
             </div>
             <Footer />
           </div>
