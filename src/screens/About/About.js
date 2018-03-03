@@ -12,24 +12,19 @@ class About extends Component {
   componentDidMount(){
     window.scrollTo(0, 0);
   }
+
   render() {
-    var bigtext = "About";
-    var smalltext = "";
+    let bigText = "About";
+    let smallText = "";
 
     return (
      <div className="container-fluid container-about">
         <div className="wrapper wrapper-matches">
-          <div className="info desktop-header">
-            <div className="header-logo">
-              <Link to="/">
-                  <img alt="Tapin Guide Logo" src={logo} />
-                </Link>
-            </div>
-            <div className="bigtext">
-              <span>{bigtext}</span>
-            </div>
-          </div>
-          <Header bigtext={bigtext} smalltext={smalltext} />
+          <Header
+            bigText={bigText}
+            contextBlurb={''}
+            matchDateRange={smallText}
+          />
           <div className="matches-container">
             <div className="about">
               <div className="about-us">

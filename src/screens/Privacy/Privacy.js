@@ -1,31 +1,24 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 
 import './css/privacy.css';
 
 // Components
-import logo from '../../assets/images/tapin-logo.png';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer/Footer';
 
 class Privacy extends Component {
   render() {
-      var bigtext = "Privacy Policy";
-      var smalltext = "";
+    let bigText = "Privacy Policy";
+    let smallText = "";
+
     return (
          <div className="container-fluid">
             <div className="wrapper wrapper-matches">
-              <div className="info desktop-header">
-                <div className="header-logo">
-                 <Link to="/">
-                      <img alt="Tapin Guide Logo" src={logo} />
-                    </Link>
-                </div>
-                <div className="bigtext">
-                  <span>{bigtext}</span>
-                </div>
-              </div>
-            <Header bigtext={bigtext} smalltext={smalltext} />
+              <Header
+                bigText={bigText}
+                contextBlurb={''}
+                matchDateRange={smallText}
+              />
               <div className="matches-container">
                 <div className="privacy">
                     <h2 className="c12" id="h.hbrhsigqhu3h"><span className="c5">Tap In Design L.L.C. Terms of Service and Privacy Policy</span></h2>

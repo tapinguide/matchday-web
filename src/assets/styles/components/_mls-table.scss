@@ -1,0 +1,24 @@
+.table.mls-table {
+  .mls-table-conference {
+    .table-row {
+      &:nth-child(-n+6) {
+        &:before {
+          content: '';
+          width: 3px;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &:nth-child(-n+2):before {
+        background: $brand;
+      }
+
+      &:nth-child(n+3):nth-child(-n+6):before {
+        background: $blue;
+      }
+    }
+  }
+} // End .table.mls-table

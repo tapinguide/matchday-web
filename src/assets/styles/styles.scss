@@ -41,7 +41,9 @@ $black: #000000;
 $white: #FFFFFF;
 $yellow: #ffdf1a;
 $red: #d03401;
+$blue: #18D0EF;
 $green: #18efc6;
+$orange: #FFCE74;
 
 // Grays
 $gray1: #9d9d9d;
@@ -52,6 +54,7 @@ $background-gray: #f0f0f0;
 // App Colors
 $background: $white;
 $background-alt: $black;
+$background-alt-light: #F5F5F5;
 $border-color: #EAE9F1;
 $brand: #30EEC6;
 $brand-alt: #00c6e7;
@@ -75,7 +78,7 @@ $micro-space: 0.750rem;
 $nano-space: $micro-space / 2;
 
 // Fonts
-$font: "roboto_regular";
+$font: Poppins;
 $font-light: "roboto_light";
 $font-medium: "roboto_medium";
 $font-bold: "roboto_bold";
@@ -83,7 +86,7 @@ $font-bold-italic: "roboto_bold_italic";
 $font-italic: "roboto_italic";
 $font-alt: "";
 $font-alt-bold: "";
-$font-stack: $font, "Georgia", "Times New Roman", serif;
+$font-stack: $font, "Arial", sans-serif;
 $social: "";
 
 // Misc
@@ -94,13 +97,14 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 // Base Imports
 @import "base/utilities";
 @import "base/resets";
-// @import "base/generics";
+@import "base/generics";
 // @import "base/modbox";
 // @import "base/fonts";
 
 // LAYOUT - Global Structure
 // ----------------------------------------------------------------------------------------------------
 @import "layout/global";
+@import "layout/wrapper";
 
 // Footer Structure
 
@@ -126,6 +130,8 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 @import "components/footer";
 @import 'components/event';
 @import "components/match";
+@import "components/table";
+@import "components/mls-table";
 @import "components/newsletter-subscribe-form";
 @import "components/loading-blocks";
 // @import 'components/button';
@@ -134,6 +140,7 @@ $card-drop-shadow: 0 7px 22px 0 #d3d3d3;
 // SCREENS
 // ----------------------------------------------------------------------------------------------------
 @import 'screens/matches';
+@import 'screens/tables';
 @import 'screens/about';
 
 // TO REMOVE

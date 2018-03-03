@@ -1,14 +1,12 @@
 .match-container {
   .match {
-    max-width: 479px;
-    padding-bottom: 0;
+    -webkit-transition: max-height 3.5s ease-in-out;
+    background-color: $background;
+    border-left: 0 none $border-color;
     border-right: 0 none $border-color;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
-    border-left: 0 none $border-color;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: $background;
-    -webkit-transition: max-height 3.5s ease-in-out;
+    max-width: 479px;
+    padding-bottom: 0;
     transition: max-height 3.5s ease-in-out;
 
     @media screen and (max-width: 767px) {
@@ -16,6 +14,7 @@
       border-left: 0 none $border-color;
       border-right: 0 none $border-color;
       padding-bottom: 0;
+      margin: 0 auto;
     }
 
     &.has-expander {
@@ -69,8 +68,9 @@
 
     .content-container {
       width: 86%;
-      margin-right: auto;
-      margin-left: auto;
+
+      left: 50%;
+      transform: translateX(-50%);
       text-align: left;
 
       .inner-container{

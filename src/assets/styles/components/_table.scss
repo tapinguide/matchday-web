@@ -1,0 +1,239 @@
+$row-title-mobile-width: 120px;
+$row-title-width: 204px;
+
+.table {
+  background-color: $background;
+  border-left: 0 none $border-color;
+  border-right: 0 none $border-color;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  font-family: Poppins, sans-serif;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 479px;
+
+  @media screen and (max-width: 767px) {
+    border-bottom: 1px solid $border-color;
+    border-left: 0 none $border-color;
+    border-right: 0 none $border-color;
+    padding-bottom: 0;
+  }
+
+  .table-header {
+    @include brand-gradient-horizontal();
+    text-align: center;
+    padding: $nano-space;
+
+    h3 {
+      color: $background;
+      font-family: Poppins, sans-serif;
+      font-size: 1.215em;
+      margin: 0;
+    }
+  } // End .table-header
+
+  .table-list {
+    padding-left: 0;
+    margin-bottom: 0;
+
+    .table-row {
+      position: relative;
+      padding: 8px 11px;
+      font-size: 0.93em;
+
+      &:nth-child(even) {
+        background: $background-alt-light;
+      }
+
+      &.primary {
+        .row-title {
+          font-weight: bold;
+        }
+      } // End .table-row.primary
+
+      &.champions-league,
+      &.europa-league,
+      &.europa-qualification,
+      &.relegation-qualification,
+      &.relegation {
+        &:before {
+          content: '';
+          width: 3px;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &.champions-league {
+        &:before {
+          background: $brand;
+        }
+      }
+
+      &.europa-league {
+        &:before {
+          background: $blue;
+        }
+      }
+
+      &.europa-qualification {
+        &:before {
+          background: $gray1;
+        }
+      }
+
+      &.relegation-qualification {
+        &:before {
+          background: $orange;
+        }
+      }
+
+      &.relegation {
+        &:before {
+          background: $error;
+        }
+      }
+
+      &-inner {
+        display: flex;
+
+        .row-title {
+          display: flex;
+          align-items: center;
+          min-width: $row-title-width;
+          position: relative;
+
+          @media screen and (max-width: 479px) {
+            min-width: $row-title-mobile-width;
+          }
+
+          .club-info {
+            display: flex;
+            align-items: center;
+            left: 26px;
+            position: absolute;
+
+            .club-crest {
+              height: 20px;
+              margin-right: 8px;
+              width: 20px;
+
+              img {
+                height: auto;
+                width: 100%;
+              }
+            } // End .club-crest
+
+            .club-name {
+              &-full {
+                @media screen and (max-width: 479px) {
+                  display: none;
+                }
+              }
+
+              &-short {
+                display: none;
+
+                @media screen and (max-width: 479px) {
+                  display: block;
+                }
+              }
+            }
+          }
+        } // End .row-title
+
+        .row-columns {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: calc(100% - #{$row-title-width});
+
+          @media screen and (max-width: 479px) {
+            width: calc(100% - #{$row-title-mobile-width});
+          }
+
+          .columns-column {
+            text-align: center;
+            width: 16.666666667%;
+
+            &:last-of-type {
+              font-weight: bold;
+              transform: translateY(-1px);
+            }
+          } // End .column-columns
+        } // End .row-columns
+
+        .gd-positive {
+          color: #00B693;
+        } // End .gd-positive
+
+        .gd-negative {
+          color: $error;
+        } // End .gd-negative
+      } // End .table-row-inner
+    } // End .table-row
+  } // End .table-list
+
+  .table-key {
+    border-top: 1px solid $border-color;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 15px 10px 10px;
+
+    &-item {
+      font-size: 0.88em;
+      line-height: 0.88em;
+      color: #93989E;
+      white-space: nowrap;
+      margin-right: 1.4em;
+      padding-left: 1.2em;
+      position: relative;
+      margin-bottom: 0.5em;
+
+      &:before {
+        content: '';
+        height: .6em;
+        width: .6em;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      &.champions-league {
+        &:before {
+          background: $brand;
+        }
+      }
+
+      &.europa-league {
+        &:before {
+          background: $blue;
+        }
+      }
+
+      &.europa-qualification {
+        &:before {
+          background: $gray1;
+        }
+      }
+
+      &.relegation-qualification {
+        &:before {
+          background: $orange;
+        }
+      }
+
+      &.relegation {
+        &:before {
+          background: $error;
+        }
+      }
+    }
+  }
+} // End .table
