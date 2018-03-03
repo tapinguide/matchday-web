@@ -14,6 +14,20 @@ class TableRow extends Component {
     }
   }
 
+  renderShortName(clubName, shortName) {
+    if (clubName === 'Celta de Vigo') {
+      return 'CDV'
+    } else if (clubName === 'Leganés') {
+      return 'LEG'
+    } else if (clubName === 'Levante') {
+      return 'LEV'
+    } else if (clubName === 'Real Sociedad') {
+      return 'RSO'
+    } else {
+      return shortName
+    }
+  }
+
   render() {
     const {
       teamData,
@@ -39,7 +53,7 @@ class TableRow extends Component {
                   {teamData.club.name}
                 </span>
                 <span className="club-name-short">
-                  {teamData.club.shortName}
+                  {this.renderShortName(teamData.club.name, teamData.club.shortName)}
                 </span>
               </div>
             </div>
