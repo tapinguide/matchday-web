@@ -16,7 +16,7 @@ import Privacy from './screens/Privacy/Privacy';
 import Splash from './screens/Splash/Splash';
 
 // Matches API Configuration
-const domain = "https://api.tapinguide.com/"
+const domain = "https://api.tapinguide.com"
 const contextBlurbUrl = domain + "/contextblurb/?format=json";
 
 const matchesUrl = domain + "/activematches/?format=json";
