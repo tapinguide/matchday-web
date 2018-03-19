@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/images/tapin-logo.png';
+import logo from '../../assets/images/tap-in-logo.svg';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer/Footer';
 import curt from './images/curt.jpg';

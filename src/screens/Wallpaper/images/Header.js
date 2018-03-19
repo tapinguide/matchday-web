@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../images/tapin-logo.png';
+import logo from '../images/tap-in-logo.svg';
 
 class Header extends Component {
   render() {

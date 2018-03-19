@@ -24,10 +24,13 @@ $link-border: #DADADA;
 
   .header-logo {
     margin-bottom: 10px;
+    max-width: 130px;
 
     @media screen and (max-width: 1024px) {
       position: absolute;
       right: 15px;
+      height: 42px;
+      width: 130px;
     }
 
     @media screen and (max-width: 767px) {
@@ -41,10 +44,10 @@ $link-border: #DADADA;
     }
 
     img {
-      @media screen and (max-width: 1024px) {
-        height: auto;
-        width: auto;
-      }
+      // @media screen and (max-width: 1024px) {
+      //   height: auto;
+      //   width: auto;
+      // }
     }
   } // End .header-logo
 
