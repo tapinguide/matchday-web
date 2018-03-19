@@ -30,14 +30,14 @@
             @media screen and (max-width: 767px) {
               display: block;
             }
+          } // End .match-toncatiner:nth-child(even)
 
-            &.must-read {
-              display: block;
-            }
+          &.content-highlight {
+            display: block;
 
-            &.must-watch {
-              @media screen and (max-width: 767px) {
-                display: block;
+            &.hide-desktop {
+              @media screen and (min-width: 767px) {
+                display: none;
               }
             }
           }
@@ -53,11 +53,13 @@
           &:nth-child(odd) {
             display: none;
 
-            &.must-watch {
+            &.content-highlight {
               display: block;
 
-              @media screen and (max-width: 767px) {
-                display: none;
+              &.hide-mobile {
+                @media screen and (max-width: 767px) {
+                  display: block;
+                }
               }
             }
           }
