@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-import renderHTML from 'react-render-html';
+import renderHTML from 'react-render-html'
 
-import logo from '../assets/images/tapin-logo.png';
+// import logo from '../assets/images/tapin-logo.png'
+import logo from '../assets/images/tap-in-logo.svg'
 
 export default class HeaderDesktop extends Component {
   state = {
@@ -21,7 +22,7 @@ export default class HeaderDesktop extends Component {
   }
 
   initializeHeader(props) {
-    const { contextBlurb, matchDateRange } = props;
+    const { contextBlurb, matchDateRange } = props
 
     if (contextBlurb && matchDateRange) {
       this.setState({
@@ -33,17 +34,17 @@ export default class HeaderDesktop extends Component {
   }
 
   isActive(desiredPath) {
-    const path = window.location.pathname;
+    const path = window.location.pathname
 
     if (path === desiredPath ) {
       return true
     } else {
-      return false;
+      return false
     }
   }
 
   renderContextBlurb() {
-    const { contextBlurb } = this.props;
+    const { contextBlurb } = this.props
 
     return contextBlurb
     ? (
@@ -56,18 +57,18 @@ export default class HeaderDesktop extends Component {
   render() {
     const {
       bigText,
-    } = this.props;
+    } = this.props
 
     const {
       isLoading,
       matchDateRange
-    } = this.state;
+    } = this.state
 
     return (
       <div className="info header">
         <div className="header-logo">
           <Link to="/">
-            <img alt="Tapin Guide Logo" src={logo} />
+            <img alt="Tap In Guide Logo" src={logo} />
           </Link>
         </div>
         <div className="bigtext">
@@ -103,7 +104,7 @@ export default class HeaderDesktop extends Component {
           </div>
         }
       </div>
-    );
+    )
   }
 }
 
