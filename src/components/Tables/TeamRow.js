@@ -50,7 +50,7 @@ class TableRow extends Component {
               </div>
               <div className="club-name">
                 <span className="club-name-full">
-                  {teamData.club.name}
+                  {teamData.club.name === 'New England Revolution' ? 'NE Revolution' : teamData.club.name}
                 </span>
                 <span className="club-name-short">
                   {this.renderShortName(teamData.club.name, teamData.club.shortName)}

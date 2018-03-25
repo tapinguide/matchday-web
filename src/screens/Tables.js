@@ -24,14 +24,17 @@ class Tables extends Component {
 
     axios.all([
       this.getTable(33), // MLS
-      this.getTable(34), // Liga MX
+      this.getTable(34), // Liga MX Tap In API Table,
+      this.getLigaMXPositionTable(), // Liga MX Football API Table
       this.getTable(28), // EPL
       this.getTable(30), // La Liga
       this.getTable(29), // Bundesliga
-      ]).then(axios.spread((mlsTableResult, ligaMXTableResult, eplTableResult, laLigaResult, bundesligaResult) => {
+      ]).then(axios.spread((mlsTableResult, ligaMXTapInAPI, ligaMXFootballAPI, eplTableResult, laLigaResult, bundesligaResult) => {
+
+        let combinedLigaMXTable = this.getCombinedLigaMXTable(ligaMXTapInAPI.data, ligaMXFootballAPI.data)
 
         let sortedMLS = this.sortTable(mlsTableResult.data)
-        let sortedLigaMx = this.sortTable(ligaMXTableResult.data)
+        let sortedLigaMx = this.sortTable(combinedLigaMXTable)
         let sortedEpl = this.sortTable(eplTableResult.data)
         let sortedLaLiga = this.sortTable(laLigaResult.data)
         let sortedBundesliga = this.sortTable(bundesligaResult.data)
@@ -73,6 +76,45 @@ class Tables extends Component {
     return axios.get(`https://api.tapinguide.com/tables/?competition_id=${tableId}&format=json`)
   }
 
+  getLigaMXPositionTable() {
+    return axios.get('http://api.football-api.com/2.0/standings/1308?Authorization=565ec012251f932ea400000156a4f0d438f441995b735d2c968fcc0b&format=json')
+  }
+
+  getCombinedLigaMXTable(tapInAPITable, footballAPITable) {
+    let filteredSeasonTable = footballAPITable.filter(team => {
+      return team.stage_id === '13081116'
+    })
+
+    return filteredSeasonTable.map((team) => {
+      let clubData = this.getAdditionalTeamData(team.team_id, tapInAPITable)
+
+      team.club = clubData
+
+      return {
+        club: clubData,
+        goalDifference: team.gd,
+        goalsAllowed: team.overall_ga,
+        goalsScored: team.overall_gs,
+        matchesDrew: team.overall_d,
+        matchesLost: team.overall_l,
+        matchesPlayed: team.overall_gp,
+        matchesWon: team.overall_w,
+        points: team.points,
+        position: team.position,
+        recentForm: team.recent_form,
+        season: team.season,
+      }
+    })
+  }
+
+  getAdditionalTeamData(id, ligaMXTableResult) {
+    let selectedTeam = ligaMXTableResult.filter(team => {
+      return team.club.footballAPIId === parseInt(id, 10)
+    })
+
+    return selectedTeam[0].club
+  }
+
   sortTable(table) {
     table.sort(function(a, b) {
       return a.position - b.position;
@@ -104,6 +146,25 @@ class Tables extends Component {
         >
           <div className="tables">
             <div className="tables-column tables-column-left">
+              <MLSTable clubs={tables.mls} />
+              <Table
+                tableTitle="Liga MX"
+                clubs={tables.ligaMx}
+                championsLeaguePositions={[]}
+                europaLeaguePositions={[]}
+                europaQualificationPositions={[]}
+                relegationQualificationPositions={[]}
+                relegationPositions={[]}
+              />
+              <Table
+                tableTitle="La Liga"
+                clubs={tables.laLiga}
+                championsLeaguePositions={[1,2,3,4]}
+                europaLeaguePositions={[5]}
+                europaQualificationPositions={[6]}
+                relegationQualificationPositions={[]}
+                relegationPositions={[18,19,20]}
+              />
               <Table
                 tableTitle="Premier League"
                 clubs={tables.epl}
@@ -113,7 +174,6 @@ class Tables extends Component {
                 relegationQualificationPositions={[]}
                 relegationPositions={[18,19,20]}
               />
-              <MLSTable clubs={tables.mls} />
               <Table
                 tableTitle="Bundesliga"
                 clubs={tables.bundesliga}
@@ -123,24 +183,23 @@ class Tables extends Component {
                 relegationQualificationPositions={[16]}
                 relegationPositions={[17,18]}
               />
-              <Table
-                tableTitle="La Liga"
-                clubs={tables.laLiga}
-                championsLeaguePositions={[1,2,3,4]}
-                europaLeaguePositions={[5]}
-                europaQualificationPositions={[6]}
-                relegationQualificationPositions={[]}
-                relegationPositions={[18,19,20]}
-              />
             </div>
             <div className="tables-column tables-column-right">
-              <MLSTable clubs={tables.mls} />
               <Table
-                tableTitle="La Liga"
-                clubs={tables.laLiga}
+                tableTitle="Liga MX"
+                clubs={tables.ligaMx}
+                championsLeaguePositions={[]}
+                europaLeaguePositions={[]}
+                europaQualificationPositions={[]}
+                relegationQualificationPositions={[]}
+                relegationPositions={[]}
+              />
+              <Table
+                tableTitle="Premier League"
+                clubs={tables.epl}
                 championsLeaguePositions={[1,2,3,4]}
                 europaLeaguePositions={[5]}
-                europaQualificationPositions={[6]}
+                europaQualificationPositions={[]}
                 relegationQualificationPositions={[]}
                 relegationPositions={[18,19,20]}
               />

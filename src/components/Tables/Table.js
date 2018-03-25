@@ -34,9 +34,12 @@ class Table extends Component {
       europaQualificationPositions,
       relegationQualificationPositions,
       relegationPositions,
-    } = this.props;
+      tableTitle
+    } = this.props
 
-    return (
+    return tableTitle === 'Liga MX'
+    ? null
+    : (
       <div className="table-key">
         { championsLeaguePositions.length > 0 &&
           <div className="table-key-item champions-league">
