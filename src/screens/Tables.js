@@ -25,16 +25,19 @@ class Tables extends Component {
     axios.all([
       this.getTable(33), // MLS
       this.getTable(34), // Liga MX Tap In API Table,
-      this.getLigaMXPositionTable(), // Liga MX Football API Table
+      // this.getLigaMXPositionTable(), // Liga MX Football API Table
       this.getTable(28), // EPL
       this.getTable(30), // La Liga
       this.getTable(29), // Bundesliga
-      ]).then(axios.spread((mlsTableResult, ligaMXTapInAPI, ligaMXFootballAPI, eplTableResult, laLigaResult, bundesligaResult) => {
+      ]).then(axios.spread((mlsTableResult, ligaMXTapInAPI, eplTableResult, laLigaResult, bundesligaResult) => {
 
-        let combinedLigaMXTable = this.getCombinedLigaMXTable(ligaMXTapInAPI.data, ligaMXFootballAPI.data)
+        // let combinedLigaMXTable = this.getCombinedLigaMXTable(ligaMXTapInAPI.data, ligaMXFootballAPI.data)
+        let filteredLigaMXTable = this.getFilteredLigaMXTable(ligaMXTapInAPI.data)
+
+        // console.log('ligaMXTapInAPI: ', ligaMXTapInAPI.data)
 
         let sortedMLS = this.sortTable(mlsTableResult.data)
-        let sortedLigaMx = this.sortTable(combinedLigaMXTable)
+        let sortedLigaMx = this.sortTable(filteredLigaMXTable)
         let sortedEpl = this.sortTable(eplTableResult.data)
         let sortedLaLiga = this.sortTable(laLigaResult.data)
         let sortedBundesliga = this.sortTable(bundesligaResult.data)
@@ -76,9 +79,16 @@ class Tables extends Component {
     return axios.get(`https://api.tapinguide.com/tables/?competition_id=${tableId}&format=json`)
   }
 
-  getLigaMXPositionTable() {
-    return axios.get('http://api.football-api.com/2.0/standings/1308?Authorization=565ec012251f932ea400000156a4f0d438f441995b735d2c968fcc0b&format=json')
+  getFilteredLigaMXTable(table) {
+    console.log('liga: ,', table)
+    return table.filter((team) => {
+      return team.stageId === 13081116
+    });
   }
+
+  // getLigaMXPositionTable() {
+  //   return axios.get('http://api.football-api.com/2.0/standings/1308?Authorization=565ec012251f932ea400000156a4f0d438f441995b735d2c968fcc0b&format=json')
+  // }
 
   getCombinedLigaMXTable(tapInAPITable, footballAPITable) {
     let filteredSeasonTable = footballAPITable.filter(team => {
