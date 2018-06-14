@@ -92,7 +92,7 @@ class About extends Component {
                 </div>
               </div>
               <div className="person-extra">
-                <strong><Link to="https://twitter.com/alx_mrtnz" target="_blank" rel="noopener" className="contact-link">Alex Martinez</Link></strong> and <strong><Link to="https://twitter.com/handrajs" target="_blank" rel="noopener" className="contact-link">Jared Handra</Link></strong> are the newest members of the Tap In squad, both taking on front end development and design duties.
+                The rest of our team includes <strong><Link to="https://twitter.com/alx_mrtnz" target="_blank" rel="noopener" className="contact-link">Alex Martinez</Link></strong> on design and front-end, <strong><Link to="https://twitter.com/pettpett" target="_blank" rel="noopener" className="contact-link">David Pett</Link></strong> on front-end, and <strong><Link to="https://twitter.com/JTHazzard" target="_blank" rel="noopener" className="contact-link">Jack Hazzard</Link></strong> writing and managing social media.
               </div>
               <div className="line"></div>
               <div className="medium">
