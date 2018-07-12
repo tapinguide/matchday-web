@@ -256,6 +256,7 @@ export default class Match extends Component {
   render() {
     let { expanded } = this.state;
     let { matchIndex, match } = this.props;
+    const { matchType } = this.state;
 
     // Data for MoreInfo component
     let { tvDetails, venue, venueCity } = match;
@@ -264,9 +265,14 @@ export default class Match extends Component {
       venue = venueCity;
     }
 
-    let sortedEvents = match.events.sort((a,b) => {
-      return a.id - b.id
-    }).reverse();
+    let sortedEvents = null;
+    matchType === 'matchcomplete' ?
+      sortedEvents = match.events.sort((a,b) => {
+        return a.id - b.id
+      }) :
+      sortedEvents = match.events.sort((a,b) => {
+        return a.id - b.id
+      }).reverse();
 
     return (
       <div className="match-container">
