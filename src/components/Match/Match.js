@@ -10,6 +10,7 @@ export default class Match extends Component {
 
   state = {
     expanded: false,
+    animating: false,
     matchType: null
   }
 
@@ -55,6 +56,7 @@ export default class Match extends Component {
   expandCollapse(value) {
     this.setState(state => ({
       ...state,
+      animating: true,
       expanded: !value
     }))
   }
@@ -237,6 +239,7 @@ export default class Match extends Component {
 
   renderNarrative() {
     const { match } = this.props;
+    const { expanded, animating } = this.state;
 
     let narrative = match.preMatchDetails;
 
@@ -247,7 +250,7 @@ export default class Match extends Component {
       narrative = match.postMatchDetails
     }
 
-    if (this.state.expanded === false) {
+    if (expanded === false && !animating) {
       return (
         <div className="narrative">
           {renderHTML(this.truncate(narrative, 50))}
@@ -273,8 +276,18 @@ export default class Match extends Component {
     return content;
   }
 
+  finishAnimation = () => {
+    const { animating } = this.state;
+
+    if (animating) {
+      this.setState(({
+        animating: false
+      }));
+    }
+  }
+
   render() {
-    let { expanded } = this.state;
+    let { expanded, animating } = this.state;
     let { matchIndex, match } = this.props;
     const { matchType } = this.state;
 
@@ -299,7 +312,7 @@ export default class Match extends Component {
         <div
           ref={'match'}
           className={
-            `match has-expander${expanded ? ' expander-open' : ' expander-closed'} ${this.state.matchType}`
+            `match has-expander${!expanded && !animating ? ' expander-closed' : ' expander-open'} ${this.state.matchType}`
           }
           onClick={() => this.expandCollapse(expanded)}
         >
@@ -323,6 +336,7 @@ export default class Match extends Component {
               expandedState={expanded}
               tvDetails={tvDetails}
               venue={venue}
+              onExited={() => this.finishAnimation()}
             />
           </div>
         </div>

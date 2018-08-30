@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExpanderContent} from 'pui-react-expander';
+import { ExpanderContent } from 'pui-react-expander';
 import shapegreendown from './images/shapegreendown.svg';
 import shapegreenup from './images/shapegreenup.svg';
 import pitchIcon from './images/pitch@2x.png';
@@ -118,12 +118,21 @@ export default class MoreInfo extends React.Component {
     }
   }
   render() {
-    const { events, expandedState, tvDetails, venue } = this.props;
+    const {
+      events,
+      expandedState,
+      onExited,
+      tvDetails,
+      venue,
+    } = this.props;
 
     var content = (
       <timeline-events>
         <div className={this.getClass(expandedState)} style={this.getBackgroundImage(expandedState)} ></div>
-        <ExpanderContent expanded={expandedState} >
+        <ExpanderContent
+          expanded={expandedState}
+          onExited={() => onExited()}
+        >
           {this.getTVVenueDetails(tvDetails, venue)}
           {this.getTimelineEvents(events)}
         </ExpanderContent>
