@@ -239,7 +239,7 @@ export default class Match extends Component {
 
   renderNarrative() {
     const { match } = this.props;
-    const { expanded, animating } = this.state;
+    const { expanded } = this.state;
 
     let narrative = match.preMatchDetails;
 
@@ -250,19 +250,17 @@ export default class Match extends Component {
       narrative = match.postMatchDetails
     }
 
-    if (expanded === false && !animating) {
-      return (
-        <div className="narrative">
-          {renderHTML(this.truncate(narrative, 50))}
-        </div>
-      )
-    } else {
-      return (
-        <div className="narrative">
-          {renderHTML(narrative)}
-        </div>
-      )
-    }
+    return expanded
+    ? (
+      <div className="narrative">
+        {renderHTML(narrative)}
+      </div>
+    )
+    : (
+      <div className="narrative">
+        {renderHTML(this.truncate(narrative, 50))}
+      </div>
+    );
   }
 
   truncate(elem, limit) {
@@ -276,18 +274,8 @@ export default class Match extends Component {
     return content;
   }
 
-  finishAnimation = () => {
-    const { animating } = this.state;
-
-    if (animating) {
-      this.setState(({
-        animating: false
-      }));
-    }
-  }
-
   render() {
-    let { expanded, animating } = this.state;
+    let { expanded } = this.state;
     let { matchIndex, match } = this.props;
     const { matchType } = this.state;
 
@@ -312,7 +300,7 @@ export default class Match extends Component {
         <div
           ref={'match'}
           className={
-            `match has-expander${!expanded && !animating ? ' expander-closed' : ' expander-open'} ${this.state.matchType}`
+            `match has-expander${!expanded ? ' expander-closed' : ' expander-open'} ${this.state.matchType}`
           }
           onClick={() => this.expandCollapse(expanded)}
         >
@@ -336,7 +324,6 @@ export default class Match extends Component {
               expandedState={expanded}
               tvDetails={tvDetails}
               venue={venue}
-              onExited={() => this.finishAnimation()}
             />
           </div>
         </div>
