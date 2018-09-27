@@ -51,7 +51,9 @@ class App extends Component {
           var contextBlurb = contextBlurbResult.data[0].text;
           var notCompleted = [];
           var completed = [];
+          console.log('matches: ', matches);
           for(var i = 0, numResults = matches.length; i < numResults; i++){
+            if (matches[i].status) {
               if(matches[i].status.description.toLowerCase() === "ft"
                 || matches[i].status.description.toLowerCase() === "aet"
                 || matches[i].status.description.toLowerCase() === "pen."
@@ -61,6 +63,7 @@ class App extends Component {
               else{
                 notCompleted.push(matches[i]);
               }
+            }
           }
 
           notCompleted.sort(function(a,b){
