@@ -10,6 +10,7 @@ export default class Match extends Component {
 
   state = {
     expanded: false,
+    animating: false,
     matchType: null
   }
 
@@ -55,6 +56,7 @@ export default class Match extends Component {
   expandCollapse(value) {
     this.setState(state => ({
       ...state,
+      animating: true,
       expanded: !value
     }))
   }
@@ -237,8 +239,10 @@ export default class Match extends Component {
 
   renderNarrative() {
     const { match } = this.props;
+    const { expanded } = this.state;
 
     let narrative = match.preMatchDetails;
+
     if(match.inMatchDetails){
       narrative = match.inMatchDetails;
     }
@@ -246,11 +250,28 @@ export default class Match extends Component {
       narrative = match.postMatchDetails
     }
 
-    return (
+    return expanded
+    ? (
       <div className="narrative">
         {renderHTML(narrative)}
       </div>
     )
+    : (
+      <div className="narrative">
+        {renderHTML(this.truncate(narrative, 50))}
+      </div>
+    );
+  }
+
+  truncate(elem, limit) {
+    // if not provided, get out of there!
+    if (!elem || !limit) return;
+
+    // truncate content based on word limit
+    let content = elem.trim();
+    content = content.split(" ").slice(0, limit);
+    content = content.join(" ") + "...";
+    return content;
   }
 
   render() {
@@ -279,7 +300,7 @@ export default class Match extends Component {
         <div
           ref={'match'}
           className={
-            `match has-expander${expanded ? ' expander-open' : ' expander-closed'} ${this.state.matchType}`
+            `match has-expander${!expanded ? ' expander-closed' : ' expander-open'} ${this.state.matchType}`
           }
           onClick={() => this.expandCollapse(expanded)}
         >

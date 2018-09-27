@@ -1,12 +1,13 @@
-import React from 'react';
-import {ExpanderContent} from 'pui-react-expander';
+import React, { Component } from 'react';
+import { ExpanderContent } from 'pui-react-expander';
 import shapegreendown from './images/shapegreendown.svg';
 import shapegreenup from './images/shapegreenup.svg';
 import pitchIcon from './images/pitch@2x.png';
 import tvIcon from './images/TV@2x.png';
 import EventCard from '../EventCard';
 
-export default class MoreInfo extends React.Component {
+export default class MoreInfo extends Component {
+
   getBackgroundImage(value){
     var expanderStyle = '';
     if(!value){
@@ -22,9 +23,11 @@ export default class MoreInfo extends React.Component {
 
     return expanderStyle;
   }
+
   expandCollapse(value){
     this.setState({expanded: !value});
   }
+
   getClass(value){
     if(value){
       return "expanderopen";
@@ -33,6 +36,7 @@ export default class MoreInfo extends React.Component {
       return "expanderclosed";
     }
   }
+
   getTVVenueDetails(tvDetails, venue){
     if(tvDetails != null && venue != null && tvDetails.length > 0 && venue.length > 0)
     {
@@ -118,12 +122,19 @@ export default class MoreInfo extends React.Component {
     }
   }
   render() {
-    const { events, expandedState, tvDetails, venue } = this.props;
+    const {
+      events,
+      expandedState,
+      tvDetails,
+      venue,
+    } = this.props;
 
     var content = (
       <timeline-events>
         <div className={this.getClass(expandedState)} style={this.getBackgroundImage(expandedState)} ></div>
-        <ExpanderContent expanded={expandedState} >
+        <ExpanderContent
+          expanded={expandedState}
+        >
           {this.getTVVenueDetails(tvDetails, venue)}
           {this.getTimelineEvents(events)}
         </ExpanderContent>
