@@ -23,6 +23,8 @@ class TableRow extends Component {
       return 'LEV'
     } else if (clubName === 'Real Sociedad') {
       return 'RSO'
+    } else if(!shortName || shortName === undefined) {
+      return clubName.substring(0, 3).toUpperCase()
     } else {
       return shortName
     }
